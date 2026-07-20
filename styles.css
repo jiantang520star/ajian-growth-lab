@@ -81,10 +81,12 @@ h1 { max-width: 900px; margin-bottom: 18px; font-size: clamp(44px, 7vw, 86px); l
 h2 { margin-bottom: 0; font-size: clamp(28px, 4vw, 48px); line-height: 1.16; }
 h3 { margin-bottom: 10px; font-size: 22px; line-height: 1.28; }
 .lead { max-width: 760px; margin-bottom: 26px; color: var(--text); font-size: clamp(18px, 2vw, 23px); }
-.action-row, .tag-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.action-row, .tag-row, .system-line { display: flex; flex-wrap: wrap; gap: 10px; }
 .button { display: inline-flex; align-items: center; min-height: 46px; padding: 11px 16px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); font-weight: 800; box-shadow: 0 10px 28px rgba(40, 69, 56, 0.08); }
 .button.primary { background: var(--green); color: white; border-color: var(--green); }
 .tag { padding: 8px 12px; border-radius: 999px; background: var(--green-soft); color: #176647; font-weight: 800; font-size: 14px; }
+.system-line span { padding: 7px 0; color: var(--muted); font-weight: 900; }
+.system-line span:not(:last-child)::after { content: "/"; margin-left: 10px; color: var(--green); }
 
 .dashboard {
   display: grid;
@@ -141,6 +143,8 @@ time, .date { color: var(--green); font-weight: 900; }
 .timeline-index { display: grid; place-items: center; border-radius: 18px; background: var(--green-soft); color: #176647; font-weight: 900; }
 .timeline-body { padding: 22px; border-radius: 18px; border: 1px solid var(--line); background: var(--surface); }
 .timeline-body p { margin-bottom: 0; color: var(--muted); }
+.capability-timeline .timeline-body { background: linear-gradient(135deg, #ffffff, rgba(223, 245, 233, 0.48)); transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease; }
+.capability-timeline a.timeline-body:hover { transform: translateY(-2px); border-color: rgba(31, 154, 154, 0.34); box-shadow: 0 14px 42px rgba(40, 69, 56, 0.07); }
 
 .article { max-width: 860px; margin: 0 auto; padding: clamp(42px, 7vw, 84px) clamp(18px, 5vw, 40px); }
 .article-shell { padding: clamp(26px, 5vw, 52px); border: 1px solid var(--line); border-radius: 24px; background: var(--surface); box-shadow: var(--shadow); }
