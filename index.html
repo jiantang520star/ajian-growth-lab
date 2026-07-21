@@ -14,7 +14,10 @@
     <header class="site-header">
       <a class="brand" href="index.html"><span class="brand-mark">AJ</span><span>阿简成长实验室</span><span class="brand-badge">Growth OS</span></a>
       <nav class="nav" aria-label="主要导航">
-        <a class="active" href="index.html">首页</a><a href="projects.html">我的项目</a><a href="archive.html">成长档案</a><a href="experiments.html">实验库</a><a href="whitepapers.html">白皮书</a><a href="handoffs.html">项目交接卡</a><a href="contact.html">联系我</a>
+        <a class="active" href="index.html">首页</a><a href="projects.html">我的项目</a><a href="archive.html">成长档案</a><a href="experiments.html">实验库</a><a href="whitepapers.html">白皮书</a><a href="handoffs.html">项目交接卡</a>
+        <button class="nav-tool" type="button" data-open-docs>文档说明<span>新</span></button>
+        <a href="contact.html">联系我</a>
+        <button class="icon-button" type="button" data-theme-toggle aria-label="切换显示模式">☼</button>
       </nav>
     </header>
     <main>
@@ -23,16 +26,16 @@
           <p class="eyebrow">Growth OS / Personal Lab</p>
           <h1>记录成长过程<br />沉淀可复用的方法论</h1>
           <p class="lead">一个普通人利用 AI、数据和长期复盘改变自己的成长记录。这里不是简历，而是一个持续更新的成长操作系统。</p>
-          <div class="action-row"><a class="button primary" href="projects.html">进入我的项目</a><a class="button" href="whitepapers.html">阅读成长白皮书</a></div>
+          <div class="action-row"><a class="button primary" href="projects.html">进入我的项目 →</a><a class="button" href="whitepapers.html">阅读成长白皮书</a></div>
         </div>
         <aside class="today-card" aria-label="今日状态">
           <div class="dashboard-head"><strong>今日状态</strong><span>7月21日 · 周二</span></div>
-          <div class="status-list">
-            <div><span>睡眠时间</span><strong>23:45</strong></div>
-            <div><span>健身时长</span><strong>15 分钟</strong></div>
-            <div><span>眼睛状态</span><strong>4 / 5</strong></div>
-            <div><span>今日心情</span><strong>良好</strong></div>
-            <div><span>专注时长</span><strong>6.5 小时</strong></div>
+          <div class="status-list interactive-status">
+            <button type="button" data-cycle="23:45|00:10|00:30"><span>睡眠时间</span><strong>23:45</strong></button>
+            <button type="button" data-cycle="15 分钟|30 分钟|45 分钟"><span>健身时长</span><strong>15 分钟</strong></button>
+            <button type="button" data-cycle="4 / 5|3 / 5|5 / 5"><span>眼睛状态</span><strong>4 / 5</strong></button>
+            <button type="button" data-cycle="良好|平稳|需要恢复"><span>今日心情</span><strong>良好</strong></button>
+            <button type="button" data-cycle="6.5 小时|4 小时|8 小时"><span>专注时长</span><strong>6.5 小时</strong></button>
           </div>
         </aside>
       </section>
@@ -49,51 +52,46 @@
       <section class="dashboard-layout">
         <div class="main-panel">
           <div class="section-heading compact"><div><p class="eyebrow">Core Modules</p><h2>核心模块</h2></div></div>
-          <div class="module-grid">
-            <a class="module-card green" href="projects.html"><span>01</span><h3>我的项目</h3><p>长期项目、阶段成果和能力沉淀。</p><strong>进行中 4 个</strong></a>
-            <a class="module-card amber" href="archive.html"><span>02</span><h3>成长档案</h3><p>记录关键人生阶段和能力变化轨迹。</p><strong>已记录 8 段</strong></a>
-            <a class="module-card blue" href="experiments.html"><span>03</span><h3>实验库</h3><p>AI、运营、健康、学习、生活实验。</p><strong>实验进行中 5 个</strong></a>
-            <a class="module-card violet" href="whitepapers.html"><span>04</span><h3>成长白皮书</h3><p>阶段复盘、方法论和思考沉淀。</p><strong>已发布 3 篇</strong></a>
-            <a class="module-card red" href="handoffs.html"><span>05</span><h3>项目交接卡</h3><p>每日进度、问题和下一步行动。</p><strong>今日已更新</strong></a>
+          <div class="module-grid searchable-area">
+            <a class="module-card green searchable-card" data-category="项目" href="projects.html"><span>01</span><h3>我的项目</h3><p>长期项目、阶段成果和能力沉淀。</p><strong>进行中 4 个 →</strong></a>
+            <a class="module-card amber searchable-card" data-category="成长档案" href="archive.html"><span>02</span><h3>成长档案</h3><p>记录关键人生阶段和能力变化轨迹。</p><strong>已记录 8 段 →</strong></a>
+            <a class="module-card blue searchable-card" data-category="实验" href="experiments.html"><span>03</span><h3>实验库</h3><p>AI、运营、健康、学习、生活实验。</p><strong>实验进行中 5 个 →</strong></a>
+            <a class="module-card violet searchable-card" data-category="白皮书" href="whitepapers.html"><span>04</span><h3>成长白皮书</h3><p>阶段复盘、方法论和思考沉淀。</p><strong>已发布 3 篇 →</strong></a>
+            <a class="module-card red searchable-card" data-category="交接卡" href="handoffs.html"><span>05</span><h3>项目交接卡</h3><p>每日进度、问题和下一步行动。</p><strong>今日已更新 →</strong></a>
+            <button class="module-card doc-module searchable-card" type="button" data-category="文档说明" data-open-docs><span>06</span><h3>文档说明</h3><p>网站使用说明、方法论体系和更新规则。</p><strong>查看文档 →</strong></button>
           </div>
 
           <div class="section-heading compact"><div><p class="eyebrow">Latest Updates</p><h2>最新动态</h2></div></div>
-          <div class="activity-list">
-            <a href="handoffs/2026-07-21.html"><span class="pill">项目交接卡</span><time>2026-07-21</time><div><strong>项目交接卡_2026-07-21（最新版）</strong><p>与图片里的进度看板同步，恢复 2-3 轮沟通策略测试，监控多个账号推进效果。</p></div><b>查看详情</b></a>
-            <a href="whitepapers/2026-07-20.html"><span class="pill">成长白皮书</span><time>2026-07-20</time><div><strong>经验开始转化为方法</strong><p>重新思考运营方式，优化沟通轮数策略，形成可验证的运营实验。</p></div><b>阅读全文</b></a>
-            <a href="experiments/operation.html"><span class="pill">实验更新</span><time>2026-07-20</time><div><strong>沟通轮数优化实验</strong><p>从延长聊天到长期陪聊辅助试验，关注整体推进效率而非单个时长。</p></div><b>查看实验</b></a>
+          <div class="activity-list searchable-area">
+            <a class="searchable-card" data-category="交接卡" href="handoffs/2026-07-21.html"><span class="pill">项目交接卡</span><time>2026-07-21</time><div><strong>项目交接卡_2026-07-21（最新版）</strong><p>与同事复盘引流流程，恢复 2-3 轮沟通策略测试，监控多个账号推进效果。</p></div><b>查看详情 →</b></a>
+            <a class="searchable-card" data-category="白皮书" href="whitepapers/2026-07-20.html"><span class="pill">成长白皮书</span><time>2026-07-20</time><div><strong>经验开始转化为方法</strong><p>重新思考运营方式，优化沟通轮数策略，形成可验证的运营实验。</p></div><b>阅读全文 →</b></a>
+            <a class="searchable-card" data-category="实验" href="experiments/operation.html"><span class="pill">实验更新</span><time>2026-07-20</time><div><strong>沟通轮数优化实验</strong><p>从延长聊天到长期陪聊辅助试验，关注整体推进效率而非单个时长。</p></div><b>查看实验 →</b></a>
           </div>
 
           <div class="workflow-card">
-            <div class="section-heading compact"><div><p class="eyebrow">Workflow</p><h2>成长系统工作流程</h2></div><p>每一步都有记录。</p></div>
-            <div class="workflow-steps">
-              <div><strong>1</strong><span>数据记录</span><p>记录日常数据和今日状态</p></div>
-              <div><strong>2</strong><span>项目进度</span><p>更新里程碑完成情况</p></div>
-              <div><strong>3</strong><span>实验验证</span><p>实践、观察、得出结论</p></div>
-              <div><strong>4</strong><span>规律总结</span><p>整理方法论和经验</p></div>
-              <div><strong>5</strong><span>内容沉淀</span><p>白皮书、SOP、案例库</p></div>
-              <div><strong>6</strong><span>对外输出</span><p>更新网站和作品集</p></div>
+            <div class="section-heading compact"><div><p class="eyebrow">Workflow</p><h2>成长系统工作流程</h2></div><p>点击每一步可以标记当前正在进行。</p></div>
+            <div class="workflow-steps" data-workflow>
+              <button class="active" type="button"><strong>1</strong><span>数据记录</span><p>记录日常数据和今日状态</p></button>
+              <button type="button"><strong>2</strong><span>项目进度</span><p>更新里程碑完成情况</p></button>
+              <button type="button"><strong>3</strong><span>实验验证</span><p>实践、观察、得出结论</p></button>
+              <button type="button"><strong>4</strong><span>规律总结</span><p>整理方法论和经验</p></button>
+              <button type="button"><strong>5</strong><span>内容沉淀</span><p>白皮书、SOP、案例库</p></button>
+              <button type="button"><strong>6</strong><span>对外输出</span><p>更新网站和作品集</p></button>
             </div>
           </div>
         </div>
 
         <aside class="side-panel">
           <section class="info-card">
-            <h2>项目进度说明</h2>
-            <p>进度条不是随意填写，而是根据“阶段里程碑完成情况”自动计算：</p>
-            <div class="formula">进度 = 已完成里程碑数 ÷ 里程碑总数 × 100%</div>
-            <p>例如：共 5 个里程碑，完成 3 个，就是 60%。</p>
-            <div class="legend-row"><span>已完成</span><span>进行中</span><span>未开始</span><span>暂停</span><span>已完成阶段</span></div>
-          </section>
-
-          <section class="info-card">
-            <h2>我的项目</h2>
-            <div class="progress-list">
-              <a href="projects/video-benchmark.html"><div><strong>视频基准库</strong><span>阶段：数据录入阶段</span></div><div class="dots done-3"><i></i><i></i><i></i><i></i><i></i></div><b>60%</b></a>
-              <a href="projects/ai-workflow.html"><div><strong>AI 工作流</strong><span>阶段：工作流验证阶段</span></div><div class="dots done-2"><i></i><i></i><i></i><i></i></div><b>50%</b></a>
-              <a href="projects/new-media-growth.html"><div><strong>新媒体运营成长项目</strong><span>阶段：方法沉淀期</span></div><div class="dots done-3"><i></i><i></i><i></i><i></i><i></i></div><b>60%</b></a>
-              <a href="projects/ajian-growth-lab.html"><div><strong>阿简成长实验室网站</strong><span>阶段：内容迁移阶段</span></div><div class="dots done-7"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><b>70%</b></a>
+            <h2>项目进度总览</h2>
+            <p>所有项目的进度一目了然。点击圆点可临时调整完成数，进度会自动重算。</p>
+            <div class="progress-list searchable-area">
+              <article class="progress-card searchable-card" data-category="项目" data-total="5" data-done="3"><a href="projects/video-benchmark.html"><strong>视频基准库</strong><span>阶段：数据录入阶段</span></a><div class="milestones" aria-label="视频基准库进度"></div><b class="progress-percent">60%</b><small>下一步：完成全部历史视频录入</small></article>
+              <article class="progress-card searchable-card" data-category="项目" data-total="4" data-done="2"><a href="projects/ai-workflow.html"><strong>AI 工作流</strong><span>阶段：工作流验证阶段</span></a><div class="milestones" aria-label="AI 工作流进度"></div><b class="progress-percent">50%</b><small>下一步：提升识别准确率到稳定</small></article>
+              <article class="progress-card searchable-card" data-category="项目" data-total="5" data-done="3"><a href="projects/new-media-growth.html"><strong>新媒体运营成长项目</strong><span>阶段：方法沉淀期</span></a><div class="milestones" aria-label="新媒体运营成长项目进度"></div><b class="progress-percent">60%</b><small>下一步：完成风控经验 SOP 整理</small></article>
+              <article class="progress-card searchable-card" data-category="项目" data-total="10" data-done="7"><a href="projects/ajian-growth-lab.html"><strong>阿简成长实验室网站</strong><span>阶段：内容迁移阶段</span></a><div class="milestones" aria-label="网站进度"></div><b class="progress-percent">70%</b><small>下一步：继续增强功能和仪表盘</small></article>
             </div>
+            <div class="formula">进度 = 已完成里程碑数 ÷ 里程碑总数 × 100%</div>
           </section>
 
           <section class="info-card">
@@ -101,16 +99,46 @@
             <div class="experiment-snapshot">
               <div><strong>健康实验：眼睛与精力恢复</strong><span>连续记录 19 天</span></div>
               <div class="mini-metrics"><span>睡眠达标率 <b>84%</b></span><span>健身完成率 <b>67%</b></span><span>眼睛状态 <b>4/5</b></span></div>
+              <div class="sparkline" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+          </section>
+
+          <section class="info-card search-card">
+            <h2>快速搜索</h2>
+            <input id="dashboardSearch" type="search" placeholder="搜索关键词，例如：风控、引流、SOP、AI 工作流..." />
+            <div class="filter-row" aria-label="内容筛选">
+              <button class="active" type="button" data-filter="全部">全部</button>
+              <button type="button" data-filter="项目">项目</button>
+              <button type="button" data-filter="实验">实验</button>
+              <button type="button" data-filter="白皮书">白皮书</button>
+              <button type="button" data-filter="交接卡">交接卡</button>
+              <button type="button" data-filter="成长档案">成长档案</button>
+              <button type="button" data-filter="文档说明">文档说明</button>
             </div>
           </section>
 
           <section class="note-grid">
-            <div><h3>设计原则</h3><p>层次清晰、数据驱动、可解释、持续更新、长期价值。</p></div>
-            <div><h3>如何更新进度</h3><p>在项目交接卡里勾选里程碑完成状态，网站进度跟随更新。</p></div>
+            <button type="button" data-open-docs><h3>文档说明 <span>新</span></h3><p>网站使用说明、导航说明、方法论体系和更新规则。</p><strong>查看完整文档 →</strong></button>
+            <div><h3>如何更新进度？</h3><p>在项目交接卡里记录里程碑状态，系统面板按照完成数自动计算。</p></div>
           </section>
         </aside>
       </section>
     </main>
+
+    <dialog class="docs-modal" data-docs-modal>
+      <div class="modal-head"><h2>文档说明</h2><button type="button" data-close-docs aria-label="关闭">×</button></div>
+      <div class="modal-body">
+        <p>阿简成长实验室是一个长期更新的 Growth OS，用来记录项目、实验、白皮书、交接卡和成长档案。</p>
+        <ul>
+          <li>首页：查看当前状态、项目进度、最新动态和工作流程。</li>
+          <li>我的项目：进入长期项目详情。</li>
+          <li>实验库：记录 AI、运营、健康、学习和生活实验。</li>
+          <li>成长白皮书：沉淀阶段复盘和方法论。</li>
+          <li>项目交接卡：每天记录进度、问题、结论和 AI 上下文接力。</li>
+        </ul>
+      </div>
+    </dialog>
+
     <footer class="footer"><p>© <span id="year"></span> 阿简成长实验室. 记录成长，沉淀方法，持续创造价值。</p><button class="top-button" type="button" aria-label="回到顶部">↑</button></footer>
     <script src="script.js"></script>
   </body>
