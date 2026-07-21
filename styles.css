@@ -984,3 +984,77 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* Final reset: restore the original warm green palette and keep search near the top. */
+:root {
+  --bg: #f7f9f6;
+  --surface: #ffffff;
+  --surface-soft: #f1f6f3;
+  --cream: #fbf7ef;
+  --ink: #17211d;
+  --text: #394640;
+  --muted: #6f7d76;
+  --line: #dfe8e3;
+  --green: #2fa36b;
+  --green-soft: #dff5e9;
+  --teal: #1f9a9a;
+  --blue: #5a9bd8;
+  --blue-soft: #e8f3ff;
+  --shadow: 0 24px 70px rgba(40, 69, 56, 0.10);
+}
+body {
+  background:
+    radial-gradient(circle at top left, rgba(47, 163, 107, 0.12), transparent 360px),
+    radial-gradient(circle at top right, rgba(90, 155, 216, 0.16), transparent 420px),
+    var(--bg);
+}
+.site-header {
+  background: rgba(247, 249, 246, 0.82);
+  border-bottom-color: rgba(223, 232, 227, 0.82);
+}
+.brand-mark {
+  background: linear-gradient(135deg, var(--green-soft), var(--blue-soft));
+  color: #167450;
+}
+.brand-badge {
+  background: var(--green-soft);
+  color: #176647;
+}
+.nav a:hover, .nav a.active {
+  color: var(--green);
+  border-bottom-color: var(--green);
+}
+.os-hero {
+  background:
+    linear-gradient(180deg, rgba(232, 243, 255, 0.9), rgba(247, 249, 246, 0.72)),
+    radial-gradient(circle at 70% 40%, rgba(47, 163, 107, 0.16), transparent 320px);
+}
+.os-hero::after {
+  background: linear-gradient(180deg, rgba(90, 155, 216, 0.16), rgba(47, 163, 107, 0.12));
+}
+.button.primary {
+  background: var(--green);
+  border-color: var(--green);
+}
+.module-card.green,
+.module-card.blue,
+.module-card.violet,
+.module-card.red,
+.module-card.amber,
+.doc-module {
+  background: linear-gradient(135deg, #ffffff, var(--green-soft));
+}
+.dashboard-search-top {
+  margin-bottom: 8px;
+}
+.dashboard-search-top h2 {
+  font-size: 22px;
+}
+.dashboard-search-top .search-result-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 760px) {
+  .dashboard-search-top .search-result-list {
+    grid-template-columns: 1fr;
+  }
+}
