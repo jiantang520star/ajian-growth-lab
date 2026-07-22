@@ -1478,3 +1478,14 @@ body {
     max-width: calc(100% - 32px);
   }
 }
+
+/* Exact edge alignment: compensate for hero padding so search matches the metric strip border. */
+.hero-search {
+  width: min(1440px, calc(100vw - 96px));
+}
+@media (max-width: 900px) {
+  .hero-search {
+    width: calc(100vw - 32px);
+    max-width: calc(100vw - 32px);
+  }
+}
