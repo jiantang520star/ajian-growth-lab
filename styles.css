@@ -1303,3 +1303,51 @@ body {
     margin-bottom: 0;
   }
 }
+
+/* Final placement: search becomes the top tool row above the hero title. */
+.os-hero {
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+  grid-template-rows: auto 1fr;
+  column-gap: clamp(24px, 5vw, 72px);
+  row-gap: clamp(20px, 3vw, 34px);
+  align-items: start;
+  min-height: 560px;
+  padding-top: clamp(52px, 6vw, 86px);
+  padding-bottom: clamp(58px, 7vw, 84px);
+}
+.hero-search {
+  position: static;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  justify-self: center;
+  width: min(1220px, 100%);
+  max-width: none;
+  margin: 0;
+  padding: 16px 18px;
+  z-index: 2;
+}
+.hero-copy {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+}
+.today-card {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .os-hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding-top: 24px;
+  }
+  .hero-search,
+  .hero-copy,
+  .today-card {
+    grid-column: 1;
+    grid-row: auto;
+    width: 100%;
+  }
+}
