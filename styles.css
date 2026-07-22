@@ -1198,3 +1198,27 @@ body {
     width: calc(100vw - 24px);
   }
 }
+
+/* Keep quick search as a true top-level tool on desktop and mobile. */
+.top-search-band {
+  padding: 18px clamp(18px, 5vw, 72px) 0;
+}
+.top-search-band .dashboard-search-top {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+.top-search-band + .os-hero {
+  padding-top: clamp(42px, 6vw, 78px);
+}
+@media (max-width: 760px) {
+  .top-search-band {
+    padding: 14px 16px 0;
+  }
+  .top-search-band .dashboard-search-top {
+    width: 100%;
+    margin: 0;
+  }
+  .top-search-band + .os-hero {
+    padding-top: 28px;
+  }
+}
