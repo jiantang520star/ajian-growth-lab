@@ -419,15 +419,19 @@ button { color: inherit; }
   box-shadow: var(--shadow);
 }
 .doc-module { color: var(--ink); }
-.workflow-steps button {
+.workflow-steps button,
+.workflow-steps a {
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: 16px;
   background: var(--surface-soft);
   text-align: left;
   cursor: pointer;
+  display: block;
 }
-.workflow-steps button.active {
+.workflow-steps button.active,
+.workflow-steps a.active,
+.workflow-steps a:hover {
   border-color: rgba(47, 163, 107, 0.5);
   background: var(--green-soft);
   box-shadow: 0 0 0 4px rgba(47, 163, 107, 0.08);
@@ -914,7 +918,8 @@ body {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
 }
-.workflow-steps button {
+.workflow-steps button,
+.workflow-steps a {
   min-height: 132px;
   padding: 18px;
   border-radius: 16px;
@@ -1175,7 +1180,8 @@ body {
     gap: 8px;
     padding: 16px;
   }
-  .workflow-steps button {
+  .workflow-steps button,
+  .workflow-steps a {
     min-height: 0;
   }
   .progress-card {
