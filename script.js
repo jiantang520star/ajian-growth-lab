@@ -83,10 +83,12 @@ document.querySelectorAll(".progress-card").forEach((card) => {
 
 const workflow = document.querySelector("[data-workflow]");
 if (workflow) {
+  const workflowOutput = document.querySelector("[data-workflow-output]");
   workflow.querySelectorAll("button").forEach((button) => {
     button.addEventListener("click", () => {
       workflow.querySelectorAll("button").forEach((item) => item.classList.remove("active"));
       button.classList.add("active");
+      if (workflowOutput) workflowOutput.textContent = button.dataset.workflowDetail || "";
     });
   });
 }
@@ -103,8 +105,10 @@ const siteSearchItems = [
   { title: "成长档案", category: "成长档案", url: "archive.html", desc: "重庆跑外卖、深圳运营、视频数据库、AI 工作流、Growth OS。" },
   { title: "实验库", category: "实验", url: "experiments.html", desc: "AI 实验、运营实验、健康实验、学习实验、生活实验。" },
   { title: "运营实验", category: "实验", url: "experiments/operation.html", desc: "评论沟通、引流路径、风控和沟通轮数优化。" },
+  { title: "从提升能力，到经营自己", category: "白皮书", url: "whitepapers/2026-07-22.html", desc: "时间边界、收入管理、职业形象和长期正循环。" },
   { title: "成长系统开始真正运转", category: "白皮书", url: "whitepapers/2026-07-20.html", desc: "复盘、交接卡、白皮书和网站更新串联起来。" },
   { title: "阿简成长实验室正式启动", category: "白皮书", url: "whitepapers/2026-07-17.html", desc: "从个人网站升级为长期维护的 Growth OS。" },
+  { title: "项目交接卡_2026-07-22", category: "交接卡", url: "handoffs/2026-07-22.html", desc: "工作筛选标准、职业形象升级、预算管理和作品集主线。" },
   { title: "项目交接卡_2026-07-21", category: "交接卡", url: "handoffs/2026-07-21.html", desc: "首页仪表盘升级、项目进度说明和交互面板。" },
   { title: "项目交接卡_2026-07-17", category: "交接卡", url: "handoffs/2026-07-17.html", desc: "复盘、项目交接卡、成长白皮书、网站更新工作流。" },
   { title: "文档说明", category: "文档说明", url: "#docs", desc: "网站使用说明、导航说明、方法论体系和更新规则。" },
