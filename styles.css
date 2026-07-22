@@ -1258,3 +1258,46 @@ body {
     font-size: 18px;
   }
 }
+
+/* Final hero placement: search sits in the upper-right open space marked by the user. */
+.os-hero {
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+  align-items: end;
+  min-height: 620px;
+  padding-top: clamp(128px, 12vw, 172px);
+}
+.hero-copy {
+  max-width: 900px;
+}
+.hero-search {
+  position: absolute;
+  top: clamp(28px, 4.2vw, 54px);
+  right: clamp(34px, 6vw, 92px);
+  width: min(720px, 58vw);
+  max-width: none;
+  margin: 0;
+  z-index: 2;
+}
+.today-card {
+  align-self: end;
+  margin-bottom: 54px;
+}
+@media (max-width: 1180px) {
+  .hero-search {
+    width: min(560px, 52vw);
+  }
+}
+@media (max-width: 900px) {
+  .os-hero {
+    min-height: 0;
+    padding-top: 26px;
+  }
+  .hero-search {
+    position: static;
+    width: 100%;
+    margin: 18px 0;
+  }
+  .today-card {
+    margin-bottom: 0;
+  }
+}
