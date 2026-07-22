@@ -1457,3 +1457,24 @@ body {
     white-space: nowrap;
   }
 }
+
+/* Align the hero search card with the metric strip below it. */
+.hero-search,
+.stat-strip {
+  width: min(1440px, calc(100% - 96px));
+  max-width: none;
+}
+.hero-search {
+  justify-self: center;
+}
+.stat-strip {
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 900px) {
+  .hero-search,
+  .stat-strip {
+    width: calc(100% - 32px);
+    max-width: calc(100% - 32px);
+  }
+}
