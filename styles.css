@@ -1262,16 +1262,18 @@ body {
 /* Final hero placement: search sits in the upper-right open space marked by the user. */
 .os-hero {
   grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
-  align-items: end;
-  min-height: 620px;
-  padding-top: clamp(128px, 12vw, 172px);
+  align-items: start;
+  min-height: 560px;
+  padding-top: clamp(72px, 7vw, 104px);
+  padding-bottom: clamp(56px, 7vw, 82px);
 }
 .hero-copy {
   max-width: 900px;
+  align-self: start;
 }
 .hero-search {
   position: absolute;
-  top: clamp(28px, 4.2vw, 54px);
+  top: clamp(34px, 4.8vw, 62px);
   right: clamp(34px, 6vw, 92px);
   width: min(720px, 58vw);
   max-width: none;
@@ -1280,7 +1282,7 @@ body {
 }
 .today-card {
   align-self: end;
-  margin-bottom: 54px;
+  margin-bottom: 18px;
 }
 @media (max-width: 1180px) {
   .hero-search {
