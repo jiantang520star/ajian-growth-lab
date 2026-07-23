@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>子库 | 阿简成长实验室</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html"><span class="brand-mark">AJ</span>阿简成长实验室</a>
+      <nav class="nav"><a href="index.html">首页</a><a href="projects.html">我的项目</a><a href="knowledge.html">知识资产</a><a href="manager.html">内容管理</a></nav>
+    </header>
+    <main>
+      <section class="hero narrow library-hero">
+        <p class="eyebrow">Library</p>
+        <h1 data-library-title>子库</h1>
+        <p class="lead" data-library-lead>这个子库用于沉淀对应项目下的记录、SOP、规律、风险、案例和结论。</p>
+        <div class="action-row"><a class="button" href="projects.html">返回我的项目</a><a class="button" href="knowledge.html">查看知识总库</a></div>
+      </section>
+      <section class="section">
+        <div class="section-heading"><div><p class="eyebrow">Library Records</p><h2 data-library-status>暂未更新</h2></div><p>这里按日期、标签和概括展示，点击记录进入完整详情。</p></div>
+        <div class="local-search" data-local-search data-scope="#libraryList"><label>库内搜索<input data-library-search type="search" placeholder="搜索日期、标签或概括" /></label></div>
+        <div class="list" id="libraryList" data-library-list></div>
+      </section>
+    </main>
+    <footer class="footer"><p>© <span id="year"></span> 阿简成长实验室.</p><button class="top-button" type="button">↑</button></footer>
+    <script src="growth-data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
