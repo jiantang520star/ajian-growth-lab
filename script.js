@@ -39,6 +39,8 @@ const getTypeName = (type) => (defaultData.assetTypes || []).find((item) => item
 const getProjectName = (id) => (defaultData.projects || []).find((item) => item.id === id)?.title || id;
 const todayISO = () => new Date().toISOString().slice(0, 10);
 const normalizeTags = (value) => Array.isArray(value) ? value : String(value || "").split(/[,，]/).map((item) => item.trim()).filter(Boolean);
+const getAssetDate = (asset) => asset.date || asset.updatedAt || asset.createdAt || "";
+const getAssetSummary = (asset) => asset.summary || asset.content || "";
 
 if (year) year.textContent = new Date().getFullYear();
 if (topButton) {
@@ -135,13 +137,49 @@ if (workflow) {
 const assetCardHTML = (asset) => {
   const tags = normalizeTags(asset.tags).map((tag) => `<span>${tag}</span>`).join("");
   const projects = (asset.projects || []).map((id) => getProjectName(id)).join(" / ");
-  return `<article class="asset-card" data-asset-id="${asset.id}">
-    <div class="asset-meta"><span>${getTypeName(asset.type)}</span><time>${asset.updatedAt || asset.createdAt || ""}</time></div>
+  return `<article class="asset-card" data-local-item data-asset-id="${asset.id}" data-tags="${normalizeTags(asset.tags).join(" ")}" data-date="${getAssetDate(asset)}" data-summary="${getAssetSummary(asset)}">
+    <div class="asset-meta"><span>${getTypeName(asset.type)}</span><time>${getAssetDate(asset)}</time></div>
     <h3>${asset.title}</h3>
-    <p>${asset.content}</p>
+    <p>${getAssetSummary(asset)}</p>
     <div class="asset-tags">${tags}</div>
     <small>关联项目：${projects || "未关联"}</small>
   </article>`;
+};
+
+const setupLocalSearch = () => {
+  document.querySelectorAll("[data-local-search]").forEach((searchBox) => {
+    const input = searchBox.querySelector("input");
+    const scopeSelector = searchBox.dataset.scope;
+    const scope = scopeSelector ? document.querySelector(scopeSelector) : searchBox.parentElement;
+    if (!input || !scope) return;
+
+    const empty = document.createElement("p");
+    empty.className = "search-empty local-search-empty";
+    empty.textContent = "没有找到匹配记录，换个日期、标签或概括试试。";
+    empty.hidden = true;
+    scope.insertAdjacentElement("afterend", empty);
+
+    const applyLocalSearch = () => {
+      const query = input.value.trim().toLowerCase();
+      const items = [...scope.querySelectorAll("[data-local-item], .list-item, .project-line, .timeline-row, .card, .asset-card")];
+      let visibleCount = 0;
+      items.forEach((item) => {
+        const haystack = [
+          item.textContent,
+          item.dataset.tags,
+          item.dataset.date,
+          item.dataset.summary
+        ].join(" ").toLowerCase();
+        const visible = !query || haystack.includes(query);
+        item.classList.toggle("search-hidden", !visible);
+        if (visible) visibleCount += 1;
+      });
+      empty.hidden = visibleCount > 0;
+    };
+
+    input.addEventListener("input", applyLocalSearch);
+    applyLocalSearch();
+  });
 };
 
 const renderKnowledgeList = () => {
@@ -185,13 +223,15 @@ const setupManager = () => {
   projectSelect.innerHTML = (defaultData.projects || []).map((project) => `<option value="${project.id}">${project.title}</option>`).join("");
 
   const renderManagerList = () => {
-    list.innerHTML = getAllAssets().map((asset) => `<button type="button" data-edit-id="${asset.id}"><strong>${asset.title}</strong><span>${getTypeName(asset.type)} · ${asset.status || "未设置"}</span></button>`).join("");
+    list.innerHTML = getAllAssets().map((asset) => `<button type="button" data-local-item data-edit-id="${asset.id}" data-date="${getAssetDate(asset)}" data-tags="${normalizeTags(asset.tags).join(" ")}" data-summary="${getAssetSummary(asset)}"><strong>${asset.title}</strong><span>${getAssetDate(asset)} · ${getTypeName(asset.type)} · ${asset.status || "未设置"}</span></button>`).join("");
     list.querySelectorAll("[data-edit-id]").forEach((button) => {
       button.addEventListener("click", () => {
         const asset = getAllAssets().find((item) => item.id === button.dataset.editId);
         if (!asset) return;
         form.elements.id.value = asset.id;
         form.elements.title.value = asset.title || "";
+        form.elements.date.value = getAssetDate(asset);
+        form.elements.summary.value = asset.summary || "";
         form.elements.content.value = asset.content || "";
         form.elements.type.value = asset.type || "rule";
         [...projectSelect.options].forEach((option) => { option.selected = (asset.projects || []).includes(option.value); });
@@ -208,6 +248,8 @@ const setupManager = () => {
     const asset = {
       id,
       title: form.elements.title.value.trim(),
+      date: form.elements.date.value || todayISO(),
+      summary: form.elements.summary.value.trim(),
       content: form.elements.content.value.trim(),
       type: form.elements.type.value,
       projects: [...projectSelect.selectedOptions].map((option) => option.value),
@@ -360,3 +402,4 @@ document.querySelector("[data-close-docs]")?.addEventListener("click", () => doc
 renderKnowledgeList();
 renderProjectAssets();
 setupManager();
+setupLocalSearch();
