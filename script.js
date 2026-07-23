@@ -268,12 +268,12 @@ const filterButtons = document.querySelectorAll("[data-filter]");
 const searchableCards = document.querySelectorAll(".searchable-card");
 let activeFilter = "全部";
 const staticSearchItems = [
-  { title: "阿简成长实验室", category: "项目", url: "projects/ajian-growth-lab.html", desc: "Growth OS 网站核心项目，记录成长系统建设。" },
-  { title: "视频基准库", category: "项目", url: "projects/video-benchmark.html", desc: "视频样本、内容数据和规律拆解。" },
-  { title: "新媒体运营成长项目", category: "项目", url: "projects/new-media-growth.html", desc: "引流、用户沟通、风控、转化和运营复盘。" },
-  { title: "账号冷启动与新人培训", category: "项目", url: "projects/account-cold-start.html", desc: "账号从 0 到 1、冷启动 SOP、新人培训和项目进度 20%。" },
+  { title: "医美新媒体成长", category: "项目", url: "projects/new-media-growth.html", desc: "视频数据库、引流SOP、评论SOP、风险库、新人培训、AI工作流和项目成果。" },
+  { title: "AI工作流项目", category: "项目", url: "projects/ai-workflow.html", desc: "OCR工作流、视频数据库自动化、项目交接卡生成、白皮书生成和网站更新工作流。" },
+  { title: "网站项目", category: "项目", url: "projects/ajian-growth-lab.html", desc: "Growth OS 网站核心项目，记录成长系统建设。" },
   { title: "人生规律库", category: "项目", url: "projects/life-rules.html", desc: "生命第一，有生命才有其他东西。健康和安全是成长前提。" },
-  { title: "AI 工作流", category: "项目", url: "projects/ai-workflow.html", desc: "ChatGPT、Codex、数据工具和自动化效率。" },
+  { title: "视频数据库", category: "子库", url: "projects/video-benchmark.html", desc: "视频样本、内容数据和规律拆解。" },
+  { title: "新人培训", category: "子库", url: "projects/account-cold-start.html", desc: "账号从 0 到 1、冷启动 SOP、新人培训和项目进度 20%。" },
   { title: "数据记录", category: "文档说明", url: "workflow/data-record.html", desc: "记录睡眠、健康、运营样本、沟通结果和当天状态。" },
   { title: "项目进度", category: "文档说明", url: "workflow/project-progress.html", desc: "拆阶段、里程碑、完成情况和下一步行动。" },
   { title: "实验验证", category: "文档说明", url: "workflow/experiment-validation.html", desc: "用小实验验证 AI、运营、健康和学习想法。" },
