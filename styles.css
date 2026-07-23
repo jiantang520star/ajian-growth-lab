@@ -1619,3 +1619,60 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+.project-library {
+  display: grid;
+  gap: 1.1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.project-line {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(235, 249, 241, 0.9));
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  box-shadow: var(--shadow-soft);
+  padding: 1.35rem;
+}
+
+.project-line h2 {
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  margin: 0.3rem 0 0.6rem;
+}
+
+.project-line p {
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
+
+.sub-library {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 1rem 0 1.15rem;
+}
+
+.sub-library a {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(26, 116, 84, 0.16);
+  border-radius: 999px;
+  color: var(--text);
+  font-weight: 800;
+  padding: 0.55rem 0.8rem;
+}
+
+.sub-library a:hover {
+  background: var(--green);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 820px) {
+  .project-library {
+    grid-template-columns: 1fr;
+  }
+
+  .project-line {
+    border-radius: 18px;
+    padding: 1.05rem;
+  }
+}
