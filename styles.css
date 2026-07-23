@@ -1495,3 +1495,127 @@ body {
     max-width: calc(100vw - 32px);
   }
 }
+
+/* Knowledge asset system */
+.asset-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.asset-toolbar button,
+.compact-list button {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-soft);
+  cursor: pointer;
+  font-weight: 900;
+}
+.asset-toolbar button {
+  padding: 8px 13px;
+}
+.asset-toolbar button.active {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+.asset-list {
+  display: grid;
+  gap: 14px;
+}
+.asset-card {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 34px rgba(40, 69, 56, 0.06);
+}
+.asset-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 900;
+}
+.asset-card h3 {
+  margin: 8px 0;
+}
+.asset-card small {
+  display: block;
+  margin-top: 10px;
+  color: var(--muted);
+  font-weight: 800;
+}
+.asset-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.asset-tags span {
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: #176647;
+  font-size: 12px;
+  font-weight: 900;
+}
+.manager-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.8fr) minmax(0, 1fr);
+  gap: 18px;
+}
+.manager-form {
+  display: grid;
+  gap: 14px;
+}
+.manager-form label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-weight: 900;
+}
+.manager-form input,
+.manager-form textarea,
+.manager-form select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--ink);
+  padding: 10px 12px;
+}
+.manager-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.button.danger {
+  color: #b42318;
+}
+.manager-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.import-button input {
+  display: none;
+}
+.compact-list button {
+  display: grid;
+  width: 100%;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  text-align: left;
+}
+.compact-list span {
+  color: var(--muted);
+  font-size: 13px;
+}
+@media (max-width: 900px) {
+  .manager-layout {
+    grid-template-columns: 1fr;
+  }
+}
