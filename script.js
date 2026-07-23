@@ -36,11 +36,15 @@ const getAllAssets = () => {
 };
 
 const getTypeName = (type) => (defaultData.assetTypes || []).find((item) => item.id === type)?.name || type;
-const getProjectName = (id) => (defaultData.projects || []).find((item) => item.id === id)?.title || id;
+const getProjectById = (id) => (defaultData.projects || []).find((item) => item.id === id);
+const getProjectName = (id) => getProjectById(id)?.title || id;
 const todayISO = () => new Date().toISOString().slice(0, 10);
 const normalizeTags = (value) => Array.isArray(value) ? value : String(value || "").split(/[,，]/).map((item) => item.trim()).filter(Boolean);
 const getAssetDate = (asset) => asset.date || asset.updatedAt || asset.createdAt || "";
 const getAssetSummary = (asset) => asset.summary || asset.content || "";
+const rootPrefix = location.pathname.includes("/projects/") || location.pathname.includes("/experiments/") || location.pathname.includes("/archive/") || location.pathname.includes("/handoffs/") || location.pathname.includes("/whitepapers/") || location.pathname.includes("/workflow/") ? "../" : "";
+const assetUrl = (id) => `${rootPrefix}asset.html?id=${encodeURIComponent(id)}`;
+const libraryUrl = (id) => `${rootPrefix}library.html?id=${encodeURIComponent(id)}`;
 
 if (year) year.textContent = new Date().getFullYear();
 if (topButton) {
@@ -136,14 +140,71 @@ if (workflow) {
 
 const assetCardHTML = (asset) => {
   const tags = normalizeTags(asset.tags).map((tag) => `<span>${tag}</span>`).join("");
-  const projects = (asset.projects || []).map((id) => getProjectName(id)).join(" / ");
-  return `<article class="asset-card" data-local-item data-asset-id="${asset.id}" data-tags="${normalizeTags(asset.tags).join(" ")}" data-date="${getAssetDate(asset)}" data-summary="${getAssetSummary(asset)}">
+  const sourceNames = (asset.projects || []).map((id) => getProjectName(id)).join(" / ");
+  return `<a class="asset-card" href="${assetUrl(asset.id)}" data-local-item data-asset-id="${asset.id}" data-tags="${normalizeTags(asset.tags).join(" ")}" data-date="${getAssetDate(asset)}" data-summary="${getAssetSummary(asset)}">
     <div class="asset-meta"><span>${getTypeName(asset.type)}</span><time>${getAssetDate(asset)}</time></div>
     <h3>${asset.title}</h3>
     <p>${getAssetSummary(asset)}</p>
     <div class="asset-tags">${tags}</div>
-    <small>关联项目：${projects || "未关联"}</small>
-  </article>`;
+    <small>来源/关联：${sourceNames || "未关联"}</small>
+  </a>`;
+};
+
+const assetListItemHTML = (asset) => {
+  const tags = normalizeTags(asset.tags).map((tag) => `<span class="pill">${tag}</span>`).join("");
+  return `<a class="list-item" href="${assetUrl(asset.id)}" data-local-item data-date="${getAssetDate(asset)}" data-tags="${normalizeTags(asset.tags).join(" ")}" data-summary="${getAssetSummary(asset)}">
+    <time>${getAssetDate(asset)}</time>
+    <div>${tags}<h3>${asset.title}</h3><p>${getAssetSummary(asset)}</p></div>
+    <strong>查看详情</strong>
+  </a>`;
+};
+
+const renderLibraryPage = () => {
+  const target = document.querySelector("[data-library-list]");
+  if (!target) return;
+  const params = new URLSearchParams(location.search);
+  const libraryId = params.get("id") || target.dataset.libraryList;
+  const library = getProjectById(libraryId);
+  const title = document.querySelector("[data-library-title]");
+  const lead = document.querySelector("[data-library-lead]");
+  const status = document.querySelector("[data-library-status]");
+  const search = document.querySelector("[data-library-search]");
+  const assets = getAllAssets().filter((asset) => (asset.projects || []).includes(libraryId));
+
+  if (title) title.textContent = library?.title || "子库";
+  if (lead) lead.textContent = library ? `${library.title}用于沉淀对应项目下的记录、SOP、规律、风险、案例和结论。` : "这个子库暂时没有配置说明。";
+  if (status) status.textContent = assets.length ? `已更新 ${assets.length} 条` : "暂未更新";
+  if (search) search.placeholder = `搜索${library?.title || "子库"}的日期、标签或概括`;
+  target.innerHTML = assets.length ? assets.map(assetListItemHTML).join("") : `<div class="empty-library" data-local-item><h2>暂未更新</h2><p>这个库已经建好，后续新增内容会按日期、标签、概括和详情的格式展示在这里。</p></div>`;
+};
+
+const renderAssetDetail = () => {
+  const target = document.querySelector("[data-asset-detail]");
+  if (!target) return;
+  const id = new URLSearchParams(location.search).get("id");
+  const asset = getAllAssets().find((item) => item.id === id);
+  if (!asset) {
+    target.innerHTML = `<h1>没有找到这条内容</h1><p>可能是链接过期，或者内容还没有同步到网站。</p>`;
+    return;
+  }
+  const sourceLinks = (asset.projects || []).map((projectId) => {
+    const project = getProjectById(projectId);
+    if (!project) return "";
+    const href = (project.tags || []).includes("子库") || project.id === "life-rules" || project.id === "cognition-library" ? libraryUrl(project.id) : `${rootPrefix}${project.url}`;
+    return `<a href="${href}">${project.title}</a>`;
+  }).filter(Boolean).join(" / ");
+  const tags = normalizeTags(asset.tags).map((tag) => `<span>${tag}</span>`).join("");
+  target.innerHTML = `<div class="breadcrumb"><a href="${rootPrefix}knowledge.html">返回知识总库</a></div>
+    <div class="article-shell asset-detail">
+      <p class="eyebrow">${getTypeName(asset.type)} / ${getAssetDate(asset)}</p>
+      <h1>${asset.title}</h1>
+      <p class="lead">${getAssetSummary(asset)}</p>
+      <div class="asset-tags">${tags}</div>
+      <h2>完整内容</h2>
+      <p>${String(asset.content || "").replace(/\n/g, "</p><p>")}</p>
+      <h2>来源与关联库</h2>
+      <p class="source-links">${sourceLinks || "暂未关联"}</p>
+    </div>`;
 };
 
 const setupLocalSearch = () => {
@@ -317,8 +378,8 @@ const staticSearchItems = [
   { title: "认知库", category: "项目", url: "projects/cognition-library.html", desc: "沉淀重复工作、系统思维、岗位价值和长期能力相关认知。" },
   { title: "视频数据库", category: "子库", url: "projects/video-benchmark.html", desc: "视频样本、内容数据和规律拆解。" },
   { title: "新人培训", category: "子库", url: "projects/account-cold-start.html", desc: "账号从 0 到 1、冷启动 SOP、新人培训和项目进度 20%。" },
-  { title: "引流SOP", category: "子库", url: "knowledge.html", desc: "私信频率、关注节奏、蓝V承接、评论动作和风控边界。" },
-  { title: "评论SOP", category: "子库", url: "knowledge.html", desc: "评论引起注意、降低信任成本、等待回关和话术迭代。" },
+  { title: "引流SOP", category: "子库", url: "library.html?id=lead-sop", desc: "私信频率、关注节奏、蓝V承接、评论动作和风控边界。" },
+  { title: "评论SOP", category: "子库", url: "library.html?id=comment-sop", desc: "评论引起注意、降低信任成本、等待回关和话术迭代。" },
   { title: "数据记录", category: "文档说明", url: "workflow/data-record.html", desc: "记录睡眠、健康、运营样本、沟通结果和当天状态。" },
   { title: "项目进度", category: "文档说明", url: "workflow/project-progress.html", desc: "拆阶段、里程碑、完成情况和下一步行动。" },
   { title: "实验验证", category: "文档说明", url: "workflow/experiment-validation.html", desc: "用小实验验证 AI、运营、健康和学习想法。" },
@@ -345,7 +406,7 @@ const siteSearchItems = [
   ...getAllAssets().map((asset) => ({
     title: asset.title,
     category: getTypeName(asset.type),
-    url: "knowledge.html",
+    url: assetUrl(asset.id),
     desc: `${asset.content} ${normalizeTags(asset.tags).join(" ")} ${(asset.projects || []).map(getProjectName).join(" ")}`
   }))
 ];
@@ -405,5 +466,7 @@ document.querySelector("[data-close-docs]")?.addEventListener("click", () => doc
 
 renderKnowledgeList();
 renderProjectAssets();
+renderLibraryPage();
+renderAssetDetail();
 setupManager();
 setupLocalSearch();
