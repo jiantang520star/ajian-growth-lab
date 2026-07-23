@@ -174,7 +174,7 @@ window.GROWTH_OS_DATA = {
       "id": "ocr-workflow",
       "title": "OCR工作流",
       "url": "library.html?id=ocr-workflow",
-      "status": "暂未更新",
+      "status": "已更新",
       "tags": [
         "子库",
         "AI工作流项目",
@@ -185,7 +185,7 @@ window.GROWTH_OS_DATA = {
       "id": "video-automation",
       "title": "视频数据库自动化",
       "url": "library.html?id=video-automation",
-      "status": "暂未更新",
+      "status": "已更新",
       "tags": [
         "子库",
         "AI工作流项目",
@@ -240,7 +240,7 @@ window.GROWTH_OS_DATA = {
       "id": "knowledge-system",
       "title": "知识资产系统",
       "url": "library.html?id=knowledge-system",
-      "status": "暂未更新",
+      "status": "已更新",
       "tags": [
         "子库",
         "网站项目",
@@ -273,7 +273,7 @@ window.GROWTH_OS_DATA = {
       "id": "long-term-choice",
       "title": "长期选择",
       "url": "library.html?id=long-term-choice",
-      "status": "暂未更新",
+      "status": "已更新",
       "tags": [
         "子库",
         "人生规律库",
@@ -2556,6 +2556,897 @@ window.GROWTH_OS_DATA = {
         "ai复盘\\AI+视频分析知识资产工作流_2026-07-06.docx"
       ],
       "importSha": "4a4d7bddc342626a28d9b5061b495f4777ecc89c"
+    },
+    {
+      "id": "derived-rule-long-term-account-asset-2026-07-12",
+      "title": "长期账号资产大于当天数据",
+      "type": "rule",
+      "date": "2026-07-12",
+      "summary": "短期引流动作不能牺牲长期账号资产，普通号、蓝V号和私信动作都要放进风险控制里。",
+      "content": "交接卡里反复出现的核心判断是：账号不是一次性工具，而是长期运营资产。主动私信、频繁关注、固定话术和高频转化动作，短期可能带来线索，但一旦触发风控，后续账号权重、私信能力和团队执行效率都会下降。因此运营动作要先问：这一步会不会损害账号长期可用性？普通号更适合轻量互动，蓝V号更适合承接，但蓝V也不是无限安全。真正可复用的引流系统，需要在转化效率和账号寿命之间找到平衡。\n\n来源文件：交接卡\\项目交接卡_2026-07-12_成长节点版.docx",
+      "projects": [
+        "new-media-growth",
+        "lead-sop",
+        "operation-risk-library",
+        "life-rules",
+        "long-term-choice"
+      ],
+      "tags": [
+        "运营规律",
+        "账号资产",
+        "风控",
+        "长期主义",
+        "引流SOP",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "交接卡\\项目交接卡_2026-07-12_成长节点版.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-risk-realname-private-message-2026-07-13",
+      "title": "实名认证不等于私信安全",
+      "type": "risk",
+      "date": "2026-07-13",
+      "summary": "实名认证能提高账号可信度，但不能直接消除私信、关注、营销词和异常行为带来的风控风险。",
+      "content": "交接卡中关于账号实验的结论是：实名认证只是提升基础可信度，不代表账号可以高频私信或大量执行营销动作。私信是否安全，还受到账号历史、动作频率、话术敏感度、是否连续关注、是否被用户举报等因素影响。因此涉及新号、普通号或异常号时，要用低成本小样本测试，不要把“已实名”误判为“可放量”。\n\n来源文件：交接卡\\项目交接卡_2026-07-13.docx；交接卡\\项目交接卡_2026-07-13_整合最终版.docx",
+      "projects": [
+        "new-media-growth",
+        "lead-sop",
+        "operation-risk-library",
+        "experiment-thinking"
+      ],
+      "tags": [
+        "实名认证",
+        "私信",
+        "风控",
+        "低成本实验",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "交接卡\\项目交接卡_2026-07-13.docx",
+        "交接卡\\项目交接卡_2026-07-13_整合最终版.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-raw-data-core-asset-2026-07-13",
+      "title": "原始数据是核心资产",
+      "type": "rule",
+      "date": "2026-07-13",
+      "summary": "真正值得长期保存的是原始发生过的数据，而不是当天临时整理出来的分类结论。",
+      "content": "交接卡和白皮书里都提到：不要急着每天把所有东西分类得很漂亮，第一优先级是把真实发生过的东西留住。原始截图、标题、评论、播放数据、沟通记录、失败反馈、决策原因，都是后续二次分析和规律提炼的证据。分类可以后补，结论可以迭代，但原始数据丢了，系统就失去了复盘依据。\n\n来源文件：交接卡\\项目交接卡_2026-07-13_整合最终版.docx；白皮书\\成长白皮书_整合最终版.docx",
+      "projects": [
+        "knowledge-system",
+        "video-benchmark",
+        "ai-workflow",
+        "cognition-library",
+        "system-thinking"
+      ],
+      "tags": [
+        "原始数据",
+        "知识资产",
+        "证据链",
+        "系统思维",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "交接卡\\项目交接卡_2026-07-13_整合最终版.docx",
+        "白皮书\\成长白皮书_整合最终版.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-problem-driven-learning-2026-07-13",
+      "title": "问题驱动学习比泛学更有效",
+      "type": "rule",
+      "date": "2026-07-13",
+      "summary": "学习不是先把所有知识学完，而是在真实问题中找到规律，再用规律改进系统。",
+      "content": "多份复盘里形成的学习方式是：先遇到真实问题，再记录现象，再寻找规律，再优化动作，最后用新结果验证。这样学到的东西更容易变成能力，因为它直接绑定场景、反馈和下一次行动。相比泛泛学习，问题驱动学习更适合阿简成长实验室，因为它能把工作、AI、运营和人生判断都变成可复盘的实验。\n\n来源文件：交接卡\\项目交接卡_2026-07-13.docx；白皮书\\成长白皮书_2026-07-12_长期主义与解决问题.docx",
+      "projects": [
+        "cognition-library",
+        "experiment-thinking",
+        "system-thinking",
+        "life-rules"
+      ],
+      "tags": [
+        "学习方法",
+        "问题驱动",
+        "实验思维",
+        "复盘",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "交接卡\\项目交接卡_2026-07-13.docx",
+        "白皮书\\成长白皮书_2026-07-12_长期主义与解决问题.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-real-expression-style-2026-07-13",
+      "title": "真实表达比成功姿态更有长期价值",
+      "type": "rule",
+      "date": "2026-07-13",
+      "summary": "内容表达不要装成导师，而是像朋友一样讲真实经历、真实问题和真实变化。",
+      "content": "成长对话和白皮书里多次出现一个方向：阿简的内容价值不在于包装成成功人士，而在于把普通人的真实成长过程讲清楚。真实经历、困惑、选择、行动和复盘，比空泛道理更容易建立连接。公众号、网站和白皮书的表达，都应该更像“认真记录人生的人”，而不是“教别人成功的人”。\n\n来源文件：ai复盘\\成长对话记录.docx；白皮书\\成长白皮书_好久不见，我是阿简.docx",
+      "projects": [
+        "growth-dialogue-library",
+        "cognition-library",
+        "growth-lab"
+      ],
+      "tags": [
+        "真实表达",
+        "个人品牌",
+        "内容风格",
+        "成长记录",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "ai复盘\\成长对话记录.docx",
+        "白皮书\\成长白皮书_好久不见，我是阿简.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-workflow-ocr-codex-human-check-2026-07-14",
+      "title": "OCR + Codex + 人工校对的数据入库流程",
+      "type": "ai",
+      "date": "2026-07-14",
+      "summary": "截图和文档可以交给 OCR 与 Codex 提取，但关键数据必须经过人工校对再入库。",
+      "content": "视频数据和运营资料的整理流程逐渐变成：原始截图或文档保存下来，OCR 提取文字，Codex 辅助结构化，Excel 或网站数据源承接，最后人工校对关键字段。AI 能提高整理效率，但不能替代最终判断。特别是金额、日期、视频指标、账号状态、风控结果等字段，必须由人确认。\n\n来源文件：交接卡\\项目交接卡_2026-07-14_更新版.docx；ai复盘\\AI+视频分析知识资产工作流_2026-07-06.docx",
+      "projects": [
+        "ai-workflow",
+        "ocr-workflow",
+        "video-automation",
+        "video-benchmark",
+        "knowledge-system"
+      ],
+      "tags": [
+        "OCR",
+        "Codex",
+        "数据入库",
+        "人工校对",
+        "AI工作流",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "交接卡\\项目交接卡_2026-07-14_更新版.docx",
+        "ai复盘\\AI+视频分析知识资产工作流_2026-07-06.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-sop-comment-system-split-2026-07-14",
+      "title": "评论互动与蓝V承接分工",
+      "type": "sop",
+      "date": "2026-07-14",
+      "summary": "普通账号负责评论互动和低风险触达，蓝V账号负责承接更明确的私信咨询。",
+      "content": "医美运营资料里形成的分工是：评论区先用自然互动引起用户注意，降低营销感；普通账号不承担过重私信任务，避免高频风控；蓝V账号更适合承接已经有需求的用户，但也要记录每个账号的异常历史。评论、关注、私信、微信承接不是孤立动作，而是一条链路。\n\n来源文件：交接卡\\项目交接卡_2026-07-14_更新版.docx；交接卡\\项目交接卡_评论回复策略升级_2026-07-15.docx",
+      "projects": [
+        "new-media-growth",
+        "comment-sop",
+        "lead-sop",
+        "operation-sop-library",
+        "operation-risk-library"
+      ],
+      "tags": [
+        "评论SOP",
+        "引流SOP",
+        "蓝V",
+        "私信承接",
+        "医美运营",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "交接卡\\项目交接卡_2026-07-14_更新版.docx",
+        "交接卡\\项目交接卡_评论回复策略升级_2026-07-15.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-case-comment-reply-natural-2026-07-15",
+      "title": "评论回复策略：自然、真实、降低营销感",
+      "type": "case",
+      "date": "2026-07-15",
+      "summary": "评论回复不要一上来就强推转化，要先围绕用户具体问题自然接话。",
+      "content": "评论回复策略升级里沉淀出一个案例方向：面对“蝴蝶袖”等具体问题时，回复重点不是马上导向私信，而是先接住用户表达，给出像真人交流一样的回应，再根据对方反应决定是否引导。自然感越强，用户防备越低；营销感越重，账号和转化都会受影响。\n\n来源文件：交接卡\\项目交接卡_评论回复策略升级_2026-07-15.docx",
+      "projects": [
+        "comment-sop",
+        "new-media-growth",
+        "operation-results"
+      ],
+      "tags": [
+        "评论回复",
+        "自然表达",
+        "用户沟通",
+        "案例",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "交接卡\\项目交接卡_评论回复策略升级_2026-07-15.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-packaging-real-ability-2026-07-15",
+      "title": "包装不是造假，而是翻译真实能力",
+      "type": "rule",
+      "date": "2026-07-15",
+      "summary": "职业表达不是夸大自己，而是把真实做过的事翻译成别人能理解的价值。",
+      "content": "白皮书中关于职业表达的结论是：包装不是把没有的能力说成有，而是把真实做过的事情、解决过的问题、沉淀出的流程和结果，用招聘方、合作方、用户能理解的语言表达出来。比如视频数据库、评论 SOP、AI 工作流和网站更新，不只是“做了文件”，而是可迁移的问题拆解、系统搭建和持续执行能力。\n\n来源文件：白皮书\\成长白皮书_从记录人生到设计成长_2026-07-15.docx",
+      "projects": [
+        "cognition-library",
+        "growth-lab",
+        "job-value-thinking",
+        "long-term-ability"
+      ],
+      "tags": [
+        "职业表达",
+        "能力包装",
+        "真实能力",
+        "长期能力",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "白皮书\\成长白皮书_从记录人生到设计成长_2026-07-15.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-website-as-growth-os-2026-07-15",
+      "title": "网站是成长操作系统，不是普通主页",
+      "type": "rule",
+      "date": "2026-07-15",
+      "summary": "网站的核心价值不是展示简历，而是把项目、实验、白皮书、交接卡和知识资产持续发布出去。",
+      "content": "多次网站复盘后，阿简成长实验室的定位从个人主页升级为 Growth OS。它不是一次性作品集，而是长期更新的成长系统：项目记录能力变化，实验记录验证过程，白皮书记录阶段思考，交接卡记录每日进度，知识资产沉淀可复用方法。网站的价值来自持续更新，而不是一次性好看。\n\n来源文件：白皮书\\成长白皮书_从记录人生到设计成长_2026-07-15.docx；白皮书\\whitepaper_growthos_upgrade-1.docx",
+      "projects": [
+        "growth-lab",
+        "knowledge-system",
+        "site-update-workflow",
+        "system-thinking"
+      ],
+      "tags": [
+        "Growth OS",
+        "网站项目",
+        "长期更新",
+        "知识系统",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "白皮书\\成长白皮书_从记录人生到设计成长_2026-07-15.docx",
+        "白皮书\\whitepaper_growthos_upgrade-1.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-case-video-database-77-seal-2026-07-16",
+      "title": "77条视频数据库封库分析",
+      "type": "case",
+      "date": "2026-07-16",
+      "summary": "视频基准库进入封库分析阶段，重点从收集数据转向提炼可复用规律。",
+      "content": "2026-07-16 的交接卡和白皮书中，视频数据库不再只是继续堆数量，而是进入阶段性封库分析。它标志着项目目标从“完成录入”升级为“从样本中提炼内容规律”。数据库只是容器，真正的成果是能指导下一批内容、评论和运营动作的方法。\n\n来源文件：交接卡\\项目交接卡_2026-07-16.docx；白皮书\\成长白皮书_2026-07-16_从收集数据到创造方法.docx",
+      "projects": [
+        "video-benchmark",
+        "video-rules-library",
+        "new-media-growth",
+        "long-term-ability"
+      ],
+      "tags": [
+        "视频数据库",
+        "封库分析",
+        "内容规律",
+        "项目成果",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "交接卡\\项目交接卡_2026-07-16.docx",
+        "白皮书\\成长白皮书_2026-07-16_从收集数据到创造方法.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-database-value-method-2026-07-16",
+      "title": "数据库的价值在于产出方法",
+      "type": "rule",
+      "date": "2026-07-16",
+      "summary": "数据库不是为了证明自己很忙，而是为了从样本中提炼可复用的方法。",
+      "content": "视频基准库阶段最大的认知升级是：数据数量不是终点，方法沉淀才是价值。播放量、完播率、评论、标题、封面、内容结构这些数据，只有被比较、解释和验证后，才会变成真正能指导下一步行动的规律。没有方法产出的数据库，只是仓库；能改变下一次行动的数据库，才是资产。\n\n来源文件：白皮书\\成长白皮书_2026-07-16_从收集数据到创造方法.docx",
+      "projects": [
+        "video-benchmark",
+        "video-rules-library",
+        "cognition-library",
+        "system-thinking"
+      ],
+      "tags": [
+        "数据库",
+        "方法论",
+        "样本分析",
+        "知识资产",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "白皮书\\成长白皮书_2026-07-16_从收集数据到创造方法.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-job-provides-scene-2026-07-16",
+      "title": "岗位只是场景，真正带走的是能力",
+      "type": "rule",
+      "date": "2026-07-16",
+      "summary": "工作提供真实问题和反馈，真正能长期带走的是能力、规律和系统。",
+      "content": "白皮书里逐渐形成一个职业判断：岗位不是终点，它只是提供真实问题、协作压力、用户反馈和业务场景。真正属于自己的，是在场景里沉淀出来的能力，比如数据分析、用户沟通、风控判断、AI 工作流、内容方法和长期复盘系统。\n\n来源文件：白皮书\\成长白皮书_当问题越来越少，我知道自己该进入下一阶段了.docx",
+      "projects": [
+        "job-value-thinking",
+        "long-term-ability",
+        "life-rules",
+        "cognition-library"
+      ],
+      "tags": [
+        "岗位价值",
+        "职业成长",
+        "长期能力",
+        "可迁移能力",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "白皮书\\成长白皮书_当问题越来越少，我知道自己该进入下一阶段了.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-next-platform-trigger-2026-07-16",
+      "title": "问题变少，说明需要更大平台",
+      "type": "rule",
+      "date": "2026-07-16",
+      "summary": "当当前岗位里的新问题越来越少，成长动力要从解决旧问题转向创造新价值。",
+      "content": "当运营中的问题越来越少，并不只代表熟练，也可能代表当前场景提供的成长密度下降。此时下一阶段要关注：是否有更复杂的任务、更大样本、更高质量团队、更强反馈和更高天花板。成长系统不是让人永远停在舒适区，而是帮助判断何时进入下一阶段。\n\n来源文件：白皮书\\成长白皮书_当问题越来越少，我知道自己该进入下一阶段了.docx",
+      "projects": [
+        "long-term-choice",
+        "job-value-thinking",
+        "long-term-ability",
+        "life-rules"
+      ],
+      "tags": [
+        "职业选择",
+        "下一阶段",
+        "成长密度",
+        "长期判断",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "白皮书\\成长白皮书_当问题越来越少，我知道自己该进入下一阶段了.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-workflow-daily-review-publish-2026-07-17",
+      "title": "复盘到网站更新的日更工作流",
+      "type": "ai",
+      "date": "2026-07-17",
+      "summary": "每天复盘后生成项目交接卡和成长白皮书，再由 Codex 更新网站。",
+      "content": "成长系统真正运转的关键工作流是：每天复盘，整理项目交接卡，生成成长白皮书，再让 Codex 把内容更新到网站。项目交接卡负责下一次工作接力，白皮书负责阶段性思考沉淀，网站负责对外发布和长期检索。这条链路让聊天、工作、文件和网站第一次串起来。\n\n来源文件：白皮书\\成长白皮书_成长系统开始真正运转.docx；交接卡\\项目交接卡_2026-07-17（更新版）.docx",
+      "projects": [
+        "growth-lab",
+        "site-update-workflow",
+        "handoff-generator",
+        "whitepaper-generator",
+        "ai-workflow"
+      ],
+      "tags": [
+        "日更流程",
+        "项目交接卡",
+        "成长白皮书",
+        "Codex",
+        "网站更新",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "白皮书\\成长白皮书_成长系统开始真正运转.docx",
+        "交接卡\\项目交接卡_2026-07-17（更新版）.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-ai-context-handoff-2026-07-17",
+      "title": "AI上下文接力要写进交接卡",
+      "type": "rule",
+      "date": "2026-07-17",
+      "summary": "交接卡不只是给人看，也要帮助下一次 AI 对话恢复项目上下文。",
+      "content": "长时间聊天后，上下文会逐渐丢失。把“AI上下文接力”固定写进项目交接卡，可以让下一次 ChatGPT 或 Codex 快速知道当前项目、已完成状态、重要约定和下一步任务。这样交接卡从存档升级为协作接口。\n\n来源文件：白皮书\\成长白皮书_成长系统开始真正运转.docx；交接卡\\项目交接卡_2026-07-17（更新版）.docx",
+      "projects": [
+        "handoff-generator",
+        "ai-workflow",
+        "knowledge-system",
+        "site-update-workflow"
+      ],
+      "tags": [
+        "AI上下文",
+        "交接卡",
+        "连续协作",
+        "工作流",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "白皮书\\成长白皮书_成长系统开始真正运转.docx",
+        "交接卡\\项目交接卡_2026-07-17（更新版）.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-sop-communication-rounds-2026-07-21",
+      "title": "运营沟通控制在2-3轮内",
+      "type": "sop",
+      "date": "2026-07-21",
+      "summary": "沟通过长会降低效率，评论和私信要尽快筛选真实需求并推进下一步。",
+      "content": "2026-07-21 的交接卡中，运营策略从长链路沟通调整为 2-3 轮筛选。过多沟通会消耗精力，也可能让用户失去行动意愿。更好的方式是：用少量关键问题判断需求强度、预算、意向和可推进性，再决定是否进入下一步承接。\n\n来源文件：交接卡\\项目交接卡_2026-07-21.docx",
+      "projects": [
+        "lead-sop",
+        "comment-sop",
+        "new-media-growth",
+        "experiment-thinking",
+        "operation-results"
+      ],
+      "tags": [
+        "用户沟通",
+        "转化流程",
+        "2-3轮",
+        "运营SOP",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "交接卡\\项目交接卡_2026-07-21.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-work-selection-boundary-2026-07-22",
+      "title": "下一份工作要同时看收入、成长和边界",
+      "type": "rule",
+      "date": "2026-07-22",
+      "summary": "工作选择不只看工资，也要看成长密度、工作边界、是否长期待命和是否损害生活系统。",
+      "content": "2026-07-22 的白皮书里，职业判断从“提升能力”进入“经营自己”。下一份工作不能只看收入，还要看是否能提供高质量成长、是否有合理边界、是否长期占用私人时间、是否需要工作手机、是否能让能力继续沉淀。收入重要，但不能用长期健康和成长系统换短期稳定。\n\n来源文件：白皮书\\成长白皮书_2026-07-22（从提升能力，到经营自己）-1.docx；交接卡\\项目交接卡_2026-07-22-1.docx",
+      "projects": [
+        "long-term-choice",
+        "job-value-thinking",
+        "life-rules"
+      ],
+      "tags": [
+        "职业选择",
+        "工作边界",
+        "长期选择",
+        "经营自己",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "白皮书\\成长白皮书_2026-07-22（从提升能力，到经营自己）-1.docx",
+        "交接卡\\项目交接卡_2026-07-22-1.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-budget-first-2026-07-22",
+      "title": "工资预算先保底，再改善生活",
+      "type": "rule",
+      "date": "2026-07-22",
+      "summary": "房租、水电、生活费、交通费和 ChatGPT 等必要支出先预留，剩余再提升生活品质。",
+      "content": "经营自己不只是职业规划，也包括现金流秩序。工资到账后，先预留房租、水电、基础生活费、交通费、必要工具订阅，再考虑衣服、社交、改善型消费。这样做不是节省到压抑，而是避免生活被随机开销打乱，让成长系统有稳定底盘。\n\n来源文件：白皮书\\成长白皮书_2026-07-22（从提升能力，到经营自己）-1.docx",
+      "projects": [
+        "life-rules",
+        "long-term-choice",
+        "base-principles"
+      ],
+      "tags": [
+        "预算",
+        "现金流",
+        "生活管理",
+        "底层原则",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "白皮书\\成长白皮书_2026-07-22（从提升能力，到经营自己）-1.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-basic-wardrobe-validation-2026-07-23",
+      "title": "基础衣橱先验证再投入",
+      "type": "rule",
+      "date": "2026-07-23",
+      "summary": "职业形象建设要从低风险基础款开始验证，不要一次性投入太多。",
+      "content": "2026-07-23 的白皮书把“买衣服”放进成长系统：职业形象不是虚荣，而是进入新阶段的外部表达。但执行上要先从基础款、常用场景和可复用搭配开始，验证适合自己后再逐步增加投入。形象建设也应该像实验一样小步验证。\n\n来源文件：白皮书\\成长白皮书_2026-07-23（建立职业形象，从衣橱开始）.docx",
+      "projects": [
+        "life-rules",
+        "long-term-choice",
+        "job-value-thinking"
+      ],
+      "tags": [
+        "职业形象",
+        "基础衣橱",
+        "低风险验证",
+        "生活实验",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "白皮书\\成长白皮书_2026-07-23（建立职业形象，从衣橱开始）.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-deplatform-knowledge-assets-2026-07-10",
+      "title": "去平台依赖：平台不是知识资产本身",
+      "type": "rule",
+      "date": "2026-07-10",
+      "summary": "飞书、Notion、Word、Excel 都只是载体，真正重要的是可迁移的数据结构和内容资产。",
+      "content": "AI知识工厂资料里出现的重要判断是：不要把平台当成资产本身。飞书、Notion、Word、Excel、网站都只是承载形式，真正的资产是原始数据、结构化字段、可复用方法、关联关系和持续更新流程。平台可以变，资产结构要能迁移。\n\n来源文件：ai工厂\\AI知识工厂白皮书_V1.0.docx；交接卡\\项目工作交接卡_2026-07-10_收尾版.docx",
+      "projects": [
+        "knowledge-system",
+        "ai-workflow",
+        "system-thinking",
+        "ai-knowledge-factory"
+      ],
+      "tags": [
+        "去平台依赖",
+        "知识资产",
+        "数据结构",
+        "可迁移",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "ai工厂\\AI知识工厂白皮书_V1.0.docx",
+        "交接卡\\项目工作交接卡_2026-07-10_收尾版.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-workflow-ai-knowledge-factory-production-2026-07-09",
+      "title": "AI知识工厂标准生产流程",
+      "type": "ai",
+      "date": "2026-07-09",
+      "summary": "深度讨论后判断长期价值，有价值的内容进入白皮书、交接卡或知识资产。",
+      "content": "AI知识工厂的标准流程是：先和 AI 深度讨论真实问题，再判断是否有长期价值；如果是阶段变化，进入白皮书；如果是项目进展，进入交接卡；如果是规律、SOP、风险或案例，进入知识资产；最后再由网站统一展示和检索。\n\n来源文件：ai工厂\\AI知识工厂白皮书_V1.3_标准生产流程.docx",
+      "projects": [
+        "ai-knowledge-factory",
+        "ai-workflow",
+        "whitepaper-generator",
+        "handoff-generator",
+        "knowledge-system"
+      ],
+      "tags": [
+        "AI知识工厂",
+        "标准流程",
+        "内容生产",
+        "知识资产",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "ai工厂\\AI知识工厂白皮书_V1.3_标准生产流程.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-thinking-continuity-2026-07-09",
+      "title": "交接卡最大的价值是恢复连续性",
+      "type": "rule",
+      "date": "2026-07-09",
+      "summary": "交接卡不只是记录做了什么，更重要的是保留共同背景、判断原因和下一步。",
+      "content": "AI知识工厂白皮书里强调：交接卡最大的价值不是记录清单，而是让下一次工作快速恢复连续性。它需要写清楚当前项目状态、为什么这样判断、哪些事情已经试过、哪些问题还没解决、下一步要怎么做。这样无论是人还是 AI，都不用从零开始。\n\n来源文件：ai工厂\\AI知识工厂白皮书_V1.4_连续性原则.docx",
+      "projects": [
+        "ai-knowledge-factory",
+        "handoff-generator",
+        "knowledge-system",
+        "system-thinking"
+      ],
+      "tags": [
+        "连续性",
+        "交接卡",
+        "项目接力",
+        "上下文",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "ai工厂\\AI知识工厂白皮书_V1.4_连续性原则.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-low-friction-growth-system-2026-07-09",
+      "title": "低摩擦系统比复杂功能更重要",
+      "type": "rule",
+      "date": "2026-07-09",
+      "summary": "好的成长系统不是功能最多，而是每天愿意用、用起来不费力。",
+      "content": "AI知识工厂 V1.5 的关键原则是低摩擦。系统如果太复杂，就算功能完整，也很难长期执行。真正适合个人成长的系统，要让记录、复盘、入库、搜索和发布尽量顺手。少维护、多复用、低负担，才可能长期运转。\n\n来源文件：ai工厂\\AI知识工厂白皮书_V1.5_低摩擦成长系统.docx",
+      "projects": [
+        "ai-knowledge-factory",
+        "system-thinking",
+        "life-rules",
+        "knowledge-system"
+      ],
+      "tags": [
+        "低摩擦",
+        "系统设计",
+        "长期执行",
+        "成长系统",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "ai工厂\\AI知识工厂白皮书_V1.5_低摩擦成长系统.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-video-task-based-evaluation-2026-07-07",
+      "title": "视频要按任务评价，不只看播放量",
+      "type": "rule",
+      "date": "2026-07-07",
+      "summary": "不同视频承担不同任务：引流、信任、答疑、真实展示，不能只用播放量判断价值。",
+      "content": "视频基准库里逐渐形成一个判断：播放量不是唯一指标。有的视频负责拉新，有的视频负责建立信任，有的视频负责答疑，有的视频负责让用户看到真实过程。评价视频时要先问它承担什么任务，再看对应数据和评论反馈。\n\n来源文件：视频基准库\\视频基准库｜前10条视频规律总结.docx；ai复盘\\AI+视频分析知识资产工作流_2026-07-06.docx",
+      "projects": [
+        "video-benchmark",
+        "video-rules-library",
+        "new-media-growth"
+      ],
+      "tags": [
+        "视频规律",
+        "任务评价",
+        "播放量",
+        "内容分析",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "视频基准库\\视频基准库｜前10条视频规律总结.docx",
+        "ai复盘\\AI+视频分析知识资产工作流_2026-07-06.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-question-title-comments-2026-07-07",
+      "title": "问题型标题更容易带出评论",
+      "type": "rule",
+      "date": "2026-07-07",
+      "summary": "疑问型标题容易让用户代入自己的情况，从而在评论区表达需求。",
+      "content": "视频规律总结里出现的一个方向是：当标题像用户心里的问题时，评论更容易出现真实情况描述。用户不是被教育，而是在看到问题时把自己代入进去。评论区一旦出现具体困扰，就可能进入后续沟通和转化链路。\n\n来源文件：视频基准库\\视频基准库｜前10条视频规律总结.docx",
+      "projects": [
+        "video-rules-library",
+        "comment-sop",
+        "lead-sop",
+        "new-media-growth"
+      ],
+      "tags": [
+        "标题",
+        "评论",
+        "用户需求",
+        "视频规律",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "视频基准库\\视频基准库｜前10条视频规律总结.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-real-visual-first-2sec-2026-07-07",
+      "title": "真实画面负责前2秒吸引，问题承接负责后续留存",
+      "type": "rule",
+      "date": "2026-07-07",
+      "summary": "手术、过程和真实状态画面能吸引注意，但必须接上用户真正关心的问题。",
+      "content": "视频分析中总结到：真实操作画面、对比画面和过程画面有助于前 2 秒吸引注意，但如果后续没有接住用户疑问，留存和评论仍然不稳定。好的内容不是只有刺激画面，而是“真实画面 + 用户问题 + 清晰解释”的组合。\n\n来源文件：视频基准库\\视频基准库｜前10条视频规律总结.docx",
+      "projects": [
+        "video-rules-library",
+        "video-benchmark",
+        "new-media-growth"
+      ],
+      "tags": [
+        "前2秒",
+        "真实画面",
+        "视频结构",
+        "用户问题",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "视频基准库\\视频基准库｜前10条视频规律总结.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-freedom-choice-power-2026-07-07",
+      "title": "自由是选择权，不是单纯不上班",
+      "type": "rule",
+      "date": "2026-07-07",
+      "summary": "真正的自由来自能力、资源、收入支点和抗风险能力，而不是逃避现实。",
+      "content": "成长对话里形成的底层判断是：自由不是突然获得的，也不是简单不上班，而是拥有按价值观做选择的能力。多个收入支点、可迁移技能、稳定身体、长期资产和抗风险能力，都是自由的基础。\n\n来源文件：成长\\我觉得真正的自由.docx；ai复盘\\成长对话记录.docx",
+      "projects": [
+        "life-rules",
+        "long-term-choice",
+        "growth-dialogue-library",
+        "base-principles"
+      ],
+      "tags": [
+        "自由",
+        "选择权",
+        "抗风险",
+        "长期主义",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "成长\\我觉得真正的自由.docx",
+        "ai复盘\\成长对话记录.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-stop-growth-risk-2026-07-07",
+      "title": "真正危险的是长期停止成长",
+      "type": "rule",
+      "date": "2026-07-07",
+      "summary": "起点低不可怕，长期不行动、不复盘、不迭代才会让人越来越无力。",
+      "content": "成长对话里最重要的提醒之一是：很多人不是输给现实，而是输给长期停止成长后的无力感。真正危险的不是现在普通、收入不高或起点低，而是一直停在原地，既不积累能力，也不建立系统。\n\n来源文件：ai复盘\\成长对话记录.docx；ai复盘\\成长阶段总结.docx",
+      "projects": [
+        "life-rules",
+        "long-term-ability",
+        "cognition-library",
+        "base-principles"
+      ],
+      "tags": [
+        "成长风险",
+        "长期能力",
+        "行动力",
+        "人生规律",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "ai复盘\\成长对话记录.docx",
+        "ai复盘\\成长阶段总结.docx"
+      ],
+      "derived": true
+    },
+    {
+      "id": "derived-rule-position-tools-not-ability-2026-07-10",
+      "title": "工具和文件不是能力，能持续解决问题才是能力",
+      "type": "rule",
+      "date": "2026-07-10",
+      "summary": "数据库、SOP、Codex 和网站都是工具或成果，真正能力是发现问题、拆解问题、验证方法和沉淀系统。",
+      "content": "多份复盘里都能看到这个区别：做了数据库，不等于有数据能力；用了 Codex，不等于有 AI 能力；建了网站，不等于有系统能力。真正的能力是持续发现问题、拆解问题、设计流程、执行验证、复盘优化，并把结果沉淀成别人也能理解和复用的东西。\n\n来源文件：交接卡\\项目工作交接卡_2026-07-10_收尾版.docx；ai复盘\\AI成长系统阶段总结_2026-07-09.docx",
+      "projects": [
+        "cognition-library",
+        "job-value-thinking",
+        "long-term-ability",
+        "ai-workflow",
+        "system-thinking"
+      ],
+      "tags": [
+        "能力判断",
+        "工具意识",
+        "可迁移能力",
+        "系统沉淀",
+        "二次提炼",
+        "来源可追溯"
+      ],
+      "status": "已提炼",
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "sourceFiles": [
+        "交接卡\\项目工作交接卡_2026-07-10_收尾版.docx",
+        "ai复盘\\AI成长系统阶段总结_2026-07-09.docx"
+      ],
+      "derived": true
     }
   ]
 };
