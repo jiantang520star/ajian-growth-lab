@@ -21,6 +21,8 @@
         <form class="manager-form info-card" id="assetForm">
           <input type="hidden" name="id" />
           <label>标题<input name="title" required placeholder="例如：生命第一" /></label>
+          <label>日期<input name="date" type="date" /></label>
+          <label>概括<textarea name="summary" rows="3" placeholder="一句话说明这条记录的核心内容，方便以后搜索定位"></textarea></label>
           <label>内容<textarea name="content" required rows="6" placeholder="写下具体内容、结论或 SOP"></textarea></label>
           <label>类型<select name="type" required></select></label>
           <label>所属项目（可多选）<select name="projects" multiple size="6"></select></label>
@@ -39,7 +41,8 @@
             <button class="button" type="button" data-export-assets>导出 JSON</button>
             <label class="button import-button">导入 JSON<input type="file" accept="application/json" data-import-assets /></label>
           </div>
-          <div class="asset-list compact-list" data-manager-list></div>
+          <div class="local-search" data-local-search data-scope="#managerList"><label>资产搜索<input type="search" placeholder="搜索日期、标签或概括，例如：2026-07-22、生命、SOP" /></label></div>
+          <div class="asset-list compact-list" id="managerList" data-manager-list></div>
         </section>
       </section>
     </main>
