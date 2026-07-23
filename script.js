@@ -274,6 +274,26 @@ const renderProjectAssets = () => {
   });
 };
 
+const setupLibraryBadges = () => {
+  document.querySelectorAll(".sub-library a[href*='library.html?id=']").forEach((link) => {
+    const href = link.getAttribute("href") || "";
+    const match = href.match(/[?&]id=([^&]+)/);
+    if (!match) return;
+    const libraryId = decodeURIComponent(match[1]);
+    const count = getAllAssets().filter((asset) => (asset.projects || []).includes(libraryId)).length;
+    link.classList.toggle("has-content", count > 0);
+    link.classList.toggle("is-empty", count === 0);
+    let badge = link.querySelector(".library-count");
+    if (!badge) {
+      badge = document.createElement("span");
+      badge.className = "library-count";
+      link.appendChild(badge);
+    }
+    badge.textContent = count > 0 ? `${count}条` : "待更新";
+    link.setAttribute("aria-label", `${link.childNodes[0]?.textContent?.trim() || "子库"}，${badge.textContent}`);
+  });
+};
+
 const setupManager = () => {
   const form = document.querySelector("#assetForm");
   const list = document.querySelector("[data-manager-list]");
@@ -327,6 +347,7 @@ const setupManager = () => {
     renderManagerList();
     renderKnowledgeList();
     renderProjectAssets();
+    setupLibraryBadges();
   });
 
   document.querySelector("[data-reset-form]")?.addEventListener("click", () => {
@@ -343,6 +364,9 @@ const setupManager = () => {
     saveDeletedAssetIds(deletedIds);
     form.reset();
     renderManagerList();
+    renderKnowledgeList();
+    renderProjectAssets();
+    setupLibraryBadges();
   });
 
   document.querySelector("[data-export-assets]")?.addEventListener("click", () => {
@@ -361,6 +385,7 @@ const setupManager = () => {
     renderManagerList();
     renderKnowledgeList();
     renderProjectAssets();
+    setupLibraryBadges();
   });
 
   renderManagerList();
@@ -469,4 +494,5 @@ renderProjectAssets();
 renderLibraryPage();
 renderAssetDetail();
 setupManager();
+setupLibraryBadges();
 setupLocalSearch();
