@@ -1,5 +1,44 @@
 ﻿const year = document.querySelector("#year");
 const topButton = document.querySelector(".top-button");
+const defaultData = window.GROWTH_OS_DATA || { assetTypes: [], projects: [], assets: [] };
+const STORAGE_KEY = "ajian_growth_os_assets_v1";
+const DELETED_KEY = "ajian_growth_os_deleted_assets_v1";
+
+const getStoredAssets = () => {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+  } catch (error) {
+    return [];
+  }
+};
+
+const saveStoredAssets = (assets) => {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(assets));
+};
+
+const getDeletedAssetIds = () => {
+  try {
+    return new Set(JSON.parse(localStorage.getItem(DELETED_KEY) || "[]"));
+  } catch (error) {
+    return new Set();
+  }
+};
+
+const saveDeletedAssetIds = (ids) => {
+  localStorage.setItem(DELETED_KEY, JSON.stringify([...ids]));
+};
+
+const getAllAssets = () => {
+  const localAssets = getStoredAssets();
+  const localIds = new Set(localAssets.map((item) => item.id));
+  const deletedIds = getDeletedAssetIds();
+  return [...localAssets, ...(defaultData.assets || []).filter((item) => !localIds.has(item.id) && !deletedIds.has(item.id))];
+};
+
+const getTypeName = (type) => (defaultData.assetTypes || []).find((item) => item.id === type)?.name || type;
+const getProjectName = (id) => (defaultData.projects || []).find((item) => item.id === id)?.title || id;
+const todayISO = () => new Date().toISOString().slice(0, 10);
+const normalizeTags = (value) => Array.isArray(value) ? value : String(value || "").split(/[,，]/).map((item) => item.trim()).filter(Boolean);
 
 if (year) year.textContent = new Date().getFullYear();
 if (topButton) {
@@ -93,11 +132,142 @@ if (workflow) {
   });
 }
 
+const assetCardHTML = (asset) => {
+  const tags = normalizeTags(asset.tags).map((tag) => `<span>${tag}</span>`).join("");
+  const projects = (asset.projects || []).map((id) => getProjectName(id)).join(" / ");
+  return `<article class="asset-card" data-asset-id="${asset.id}">
+    <div class="asset-meta"><span>${getTypeName(asset.type)}</span><time>${asset.updatedAt || asset.createdAt || ""}</time></div>
+    <h3>${asset.title}</h3>
+    <p>${asset.content}</p>
+    <div class="asset-tags">${tags}</div>
+    <small>关联项目：${projects || "未关联"}</small>
+  </article>`;
+};
+
+const renderKnowledgeList = () => {
+  const list = document.querySelector("[data-knowledge-list]");
+  if (!list) return;
+  const filters = document.querySelector("[data-asset-filters]");
+  let activeType = "all";
+  const render = () => {
+    const assets = getAllAssets().filter((asset) => activeType === "all" || asset.type === activeType);
+    list.innerHTML = assets.length ? assets.map(assetCardHTML).join("") : `<p class="search-empty">暂时没有内容。</p>`;
+  };
+  if (filters) {
+    filters.innerHTML = [`<button class="active" type="button" data-type="all">全部</button>`, ...(defaultData.assetTypes || []).map((type) => `<button type="button" data-type="${type.id}">${type.name}</button>`)].join("");
+    filters.querySelectorAll("button").forEach((button) => {
+      button.addEventListener("click", () => {
+        activeType = button.dataset.type;
+        filters.querySelectorAll("button").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        render();
+      });
+    });
+  }
+  render();
+};
+
+const renderProjectAssets = () => {
+  document.querySelectorAll("[data-project-assets]").forEach((target) => {
+    const projectId = target.dataset.projectAssets;
+    const assets = getAllAssets().filter((asset) => (asset.projects || []).includes(projectId));
+    target.innerHTML = assets.length ? assets.map(assetCardHTML).join("") : `<p class="search-empty">这个项目还没有关联知识资产。</p>`;
+  });
+};
+
+const setupManager = () => {
+  const form = document.querySelector("#assetForm");
+  const list = document.querySelector("[data-manager-list]");
+  if (!form || !list) return;
+  const typeSelect = form.elements.type;
+  const projectSelect = form.elements.projects;
+  typeSelect.innerHTML = (defaultData.assetTypes || []).map((type) => `<option value="${type.id}">${type.name}</option>`).join("");
+  projectSelect.innerHTML = (defaultData.projects || []).map((project) => `<option value="${project.id}">${project.title}</option>`).join("");
+
+  const renderManagerList = () => {
+    list.innerHTML = getAllAssets().map((asset) => `<button type="button" data-edit-id="${asset.id}"><strong>${asset.title}</strong><span>${getTypeName(asset.type)} · ${asset.status || "未设置"}</span></button>`).join("");
+    list.querySelectorAll("[data-edit-id]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const asset = getAllAssets().find((item) => item.id === button.dataset.editId);
+        if (!asset) return;
+        form.elements.id.value = asset.id;
+        form.elements.title.value = asset.title || "";
+        form.elements.content.value = asset.content || "";
+        form.elements.type.value = asset.type || "rule";
+        [...projectSelect.options].forEach((option) => { option.selected = (asset.projects || []).includes(option.value); });
+        form.elements.tags.value = normalizeTags(asset.tags).join(", ");
+        form.elements.status.value = asset.status || "";
+      });
+    });
+  };
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const id = form.elements.id.value || `asset-${Date.now()}`;
+    const existing = getAllAssets().find((item) => item.id === id);
+    const asset = {
+      id,
+      title: form.elements.title.value.trim(),
+      content: form.elements.content.value.trim(),
+      type: form.elements.type.value,
+      projects: [...projectSelect.selectedOptions].map((option) => option.value),
+      tags: normalizeTags(form.elements.tags.value),
+      status: form.elements.status.value.trim() || "草稿",
+      createdAt: existing?.createdAt || todayISO(),
+      updatedAt: todayISO()
+    };
+    const next = getStoredAssets().filter((item) => item.id !== id);
+    next.unshift(asset);
+    saveStoredAssets(next);
+    form.reset();
+    form.elements.id.value = "";
+    renderManagerList();
+    renderKnowledgeList();
+    renderProjectAssets();
+  });
+
+  document.querySelector("[data-reset-form]")?.addEventListener("click", () => {
+    form.reset();
+    form.elements.id.value = "";
+  });
+
+  document.querySelector("[data-delete-asset]")?.addEventListener("click", () => {
+    const id = form.elements.id.value;
+    if (!id) return;
+    saveStoredAssets(getStoredAssets().filter((item) => item.id !== id));
+    const deletedIds = getDeletedAssetIds();
+    deletedIds.add(id);
+    saveDeletedAssetIds(deletedIds);
+    form.reset();
+    renderManagerList();
+  });
+
+  document.querySelector("[data-export-assets]")?.addEventListener("click", () => {
+    const blob = new Blob([JSON.stringify(getAllAssets(), null, 2)], { type: "application/json" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `growth-os-assets-${todayISO()}.json`;
+    link.click();
+    URL.revokeObjectURL(link.href);
+  });
+
+  document.querySelector("[data-import-assets]")?.addEventListener("change", async (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    saveStoredAssets(JSON.parse(await file.text()));
+    renderManagerList();
+    renderKnowledgeList();
+    renderProjectAssets();
+  });
+
+  renderManagerList();
+};
+
 const searchInput = document.querySelector("#dashboardSearch");
 const filterButtons = document.querySelectorAll("[data-filter]");
 const searchableCards = document.querySelectorAll(".searchable-card");
 let activeFilter = "全部";
-const siteSearchItems = [
+const staticSearchItems = [
   { title: "阿简成长实验室", category: "项目", url: "projects/ajian-growth-lab.html", desc: "Growth OS 网站核心项目，记录成长系统建设。" },
   { title: "视频基准库", category: "项目", url: "projects/video-benchmark.html", desc: "视频样本、内容数据和规律拆解。" },
   { title: "新媒体运营成长项目", category: "项目", url: "projects/new-media-growth.html", desc: "引流、用户沟通、风控、转化和运营复盘。" },
@@ -122,6 +292,16 @@ const siteSearchItems = [
   { title: "项目交接卡_2026-07-21", category: "交接卡", url: "handoffs/2026-07-21.html", desc: "首页仪表盘升级、项目进度说明和交互面板。" },
   { title: "项目交接卡_2026-07-17", category: "交接卡", url: "handoffs/2026-07-17.html", desc: "复盘、项目交接卡、成长白皮书、网站更新工作流。" },
   { title: "文档说明", category: "文档说明", url: "#docs", desc: "网站使用说明、导航说明、方法论体系和更新规则。" },
+];
+
+const siteSearchItems = [
+  ...staticSearchItems,
+  ...getAllAssets().map((asset) => ({
+    title: asset.title,
+    category: getTypeName(asset.type),
+    url: "knowledge.html",
+    desc: `${asset.content} ${normalizeTags(asset.tags).join(" ")} ${(asset.projects || []).map(getProjectName).join(" ")}`
+  }))
 ];
 
 let searchResults;
@@ -176,3 +356,7 @@ document.querySelectorAll("[data-open-docs]").forEach((button) => {
   });
 });
 document.querySelector("[data-close-docs]")?.addEventListener("click", () => docsModal?.close());
+
+renderKnowledgeList();
+renderProjectAssets();
+setupManager();
