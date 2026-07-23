@@ -1659,18 +1659,54 @@ body {
 }
 
 .sub-library a {
+  align-items: center;
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid rgba(26, 116, 84, 0.16);
   border-radius: 999px;
   color: var(--text);
+  display: inline-flex;
+  gap: 0.45rem;
   font-weight: 800;
   padding: 0.55rem 0.8rem;
+}
+
+.sub-library a.has-content {
+  border-color: rgba(47, 163, 107, 0.34);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.sub-library a.is-empty {
+  color: var(--muted);
+  opacity: 0.76;
+}
+
+.library-count {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.25rem;
+  padding: 0.12rem 0.44rem;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: #176647;
+  font-size: 0.72rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.sub-library a.is-empty .library-count {
+  background: var(--surface-soft);
+  color: var(--muted);
 }
 
 .sub-library a:hover {
   background: var(--green);
   color: #fff;
   transform: translateY(-1px);
+}
+
+.sub-library a:hover .library-count {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
 }
 
 .local-search {
