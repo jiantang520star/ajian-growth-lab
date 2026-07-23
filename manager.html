@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>内容管理 | 阿简成长实验室</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html"><span class="brand-mark">AJ</span>阿简成长实验室</a>
+      <nav class="nav"><a href="index.html">首页</a><a href="projects.html">我的项目</a><a href="knowledge.html">知识资产</a><a class="active" href="manager.html">内容管理</a></nav>
+    </header>
+    <main>
+      <section class="hero narrow">
+        <p class="eyebrow">Content Manager</p>
+        <h1>内容管理</h1>
+        <p class="lead">以后优先在这里录入知识资产。新增、编辑、删除会保存到当前浏览器，并同步显示到总库和关联项目。</p>
+      </section>
+      <section class="section manager-layout">
+        <form class="manager-form info-card" id="assetForm">
+          <input type="hidden" name="id" />
+          <label>标题<input name="title" required placeholder="例如：生命第一" /></label>
+          <label>内容<textarea name="content" required rows="6" placeholder="写下具体内容、结论或 SOP"></textarea></label>
+          <label>类型<select name="type" required></select></label>
+          <label>所属项目（可多选）<select name="projects" multiple size="6"></select></label>
+          <label>标签<input name="tags" placeholder="用逗号分隔，例如：健康,规律,生命" /></label>
+          <label>状态<input name="status" placeholder="草稿 / 已沉淀 / 持续更新" /></label>
+          <div class="manager-actions">
+            <button class="button primary" type="submit">保存</button>
+            <button class="button" type="button" data-reset-form>新建</button>
+            <button class="button danger" type="button" data-delete-asset>删除</button>
+          </div>
+          <p class="manager-note">说明：GitHub Pages 是静态网站，这里的编辑默认保存在你的浏览器。需要长期备份时，请导出 JSON。</p>
+        </form>
+        <section class="info-card">
+          <div class="section-heading compact"><div><p class="eyebrow">Local Assets</p><h2>当前知识资产</h2></div></div>
+          <div class="manager-actions">
+            <button class="button" type="button" data-export-assets>导出 JSON</button>
+            <label class="button import-button">导入 JSON<input type="file" accept="application/json" data-import-assets /></label>
+          </div>
+          <div class="asset-list compact-list" data-manager-list></div>
+        </section>
+      </section>
+    </main>
+    <footer class="footer"><p>© <span id="year"></span> 阿简成长实验室.</p><button class="top-button" type="button">↑</button></footer>
+    <script src="growth-data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
