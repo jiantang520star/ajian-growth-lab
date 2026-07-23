@@ -9,12 +9,23 @@ window.GROWTH_OS_DATA = {
     { id: "ai", name: "AI知识" }
   ],
   projects: [
-    { id: "growth-lab", title: "阿简成长实验室", url: "projects/ajian-growth-lab.html", status: "进行中", tags: ["Growth OS", "网站"] },
-    { id: "video-benchmark", title: "视频基准库", url: "projects/video-benchmark.html", status: "进行中", tags: ["数据", "视频"] },
-    { id: "new-media-growth", title: "新媒体运营成长项目", url: "projects/new-media-growth.html", status: "进行中", tags: ["运营", "转化"] },
-    { id: "ai-workflow", title: "AI工作流", url: "projects/ai-workflow.html", status: "进行中", tags: ["AI", "自动化"] },
-    { id: "account-cold-start", title: "账号冷启动与新人培训", url: "projects/account-cold-start.html", status: "20%", tags: ["冷启动", "培训"] },
-    { id: "life-rules", title: "人生规律库", url: "projects/life-rules.html", status: "长期沉淀", tags: ["规律", "判断系统"] }
+    { id: "new-media-growth", title: "医美新媒体成长", url: "projects/new-media-growth.html", status: "进行中", tags: ["主线项目", "运营", "转化"] },
+    { id: "ai-workflow", title: "AI工作流项目", url: "projects/ai-workflow.html", status: "进行中", tags: ["主线项目", "AI", "自动化"] },
+    { id: "growth-lab", title: "网站项目", url: "projects/ajian-growth-lab.html", status: "进行中", tags: ["主线项目", "Growth OS", "网站"] },
+    { id: "life-rules", title: "人生规律库", url: "projects/life-rules.html", status: "长期沉淀", tags: ["主线项目", "规律", "判断系统"] },
+    { id: "video-benchmark", title: "视频数据库", url: "projects/video-benchmark.html", status: "进行中", tags: ["子库", "医美新媒体成长", "数据"] },
+    { id: "lead-sop", title: "引流SOP", url: "knowledge.html", status: "待沉淀", tags: ["子库", "医美新媒体成长", "SOP"] },
+    { id: "comment-sop", title: "评论SOP", url: "knowledge.html", status: "待沉淀", tags: ["子库", "医美新媒体成长", "SOP"] },
+    { id: "operation-risk-library", title: "风险库", url: "knowledge.html", status: "持续更新", tags: ["子库", "医美新媒体成长", "风险"] },
+    { id: "account-cold-start", title: "新人培训", url: "projects/account-cold-start.html", status: "20%", tags: ["子库", "医美新媒体成长", "培训"] },
+    { id: "operation-ai-workflow", title: "AI工作流（运营版）", url: "projects/ai-workflow.html", status: "进行中", tags: ["子库", "医美新媒体成长", "AI"] },
+    { id: "operation-results", title: "项目成果", url: "knowledge.html", status: "持续更新", tags: ["子库", "医美新媒体成长", "成果"] },
+    { id: "ocr-workflow", title: "OCR工作流", url: "knowledge.html", status: "待沉淀", tags: ["子库", "AI工作流项目", "OCR"] },
+    { id: "video-automation", title: "视频数据库自动化", url: "projects/video-benchmark.html", status: "规划中", tags: ["子库", "AI工作流项目", "自动化"] },
+    { id: "handoff-generator", title: "项目交接卡生成", url: "handoffs.html", status: "运行中", tags: ["子库", "AI工作流项目", "交接卡"] },
+    { id: "whitepaper-generator", title: "白皮书生成", url: "whitepapers.html", status: "运行中", tags: ["子库", "AI工作流项目", "白皮书"] },
+    { id: "site-update-workflow", title: "网站更新工作流", url: "projects/ajian-growth-lab.html", status: "运行中", tags: ["子库", "AI工作流项目", "网站"] },
+    { id: "cross-industry-ai-workflow", title: "其他行业AI工作流", url: "knowledge.html", status: "规划中", tags: ["子库", "AI工作流项目", "行业迁移"] }
   ],
   assets: [
     {
