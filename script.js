@@ -45,6 +45,13 @@ const getAssetSummary = (asset) => asset.summary || asset.content || "";
 const rootPrefix = location.pathname.includes("/projects/") || location.pathname.includes("/experiments/") || location.pathname.includes("/archive/") || location.pathname.includes("/handoffs/") || location.pathname.includes("/whitepapers/") || location.pathname.includes("/workflow/") ? "../" : "";
 const assetUrl = (id) => `${rootPrefix}asset.html?id=${encodeURIComponent(id)}`;
 const libraryUrl = (id) => `${rootPrefix}library.html?id=${encodeURIComponent(id)}`;
+const escapeHTML = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  "\"": "&quot;",
+  "'": "&#39;"
+}[char]));
 
 if (year) year.textContent = new Date().getFullYear();
 if (topButton) {
@@ -139,22 +146,22 @@ if (workflow) {
 }
 
 const assetCardHTML = (asset) => {
-  const tags = normalizeTags(asset.tags).map((tag) => `<span>${tag}</span>`).join("");
+  const tags = normalizeTags(asset.tags).map((tag) => `<span>${escapeHTML(tag)}</span>`).join("");
   const sourceNames = (asset.projects || []).map((id) => getProjectName(id)).join(" / ");
-  return `<a class="asset-card" href="${assetUrl(asset.id)}" data-local-item data-asset-id="${asset.id}" data-tags="${normalizeTags(asset.tags).join(" ")}" data-date="${getAssetDate(asset)}" data-summary="${getAssetSummary(asset)}">
-    <div class="asset-meta"><span>${getTypeName(asset.type)}</span><time>${getAssetDate(asset)}</time></div>
-    <h3>${asset.title}</h3>
-    <p>${getAssetSummary(asset)}</p>
+  return `<a class="asset-card" href="${assetUrl(asset.id)}" data-local-item data-asset-id="${escapeHTML(asset.id)}" data-tags="${escapeHTML(normalizeTags(asset.tags).join(" "))}" data-date="${escapeHTML(getAssetDate(asset))}" data-summary="${escapeHTML(getAssetSummary(asset))}">
+    <div class="asset-meta"><span>${escapeHTML(getTypeName(asset.type))}</span><time>${escapeHTML(getAssetDate(asset))}</time></div>
+    <h3>${escapeHTML(asset.title)}</h3>
+    <p>${escapeHTML(getAssetSummary(asset))}</p>
     <div class="asset-tags">${tags}</div>
-    <small>来源/关联：${sourceNames || "未关联"}</small>
+    <small>来源/关联：${escapeHTML(sourceNames || "未关联")}</small>
   </a>`;
 };
 
 const assetListItemHTML = (asset) => {
-  const tags = normalizeTags(asset.tags).map((tag) => `<span class="pill">${tag}</span>`).join("");
-  return `<a class="list-item" href="${assetUrl(asset.id)}" data-local-item data-date="${getAssetDate(asset)}" data-tags="${normalizeTags(asset.tags).join(" ")}" data-summary="${getAssetSummary(asset)}">
-    <time>${getAssetDate(asset)}</time>
-    <div>${tags}<h3>${asset.title}</h3><p>${getAssetSummary(asset)}</p></div>
+  const tags = normalizeTags(asset.tags).slice(0, 4).map((tag) => `<span class="pill">${escapeHTML(tag)}</span>`).join("");
+  return `<a class="list-item" href="${assetUrl(asset.id)}" data-local-item data-date="${escapeHTML(getAssetDate(asset))}" data-tags="${escapeHTML(normalizeTags(asset.tags).join(" "))}" data-summary="${escapeHTML(getAssetSummary(asset))}">
+    <time>${escapeHTML(getAssetDate(asset))}</time>
+    <div>${tags}<h3>${escapeHTML(asset.title)}</h3><p>${escapeHTML(getAssetSummary(asset))}</p></div>
     <strong>查看详情</strong>
   </a>`;
 };
@@ -191,20 +198,32 @@ const renderAssetDetail = () => {
     const project = getProjectById(projectId);
     if (!project) return "";
     const href = (project.tags || []).includes("子库") || project.id === "life-rules" || project.id === "cognition-library" ? libraryUrl(project.id) : `${rootPrefix}${project.url}`;
-    return `<a href="${href}">${project.title}</a>`;
+    return `<a href="${href}">${escapeHTML(project.title)}</a>`;
   }).filter(Boolean).join(" / ");
-  const tags = normalizeTags(asset.tags).map((tag) => `<span>${tag}</span>`).join("");
+  const tags = normalizeTags(asset.tags).map((tag) => `<span>${escapeHTML(tag)}</span>`).join("");
+  const sourceFiles = normalizeTags(asset.sourceFiles || []).map((file) => `<li>${escapeHTML(file)}</li>`).join("");
   target.innerHTML = `<div class="breadcrumb"><a href="${rootPrefix}knowledge.html">返回知识总库</a></div>
     <div class="article-shell asset-detail">
-      <p class="eyebrow">${getTypeName(asset.type)} / ${getAssetDate(asset)}</p>
-      <h1>${asset.title}</h1>
-      <p class="lead">${getAssetSummary(asset)}</p>
+      <p class="eyebrow">${escapeHTML(getTypeName(asset.type))} / ${escapeHTML(getAssetDate(asset))}</p>
+      <h1>${escapeHTML(asset.title)}</h1>
+      <p class="lead">${escapeHTML(getAssetSummary(asset))}</p>
       <div class="asset-tags">${tags}</div>
       <h2>完整内容</h2>
-      <p>${String(asset.content || "").replace(/\n/g, "</p><p>")}</p>
+      <p>${escapeHTML(asset.content || "").replace(/\n/g, "</p><p>")}</p>
       <h2>来源与关联库</h2>
       <p class="source-links">${sourceLinks || "暂未关联"}</p>
+      ${sourceFiles ? `<h2>原始文件</h2><ul class="source-file-list">${sourceFiles}</ul>` : ""}
     </div>`;
+};
+
+const renderDocumentLists = () => {
+  document.querySelectorAll("[data-document-list]").forEach((target) => {
+    const type = target.dataset.documentList;
+    const assets = getAllAssets()
+      .filter((asset) => asset.type === type)
+      .sort((a, b) => `${getAssetDate(b)} ${b.title}`.localeCompare(`${getAssetDate(a)} ${a.title}`, "zh-Hans-CN"));
+    target.innerHTML = assets.length ? assets.map(assetListItemHTML).join("") : `<p class="search-empty">暂时没有内容。</p>`;
+  });
 };
 
 const setupLocalSearch = () => {
@@ -467,7 +486,7 @@ const applySearch = () => {
   }
 
   searchResults.innerHTML = results.length
-    ? results.map((item) => `<a href="${item.url}" data-result-category="${item.category}"><strong>${item.title}</strong><span>${item.category} · ${item.desc}</span></a>`).join("")
+    ? results.map((item) => `<a href="${escapeHTML(item.url)}" data-result-category="${escapeHTML(item.category)}"><strong>${escapeHTML(item.title)}</strong><span>${escapeHTML(item.category)} · ${escapeHTML(item.desc)}</span></a>`).join("")
     : `<p class="search-empty">没有找到匹配内容，换个关键词试试。</p>`;
 };
 
@@ -493,6 +512,7 @@ renderKnowledgeList();
 renderProjectAssets();
 renderLibraryPage();
 renderAssetDetail();
+renderDocumentLists();
 setupManager();
 setupLibraryBadges();
 setupLocalSearch();
