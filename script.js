@@ -41,6 +41,7 @@ const getProjectName = (id) => getProjectById(id)?.title || id;
 const todayISO = () => new Date().toISOString().slice(0, 10);
 const normalizeTags = (value) => Array.isArray(value) ? value : String(value || "").split(/[,，]/).map((item) => item.trim()).filter(Boolean);
 const getAssetDate = (asset) => asset.date || asset.updatedAt || asset.createdAt || "";
+const getAssetUpdateDate = (asset) => asset.updatedAt || asset.createdAt || asset.date || "";
 const getAssetSummary = (asset) => asset.summary || asset.content || "";
 const rootPrefix = location.pathname.includes("/projects/") || location.pathname.includes("/experiments/") || location.pathname.includes("/archive/") || location.pathname.includes("/handoffs/") || location.pathname.includes("/whitepapers/") || location.pathname.includes("/workflow/") ? "../" : "";
 const assetUrl = (id) => `${rootPrefix}asset.html?id=${encodeURIComponent(id)}`;
@@ -215,6 +216,95 @@ const setupPrivateDataUnlock = (root = document) => {
   });
 };
 
+const getPrivateMetric = (asset, key) => asset.privateDetails?.metrics?.[key] ?? "";
+const getVideoNumber = (asset) => Number((asset.id || "").match(/video-data-shw-(\d+)/)?.[1] || 0);
+const getVideoAssets = () => sortAssetsByDate(getAllAssets().filter((asset) => asset.id?.startsWith("video-data-shw-")))
+  .sort((a, b) => getVideoNumber(a) - getVideoNumber(b));
+
+const videoSampleCardHTML = (asset) => {
+  const searches = normalizeTags(asset.privateDetails?.searchTerms || []).slice(0, 3);
+  const needs = normalizeTags(asset.privateDetails?.needs || []).slice(0, 3);
+  const tags = normalizeTags(asset.tags).filter((tag) => !["完整表格", "视频样本"].includes(tag)).slice(0, 5).map((tag) => `<span>${escapeHTML(tag)}</span>`).join("");
+  return `<a class="video-sample-card" href="${assetUrl(asset.id)}" data-local-item data-date="${escapeHTML(getAssetDate(asset))}" data-tags="${escapeHTML(normalizeTags(asset.tags).join(" "))}" data-summary="${escapeHTML(getAssetSummary(asset))}">
+    <div><span>样本 ${String(getVideoNumber(asset)).padStart(3, "0")}</span><time>${escapeHTML(getPrivateMetric(asset, "发布时间") || getAssetDate(asset))}</time></div>
+    <h3>${escapeHTML(asset.title.replace(/^视频样本\s*\d+：/, ""))}</h3>
+    <p>${escapeHTML(getAssetSummary(asset))}</p>
+    <small>搜索：${escapeHTML(searches.join(" / ") || "暂无")} · 需求：${escapeHTML(needs.join(" / ") || "暂无")}</small>
+    <div class="asset-tags">${tags}</div>
+  </a>`;
+};
+
+const videoTableRowHTML = (asset) => {
+  const searches = normalizeTags(asset.privateDetails?.searchTerms || []).join(" / ");
+  const needs = normalizeTags(asset.privateDetails?.needs || []).join(" / ");
+  return `<tr data-local-item data-date="${escapeHTML(getAssetDate(asset))}" data-tags="${escapeHTML(normalizeTags(asset.tags).join(" "))}" data-summary="${escapeHTML(getAssetSummary(asset))}">
+    <td><a href="${assetUrl(asset.id)}">${String(getVideoNumber(asset)).padStart(3, "0")}</a></td>
+    <td>${escapeHTML(getPrivateMetric(asset, "发布时间") || getAssetDate(asset))}</td>
+    <td>${escapeHTML(asset.title.replace(/^视频样本\s*\d+：/, ""))}</td>
+    <td>${escapeHTML(getPrivateMetric(asset, "播放量"))}</td>
+    <td>${escapeHTML(getPrivateMetric(asset, "涨粉"))}</td>
+    <td>${escapeHTML(getPrivateMetric(asset, "点赞"))}</td>
+    <td>${escapeHTML(getPrivateMetric(asset, "评论"))}</td>
+    <td>${escapeHTML(getPrivateMetric(asset, "收藏"))}</td>
+    <td>${escapeHTML(getPrivateMetric(asset, "分享"))}</td>
+    <td>${escapeHTML(searches || "暂无")}</td>
+    <td>${escapeHTML(needs || "暂无")}</td>
+  </tr>`;
+};
+
+const renderVideoDatabasePage = () => {
+  const target = document.querySelector("[data-video-database]");
+  if (!target) return;
+  const videos = getVideoAssets();
+  const publicVideos = videos.slice(0, Math.ceil(videos.length / 3));
+  target.innerHTML = `<section class="video-database-panel">
+    <div class="section-heading">
+      <div><p class="eyebrow">Video Database</p><h2>公开视频样本</h2></div>
+      <a class="button" href="${rootPrefix}manager.html">进入更新</a>
+    </div>
+    <p>视频数据库是主库。数据先进入这里，再关联到视频规律库、实验库、项目阶段和知识资产。公开视频只展示前 ${publicVideos.length} / ${videos.length} 条，方便别人快速理解；完整表格输入密码后查看。</p>
+    <div class="video-database-stats">
+      <div><span>主库总量</span><strong>${videos.length} 条</strong><small>完整视频表格</small></div>
+      <div><span>公开展示</span><strong>${publicVideos.length} 条</strong><small>约前三分之一</small></div>
+      <div><span>数据归属</span><strong>视频数据库</strong><small>实验库只引用结论</small></div>
+    </div>
+    <div class="local-search" data-local-search data-scope="#videoPublicList"><label>视频库搜索<input type="search" placeholder="搜索编号、日期、标签、搜索词、需求或概括" /></label></div>
+    <div class="video-sample-grid" id="videoPublicList">${publicVideos.map(videoSampleCardHTML).join("")}</div>
+  </section>
+  <section class="video-database-panel private-data" data-video-full-table>
+    <h2>完整 77 条数据表</h2>
+    <p>这里不是展开单条隐藏数据，而是输入密码后展示整张视频数据库表格。</p>
+    <form class="password-panel" data-video-table-form>
+      <label>查看密码<input type="password" autocomplete="current-password" placeholder="输入密码" /></label>
+      <button type="submit">显示 77 条表格</button>
+      <small data-video-table-message></small>
+    </form>
+    <div class="video-table-area" data-video-table-body hidden>
+      <div class="local-search" data-local-search data-scope="#videoFullTable"><label>完整表格搜索<input type="search" placeholder="搜索编号、主题、标签、搜索词、需求或日期" /></label></div>
+      <div class="video-table-wrap">
+        <table class="video-table" id="videoFullTable">
+          <thead><tr><th>编号</th><th>发布时间</th><th>视频主题</th><th>播放</th><th>涨粉</th><th>点赞</th><th>评论</th><th>收藏</th><th>分享</th><th>搜索词</th><th>用户需求</th></tr></thead>
+          <tbody>${videos.map(videoTableRowHTML).join("")}</tbody>
+        </table>
+      </div>
+    </div>
+  </section>`;
+  const form = target.querySelector("[data-video-table-form]");
+  const body = target.querySelector("[data-video-table-body]");
+  const message = target.querySelector("[data-video-table-message]");
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const input = form.querySelector("input");
+    if (input?.value === "520520") {
+      body.hidden = false;
+      form.hidden = true;
+      setupLocalSearch();
+    } else if (message) {
+      message.textContent = "密码不对，完整表格暂不显示。";
+    }
+  });
+};
+
 const renderLibraryPage = () => {
   const target = document.querySelector("[data-library-list]");
   if (!target) return;
@@ -344,6 +434,23 @@ const renderProjectAssets = () => {
   });
 };
 
+const renderLatestUpdates = () => {
+  document.querySelectorAll("[data-latest-updates]").forEach((target) => {
+    const limit = Number(target.dataset.latestUpdates || 8);
+    const assets = sortAssetsByUpdate(getAllAssets()).slice(0, limit);
+    target.innerHTML = assets.length ? assets.map((asset) => {
+      const sourceNames = (asset.projects || []).map(getProjectName).filter(Boolean).slice(0, 3).join(" / ");
+      const scope = asset.sourceScope || (asset.id?.startsWith("video-data-shw-") ? "视频数据库主库" : "内容资产");
+      return `<a class="searchable-card" data-local-item data-category="${escapeHTML(getTypeName(asset.type))}" data-date="${escapeHTML(getAssetDate(asset))}" data-tags="${escapeHTML(normalizeTags(asset.tags).join(" "))}" data-summary="${escapeHTML(getAssetSummary(asset))}" href="${assetUrl(asset.id)}">
+        <span class="pill">${escapeHTML(getTypeName(asset.type))}</span>
+        <time>${escapeHTML(getAssetUpdateDate(asset))}</time>
+        <div><strong>${escapeHTML(asset.title)}</strong><p>${escapeHTML(getAssetSummary(asset))}</p><small>来源：${escapeHTML(scope)}${sourceNames ? ` · 关联：${escapeHTML(sourceNames)}` : ""}</small></div>
+        <b>查看详情 →</b>
+      </a>`;
+    }).join("") : `<p class="search-empty">暂时没有更新。</p>`;
+  });
+};
+
 const setupLibraryBadges = () => {
   document.querySelectorAll(".sub-library a[href*='library.html?id=']").forEach((link) => {
     const href = link.getAttribute("href") || "";
@@ -463,6 +570,7 @@ const setupManager = () => {
 
 
 const sortAssetsByDate = (assets) => [...assets].sort((a, b) => `${getAssetDate(b)} ${b.updatedAt || ""} ${b.title}`.localeCompare(`${getAssetDate(a)} ${a.updatedAt || ""} ${a.title}`, "zh-Hans-CN"));
+const sortAssetsByUpdate = (assets) => [...assets].sort((a, b) => `${getAssetUpdateDate(b)} ${getAssetDate(b)} ${b.title}`.localeCompare(`${getAssetUpdateDate(a)} ${getAssetDate(a)} ${a.title}`, "zh-Hans-CN"));
 const daysBetween = (date) => {
   const value = Date.parse(`${date}T00:00:00`);
   if (Number.isNaN(value)) return Infinity;
@@ -521,20 +629,20 @@ const workflowViews = {
 const workflowItemHTML = (asset) => {
   const tags = normalizeTags(asset.tags).slice(0, 3).map((tag) => `<span>${escapeHTML(tag)}</span>`).join("");
   return `<a class="workflow-update-item" href="${assetUrl(asset.id)}" data-local-item data-date="${escapeHTML(getAssetDate(asset))}" data-tags="${escapeHTML(normalizeTags(asset.tags).join(" "))}" data-summary="${escapeHTML(getAssetSummary(asset))}">
-    <time>${escapeHTML(getAssetDate(asset))}</time>
+    <time>${escapeHTML(getAssetUpdateDate(asset))}</time>
     <div><strong>${escapeHTML(asset.title)}</strong><p>${escapeHTML(getAssetSummary(asset))}</p><small>${escapeHTML(getTypeName(asset.type))}</small></div>
     <div class="workflow-mini-tags">${tags}</div>
   </a>`;
 };
 
-const getWorkflowAssets = (key) => sortAssetsByDate(getAllAssets().filter((asset) => workflowViews[key]?.match(asset)));
+const getWorkflowAssets = (key) => sortAssetsByUpdate(getAllAssets().filter((asset) => workflowViews[key]?.match(asset)));
 
 const renderWorkflowBadges = () => {
   document.querySelectorAll("[data-workflow-badge]").forEach((badge) => {
     const key = badge.dataset.workflowBadge;
     const assets = getWorkflowAssets(key);
-    const todayCount = assets.filter((asset) => daysBetween(getAssetDate(asset)) === 0).length;
-    const weekCount = assets.filter((asset) => daysBetween(getAssetDate(asset)) >= 0 && daysBetween(getAssetDate(asset)) <= 7).length;
+    const todayCount = assets.filter((asset) => daysBetween(getAssetUpdateDate(asset)) === 0).length;
+    const weekCount = assets.filter((asset) => daysBetween(getAssetUpdateDate(asset)) >= 0 && daysBetween(getAssetUpdateDate(asset)) <= 7).length;
     badge.classList.remove("is-today", "is-week", "is-empty");
     if (todayCount > 0) {
       badge.textContent = `今日更新 ${todayCount} 条`;
@@ -557,7 +665,7 @@ const renderWorkflowPage = () => {
   const view = workflowViews[key];
   const assets = getWorkflowAssets(key);
   const recent = assets.slice(0, 5);
-  const weekAssets = assets.filter((asset) => daysBetween(getAssetDate(asset)) >= 0 && daysBetween(getAssetDate(asset)) <= 7).slice(0, 8);
+  const weekAssets = assets.filter((asset) => daysBetween(getAssetUpdateDate(asset)) >= 0 && daysBetween(getAssetUpdateDate(asset)) <= 7).slice(0, 8);
   const relatedProjects = [...new Set(assets.flatMap((asset) => asset.projects || []))].map(getProjectById).filter(Boolean).slice(0, 8);
   const relatedHandoffs = sortAssetsByDate(getAllAssets().filter((asset) => asset.type === "handoff" && (key === "project-progress" || assets.some((item) => normalizeTags(item.tags).some((tag) => `${asset.title} ${asset.summary} ${asset.content}`.includes(tag)))))).slice(0, 4);
   const typeCounts = assets.reduce((map, asset) => {
@@ -565,11 +673,11 @@ const renderWorkflowPage = () => {
     return map;
   }, {});
   const knowledgePills = Object.entries(typeCounts).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([type, count]) => `<span>${escapeHTML(getTypeName(type))} ${count} 条</span>`).join("");
-  const todayCount = assets.filter((asset) => daysBetween(getAssetDate(asset)) === 0).length;
-  const weekCount = assets.filter((asset) => daysBetween(getAssetDate(asset)) >= 0 && daysBetween(getAssetDate(asset)) <= 7).length;
+  const todayCount = assets.filter((asset) => daysBetween(getAssetUpdateDate(asset)) === 0).length;
+  const weekCount = assets.filter((asset) => daysBetween(getAssetUpdateDate(asset)) >= 0 && daysBetween(getAssetUpdateDate(asset)) <= 7).length;
 
   target.innerHTML = `<div class="workflow-summary-grid">
-      <div><span>最近更新</span><strong>${recent.length ? getAssetDate(recent[0]) : "暂无"}</strong><p>${recent.length ? recent[0].title : "还没有匹配记录"}</p></div>
+      <div><span>最近更新</span><strong>${recent.length ? getAssetUpdateDate(recent[0]) : "暂无"}</strong><p>${recent.length ? recent[0].title : "还没有匹配记录"}</p></div>
       <div><span>今日更新</span><strong>${todayCount}</strong><p>来自 ${escapeHTML(view.source)}</p></div>
       <div><span>最近7天</span><strong>${weekCount}</strong><p>短期动态自动读取</p></div>
     </div>
@@ -700,8 +808,11 @@ const tagMatchesAsset = (asset, tag) => {
   return (tag.match || [tag.title]).some((keyword) => text.includes(keyword));
 };
 const stageTagCardHTML = (tag, kind) => {
-  const count = getAllAssets().filter((asset) => tagMatchesAsset(asset, tag)).length;
-  return `<a class="stage-tag-card ${kind}" href="${escapeHTML(tag.url)}" data-local-item data-tags="${escapeHTML([tag.title, ...(tag.match || [])].join(" "))}" data-summary="${escapeHTML(tag.desc)}"><span>${kind === "current" ? "当前标签" : "之前沉淀"}${count ? ` · ${count}条` : " · 待补充"}</span><strong>${escapeHTML(tag.title)}</strong><p>${escapeHTML(tag.desc)}</p><em>进入具体库 →</em></a>`;
+  const matched = getAllAssets().filter((asset) => tagMatchesAsset(asset, tag));
+  const stageRecords = matched.filter((asset) => asset.type === "handoff" || /阶段|里程碑|项目推进|项目进度|当前阶段/.test(`${asset.title || ""} ${asset.summary || ""} ${asset.content || ""}`));
+  const badge = stageRecords.length ? `阶段记录 ${stageRecords.length}条` : matched.length ? `库更新 ${matched.length}条` : "待补充";
+  const note = stageRecords.length ? "这里有项目阶段或交接卡记录。" : matched.length ? "这里是库数据更新，不代表项目阶段变化。" : "这个标签已经建好，后续内容会进入对应库。";
+  return `<a class="stage-tag-card ${kind}" href="${escapeHTML(tag.url)}" data-local-item data-tags="${escapeHTML([tag.title, ...(tag.match || [])].join(" "))}" data-summary="${escapeHTML(tag.desc)}"><span>${kind === "current" ? "当前标签" : "之前沉淀"} · ${badge}</span><strong>${escapeHTML(tag.title)}</strong><p>${escapeHTML(tag.desc)}</p><small>${escapeHTML(note)}</small><em>进入具体库 →</em></a>`;
 };
 const renderStagePage = () => {
   const page = document.querySelector("[data-stage-page]");
@@ -821,6 +932,8 @@ document.querySelector("[data-close-docs]")?.addEventListener("click", () => doc
 
 renderKnowledgeList();
 renderProjectAssets();
+renderLatestUpdates();
+renderVideoDatabasePage();
 renderLibraryPage();
 renderAssetDetail();
 renderDocumentLists();
