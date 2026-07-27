@@ -136,11 +136,11 @@ document.querySelectorAll(".progress-card").forEach((card) => {
 const workflow = document.querySelector("[data-workflow]");
 if (workflow) {
   const workflowOutput = document.querySelector("[data-workflow-output]");
-  workflow.querySelectorAll("button").forEach((button) => {
-    button.addEventListener("click", () => {
-      workflow.querySelectorAll("button").forEach((item) => item.classList.remove("active"));
-      button.classList.add("active");
-      if (workflowOutput) workflowOutput.textContent = button.dataset.workflowDetail || "";
+  workflow.querySelectorAll("button, a").forEach((item) => {
+    item.addEventListener("click", () => {
+      workflow.querySelectorAll("button, a").forEach((entry) => entry.classList.remove("active"));
+      item.classList.add("active");
+      if (workflowOutput && item.dataset.workflowDetail) workflowOutput.textContent = item.dataset.workflowDetail;
     });
   });
 }
@@ -410,6 +410,127 @@ const setupManager = () => {
   renderManagerList();
 };
 
+
+const sortAssetsByDate = (assets) => [...assets].sort((a, b) => `${getAssetDate(b)} ${b.updatedAt || ""} ${b.title}`.localeCompare(`${getAssetDate(a)} ${a.updatedAt || ""} ${a.title}`, "zh-Hans-CN"));
+const daysBetween = (date) => {
+  const value = Date.parse(`${date}T00:00:00`);
+  if (Number.isNaN(value)) return Infinity;
+  const today = Date.parse(`${todayISO()}T00:00:00`);
+  return Math.floor((today - value) / 86400000);
+};
+
+const workflowViews = {
+  "data-record": {
+    title: "数据记录",
+    source: "成长档案数据库 / 健康与运营记录",
+    allUrl: "../archive.html",
+    match: (asset) => {
+      const text = `${asset.title} ${asset.summary} ${asset.content} ${normalizeTags(asset.tags).join(" ")} ${(asset.projects || []).join(" ")}`;
+      return /数据|记录|睡眠|眼部|健康|学习|工作|运营|预算|衣橱|状态|复盘|视频数据库|原始/.test(text);
+    }
+  },
+  "project-progress": {
+    title: "项目推进",
+    source: "项目交接卡 / 项目库",
+    allUrl: "../handoffs.html",
+    match: (asset) => asset.type === "handoff" || /项目|推进|阶段|下一步|交接卡|里程碑|Workflow|网站更新/.test(`${asset.title} ${asset.summary} ${asset.content} ${normalizeTags(asset.tags).join(" ")}`)
+  },
+  "experiment-validation": {
+    title: "实验验证",
+    source: "实验数据库 / 风险与验证记录",
+    allUrl: "../experiments.html",
+    match: (asset) => {
+      const text = `${asset.title} ${asset.summary} ${asset.content} ${normalizeTags(asset.tags).join(" ")} ${(asset.projects || []).join(" ")}`;
+      return /实验|验证|测试|VPN|眼部|睡眠|低成本|风控|运营实验|experiment-thinking|health-rules/.test(text);
+    }
+  },
+  "rule-summary": {
+    title: "规律总结",
+    source: "规律库 / 认知库 / 人生规律库",
+    allUrl: "../knowledge.html",
+    match: (asset) => asset.type === "rule" || /规律|方法|原则|判断|认知|底层|长期|系统思维|人生规律/.test(`${asset.title} ${asset.summary} ${asset.content} ${normalizeTags(asset.tags).join(" ")}`)
+  },
+  "content-archive": {
+    title: "内容沉淀",
+    source: "知识资产数据库",
+    allUrl: "../knowledge.html",
+    match: (asset) => ["sop", "case", "whitepaper", "handoff", "ai", "database", "risk"].includes(asset.type)
+  },
+  "public-output": {
+    title: "对外输出",
+    source: "网站项目 / 作品集 / GitHub 更新",
+    allUrl: "../projects/ajian-growth-lab.html",
+    match: (asset) => {
+      const text = `${asset.title} ${asset.summary} ${asset.content} ${normalizeTags(asset.tags).join(" ")} ${(asset.projects || []).join(" ")}`;
+      return /网站|GitHub|公众号|作品集|发布|对外|输出|Growth OS|Codex|site-update-workflow|growth-lab/.test(text);
+    }
+  }
+};
+
+const workflowItemHTML = (asset) => {
+  const tags = normalizeTags(asset.tags).slice(0, 3).map((tag) => `<span>${escapeHTML(tag)}</span>`).join("");
+  return `<a class="workflow-update-item" href="${assetUrl(asset.id)}" data-local-item data-date="${escapeHTML(getAssetDate(asset))}" data-tags="${escapeHTML(normalizeTags(asset.tags).join(" "))}" data-summary="${escapeHTML(getAssetSummary(asset))}">
+    <time>${escapeHTML(getAssetDate(asset))}</time>
+    <div><strong>${escapeHTML(asset.title)}</strong><p>${escapeHTML(getAssetSummary(asset))}</p><small>${escapeHTML(getTypeName(asset.type))}</small></div>
+    <div class="workflow-mini-tags">${tags}</div>
+  </a>`;
+};
+
+const getWorkflowAssets = (key) => sortAssetsByDate(getAllAssets().filter((asset) => workflowViews[key]?.match(asset)));
+
+const renderWorkflowBadges = () => {
+  document.querySelectorAll("[data-workflow-badge]").forEach((badge) => {
+    const key = badge.dataset.workflowBadge;
+    const assets = getWorkflowAssets(key);
+    const todayCount = assets.filter((asset) => daysBetween(getAssetDate(asset)) === 0).length;
+    const weekCount = assets.filter((asset) => daysBetween(getAssetDate(asset)) >= 0 && daysBetween(getAssetDate(asset)) <= 7).length;
+    badge.classList.remove("is-today", "is-week", "is-empty");
+    if (todayCount > 0) {
+      badge.textContent = `今日更新 ${todayCount} 条`;
+      badge.classList.add("is-today");
+    } else if (weekCount > 0) {
+      badge.textContent = `本周更新 ${weekCount} 条`;
+      badge.classList.add("is-week");
+    } else {
+      badge.textContent = "最近暂无更新";
+      badge.classList.add("is-empty");
+    }
+  });
+};
+
+const renderWorkflowPage = () => {
+  const page = document.querySelector("[data-workflow-page]");
+  const target = document.querySelector("[data-workflow-live]");
+  if (!page || !target) return;
+  const key = page.dataset.workflowPage;
+  const view = workflowViews[key];
+  const assets = getWorkflowAssets(key);
+  const recent = assets.slice(0, 5);
+  const weekAssets = assets.filter((asset) => daysBetween(getAssetDate(asset)) >= 0 && daysBetween(getAssetDate(asset)) <= 7).slice(0, 8);
+  const relatedProjects = [...new Set(assets.flatMap((asset) => asset.projects || []))].map(getProjectById).filter(Boolean).slice(0, 8);
+  const relatedHandoffs = sortAssetsByDate(getAllAssets().filter((asset) => asset.type === "handoff" && (key === "project-progress" || assets.some((item) => normalizeTags(item.tags).some((tag) => `${asset.title} ${asset.summary} ${asset.content}`.includes(tag)))))).slice(0, 4);
+  const typeCounts = assets.reduce((map, asset) => {
+    map[asset.type] = (map[asset.type] || 0) + 1;
+    return map;
+  }, {});
+  const knowledgePills = Object.entries(typeCounts).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([type, count]) => `<span>${escapeHTML(getTypeName(type))} ${count} 条</span>`).join("");
+  const todayCount = assets.filter((asset) => daysBetween(getAssetDate(asset)) === 0).length;
+  const weekCount = assets.filter((asset) => daysBetween(getAssetDate(asset)) >= 0 && daysBetween(getAssetDate(asset)) <= 7).length;
+
+  target.innerHTML = `<div class="workflow-summary-grid">
+      <div><span>最近更新</span><strong>${recent.length ? getAssetDate(recent[0]) : "暂无"}</strong><p>${recent.length ? recent[0].title : "还没有匹配记录"}</p></div>
+      <div><span>今日更新</span><strong>${todayCount}</strong><p>来自 ${escapeHTML(view.source)}</p></div>
+      <div><span>最近7天</span><strong>${weekCount}</strong><p>短期动态自动读取</p></div>
+    </div>
+    <section class="workflow-section"><div class="section-heading compact"><div><p class="eyebrow">Recent Updates</p><h2>最近更新</h2></div><a href="${escapeHTML(view.allUrl)}">查看全部 →</a></div><div class="workflow-update-list">${recent.length ? recent.map(workflowItemHTML).join("") : `<p class="search-empty">最近暂无更新。</p>`}</div></section>
+    <section class="workflow-section"><div class="section-heading compact"><div><p class="eyebrow">Last 7 Days</p><h2>最近7天更新</h2></div></div><div class="workflow-update-list compact-list">${weekAssets.length ? weekAssets.map(workflowItemHTML).join("") : `<p class="search-empty">最近 7 天没有匹配记录。</p>`}</div></section>
+    <section class="workflow-section workflow-connection-grid">
+      <div><h2>关联知识</h2><div class="workflow-pill-row">${knowledgePills || `<span>暂无关联知识</span>`}</div></div>
+      <div><h2>关联项目</h2><div class="workflow-link-row">${relatedProjects.length ? relatedProjects.map((project) => `<a href="${escapeHTML((project.tags || []).includes("子库") ? libraryUrl(project.id) : `${rootPrefix}${project.url}`)}">${escapeHTML(project.title)}</a>`).join("") : `<span>暂无关联项目</span>`}</div></div>
+      <div><h2>关联项目交接卡</h2><div class="workflow-link-row">${relatedHandoffs.length ? relatedHandoffs.map((asset) => `<a href="${assetUrl(asset.id)}">${escapeHTML(asset.title)}</a>`).join("") : `<a href="../handoffs.html">查看项目交接卡</a>`}</div></div>
+    </section>`;
+};
+
 const searchInput = document.querySelector("#dashboardSearch");
 const filterButtons = document.querySelectorAll("[data-filter]");
 const searchableCards = document.querySelectorAll(".searchable-card");
@@ -513,6 +634,8 @@ renderProjectAssets();
 renderLibraryPage();
 renderAssetDetail();
 renderDocumentLists();
+renderWorkflowBadges();
+renderWorkflowPage();
 setupManager();
 setupLibraryBadges();
 setupLocalSearch();
