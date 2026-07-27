@@ -83,33 +83,33 @@
           </div>
 
           <div class="workflow-card">
-            <div class="section-heading compact"><div><p class="eyebrow">Workflow</p><h2>成长系统工作流程</h2></div><p>点击每一步可以标记当前正在进行。</p></div>
-            <div class="workflow-steps" data-workflow>
-              <a class="active" href="workflow/data-record.html"><strong>1</strong><span>数据记录</span><p>记录日常数据和今日状态</p></a>
-              <a href="workflow/project-progress.html"><strong>2</strong><span>项目进度</span><p>更新里程碑完成情况</p></a>
-              <a href="workflow/experiment-validation.html"><strong>3</strong><span>实验验证</span><p>实践、观察、得出结论</p></a>
-              <a href="workflow/rule-summary.html"><strong>4</strong><span>规律总结</span><p>整理方法论和经验</p></a>
-              <a href="workflow/content-archive.html"><strong>5</strong><span>内容沉淀</span><p>白皮书、SOP、案例库</p></a>
-              <a href="workflow/public-output.html"><strong>6</strong><span>对外输出</span><p>更新网站和作品集</p></a>
+            <div class="section-heading compact"><div><p class="eyebrow">Workflow</p><h2>最近动态中心</h2></div><p>短期动态：最近几天成长系统发生了什么。</p></div>
+            <div class="workflow-steps workflow-dynamic-steps" data-workflow>
+              <a class="active" href="workflow/data-record.html"><strong>1</strong><span>数据记录</span><p>最近记录的数据与状态</p><em data-workflow-badge="data-record">读取中</em></a>
+              <a href="workflow/project-progress.html"><strong>2</strong><span>项目推进</span><p>最近推进的项目动作</p><em data-workflow-badge="project-progress">读取中</em></a>
+              <a href="workflow/experiment-validation.html"><strong>3</strong><span>实验验证</span><p>正在验证和刚完成的实验</p><em data-workflow-badge="experiment-validation">读取中</em></a>
+              <a href="workflow/rule-summary.html"><strong>4</strong><span>规律总结</span><p>最近新增规律和方法</p><em data-workflow-badge="rule-summary">读取中</em></a>
+              <a href="workflow/content-archive.html"><strong>5</strong><span>内容沉淀</span><p>SOP、案例、白皮书入库</p><em data-workflow-badge="content-archive">读取中</em></a>
+              <a href="workflow/public-output.html"><strong>6</strong><span>对外输出</span><p>网站、作品集和发布记录</p><em data-workflow-badge="public-output">读取中</em></a>
             </div>
             <div class="workflow-detail" data-workflow-output>
-              点击任意步骤进入详情页，查看这一环节具体记录什么、为什么重要、下一步如何沉淀。
+              Workflow 现在负责展示短期动态；项目页负责长期阶段，知识资产负责长期沉淀。
             </div>
           </div>
         </div>
 
         <aside class="side-panel">
-          <section class="info-card">
-            <h2>项目进度总览</h2>
-            <p>所有项目的进度一目了然。点击圆点可临时调整完成数，进度会自动重算。</p>
-            <div class="progress-list searchable-area">
-              <article class="progress-card searchable-card" data-category="项目" data-total="5" data-done="3"><a href="projects/video-benchmark.html"><strong>视频基准库</strong><span>阶段：数据录入阶段</span></a><div class="milestones" aria-label="视频基准库进度"></div><b class="progress-percent">60%</b><small>下一步：完成全部历史视频录入</small></article>
-              <article class="progress-card searchable-card" data-category="项目" data-total="5" data-done="1"><a href="projects/account-cold-start.html"><strong>账号冷启动与新人培训</strong><span>阶段：流程建立阶段</span></a><div class="milestones" aria-label="账号冷启动与新人培训进度"></div><b class="progress-percent">20%</b><small>下一步：梳理冷启动 SOP 与新人培训清单</small></article>
-              <article class="progress-card searchable-card" data-category="项目" data-total="4" data-done="2"><a href="projects/ai-workflow.html"><strong>AI 工作流</strong><span>阶段：工作流验证阶段</span></a><div class="milestones" aria-label="AI 工作流进度"></div><b class="progress-percent">50%</b><small>下一步：提升识别准确率到稳定</small></article>
-              <article class="progress-card searchable-card" data-category="项目" data-total="5" data-done="3"><a href="projects/new-media-growth.html"><strong>新媒体运营成长项目</strong><span>阶段：方法沉淀期</span></a><div class="milestones" aria-label="新媒体运营成长项目进度"></div><b class="progress-percent">60%</b><small>下一步：完成风控经验 SOP 整理</small></article>
-              <article class="progress-card searchable-card" data-category="项目" data-total="10" data-done="7"><a href="projects/ajian-growth-lab.html"><strong>阿简成长实验室网站</strong><span>阶段：内容迁移阶段</span></a><div class="milestones" aria-label="网站进度"></div><b class="progress-percent">70%</b><small>下一步：继续增强功能和仪表盘</small></article>
+          <section class="info-card stage-overview">
+            <h2>项目阶段总览</h2>
+            <p>长期项目不追求一次性 100%，重点看当前阶段、已完成里程碑和下一阶段方向。</p>
+            <div class="stage-project-list searchable-area">
+              <article class="stage-project-card searchable-card" data-category="项目"><a href="projects/ajian-growth-lab.html"><strong>Growth OS 网站</strong><span>当前阶段：内容迁移与动态页优化</span></a><dl><div><dt>已完成</dt><dd>后台、知识库、项目交接卡、白皮书、子库详情</dd></div><div><dt>当前进行</dt><dd>Workflow 动态化、项目阶段看板</dd></div><div><dt>下一阶段</dt><dd>知识图谱、AI 推荐、关系网络</dd></div></dl><small>辅助进度：70%</small></article>
+              <article class="stage-project-card searchable-card" data-category="项目"><a href="projects/new-media-growth.html"><strong>医美新媒体成长</strong><span>当前阶段：方法沉淀期</span></a><dl><div><dt>已完成</dt><dd>视频样本、引流 SOP、评论 SOP、风控经验</dd></div><div><dt>当前进行</dt><dd>账号冷启动、新人培训、运营案例归档</dd></div><div><dt>下一阶段</dt><dd>流程标准化、案例库扩展、转化路径验证</dd></div></dl><small>辅助进度：60%</small></article>
+              <article class="stage-project-card searchable-card" data-category="项目"><a href="projects/account-cold-start.html"><strong>账号冷启动与新人培训</strong><span>当前阶段：流程建立阶段</span></a><dl><div><dt>已完成</dt><dd>项目立项、基础方向、20% 阶段标记</dd></div><div><dt>当前进行</dt><dd>梳理冷启动 SOP 与新人培训清单</dd></div><div><dt>下一阶段</dt><dd>新人执行手册、训练任务、复盘模板</dd></div></dl><small>辅助进度：20%</small></article>
+              <article class="stage-project-card searchable-card" data-category="项目"><a href="projects/ai-workflow.html"><strong>AI 工作流</strong><span>当前阶段：工作流验证阶段</span></a><dl><div><dt>已完成</dt><dd>OCR、交接卡生成、白皮书生成、网站更新链路</dd></div><div><dt>当前进行</dt><dd>提高识别准确率和文件整理效率</dd></div><div><dt>下一阶段</dt><dd>半自动入库、批量归纳、跨库关联</dd></div></dl><small>辅助进度：50%</small></article>
+              <article class="stage-project-card searchable-card" data-category="项目"><a href="projects/video-benchmark.html"><strong>视频基准库</strong><span>当前阶段：规律分析阶段</span></a><dl><div><dt>已完成</dt><dd>70 条视频分析、前 10 条规律总结、样本结构沉淀</dd></div><div><dt>当前进行</dt><dd>补齐历史视频与规律验证</dd></div><div><dt>下一阶段</dt><dd>选题模型、标题模型、评论触发模型</dd></div></dl><small>辅助进度：60%</small></article>
             </div>
-            <div class="formula">进度 = 已完成里程碑数 ÷ 里程碑总数 × 100%</div>
+            <div class="formula">Stage 优先：当前阶段 → 已完成 → 当前进行 → 下一阶段。百分比只做辅助参考。</div>
           </section>
 
           <section class="info-card">
@@ -123,7 +123,7 @@
 
           <section class="note-grid">
             <button type="button" data-open-docs><h3>文档说明 <span>新</span></h3><p>网站使用说明、导航说明、方法论体系和更新规则。</p><strong>查看完整文档 →</strong></button>
-            <div><h3>如何更新进度？</h3><p>在项目交接卡里记录里程碑状态，系统面板按照完成数自动计算。</p></div>
+            <div><h3>如何更新阶段？</h3><p>在项目交接卡里记录当前阶段、已完成、当前进行和下一阶段，首页看板按阶段展示。</p></div>
           </section>
         </aside>
       </section>
