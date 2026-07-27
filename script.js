@@ -535,6 +535,145 @@ const searchInput = document.querySelector("#dashboardSearch");
 const filterButtons = document.querySelectorAll("[data-filter]");
 const searchableCards = document.querySelectorAll(".searchable-card");
 let activeFilter = "全部";
+
+const stageViews = {
+  "growth-os": { title: "Growth OS 网站", projectId: "growth-lab", currentStage: "内容迁移与动态页优化", progress: "70%", groups: {
+    done: { label: "已完成", summary: "已经搭好的基础模块和内容承载能力。这里先看完成过哪些模块，再进入对应库查看详情。", current: [
+      { title: "后台", desc: "内容管理入口已经能新增、导入和导出知识资产。", url: "manager.html", match: ["内容管理", "后台"] },
+      { title: "知识库", desc: "知识资产总库、子库和详情页已经形成基础结构。", url: "knowledge.html", match: ["知识资产", "知识库"] },
+      { title: "项目交接卡", desc: "每日进度、问题和下一步行动已经按卡片形式沉淀。", url: "handoffs.html", match: ["项目交接卡", "交接卡"] },
+      { title: "白皮书", desc: "阶段性总结已经独立成库，支持继续新增。", url: "whitepapers.html", match: ["白皮书", "阶段总结"] },
+      { title: "子库详情", desc: "每个子库按日期、标签、概括和完整内容展示。", url: "projects.html", match: ["子库", "详情"] }
+    ], previous: [
+      { title: "阿简成长实验室网站", desc: "最初的网站项目，承载 Growth OS 的公开展示。", url: "projects/ajian-growth-lab.html", match: ["Growth OS", "网站"] },
+      { title: "网站更新工作流", desc: "用 Codex 把交接卡、白皮书和知识资产发布到网站。", url: "library.html?id=site-update-workflow", match: ["网站更新", "Codex"] }
+    ] },
+    doing: { label: "当前进行", summary: "当前重点不是继续堆页面，而是让页面能读取数据库、能点进去、能追溯来源。", current: [
+      { title: "Workflow 动态化", desc: "把六个 Workflow 页面改成最近动态中心。", url: "workflow/project-progress.html", match: ["Workflow", "动态"] },
+      { title: "项目阶段看板", desc: "把长期项目用阶段、标签和库关联展示，而不是只看百分比。", url: "index.html#stage-overview", match: ["项目阶段", "阶段看板"] }
+    ], previous: [
+      { title: "后台", desc: "内容录入和导入能力为动态页面提供数据来源。", url: "manager.html", match: ["后台", "内容管理"] },
+      { title: "知识资产系统", desc: "动态页最终读取的是同一份知识资产数据。", url: "library.html?id=knowledge-system", match: ["知识资产系统", "数据结构"] }
+    ] },
+    next: { label: "下一阶段", summary: "下一步让知识之间产生关系，从单条记录走向知识图谱、推荐和关系网络。", current: [
+      { title: "知识图谱", desc: "把项目、标签、来源和内容互相连接。", url: "knowledge.html", match: ["知识图谱", "关系"] },
+      { title: "AI 推荐", desc: "让 AI 根据阶段和标签提示下一步该看什么。", url: "library.html?id=ai-knowledge-factory", match: ["AI推荐", "AI知识工厂"] },
+      { title: "关系网络", desc: "把项目、SOP、规律、案例和风险做成可追踪网络。", url: "library.html?id=knowledge-system", match: ["关系网络", "跨库关联"] }
+    ], previous: [
+      { title: "AI 知识工厂", desc: "未来推荐系统的知识生产基础。", url: "library.html?id=ai-knowledge-factory", match: ["AI知识工厂"] },
+      { title: "系统思维", desc: "把网站从页面集合升级成可维护系统。", url: "library.html?id=system-thinking", match: ["系统思维"] }
+    ] }
+  } },
+  "new-media": { title: "医美新媒体成长", projectId: "new-media-growth", currentStage: "方法沉淀期", progress: "60%", groups: {
+    done: { label: "已完成", summary: "已经沉淀出视频样本、引流路径、评论动作和风控经验。", current: [
+      { title: "视频样本", desc: "视频数据库与样本拆解，用来寻找内容规律。", url: "projects/video-benchmark.html", match: ["视频", "视频样本", "视频数据库"] },
+      { title: "引流 SOP", desc: "从关注、评论、回关、私信到加 V 的转化路径。", url: "library.html?id=lead-sop", match: ["引流SOP", "引流"] },
+      { title: "评论 SOP", desc: "评论引起注意、降低信任成本和等待回关。", url: "library.html?id=comment-sop", match: ["评论SOP", "评论"] },
+      { title: "风控经验", desc: "账号私信、关注频率、蓝 V 承接和异常账号隔离。", url: "library.html?id=operation-risk-library", match: ["风控", "风险"] }
+    ], previous: [
+      { title: "运营 SOP 库", desc: "已沉淀的运营动作会继续归入 SOP 库。", url: "library.html?id=operation-sop-library", match: ["运营SOP"] },
+      { title: "项目成果", desc: "引流、转化和执行结果会沉淀为项目成果。", url: "library.html?id=operation-results", match: ["项目成果", "运营案例"] }
+    ] },
+    doing: { label: "当前进行", summary: "当前重点是把账号从 0 到 1 和新人培训流程拆成可执行清单。", current: [
+      { title: "账号冷启动", desc: "账号定位、基础资料、互动测试和初始数据观察。", url: "projects/account-cold-start.html", match: ["账号冷启动"] },
+      { title: "新人培训", desc: "让新人按手册完成基础训练、执行和复盘。", url: "library.html?id=account-cold-start", match: ["新人培训"] },
+      { title: "运营案例归档", desc: "把引流和转化过程记录成可复盘案例。", url: "library.html?id=operation-results", match: ["运营案例", "项目成果"] }
+    ], previous: [
+      { title: "引流转化流程", desc: "已有转化路径为冷启动提供基础动作。", url: "library.html?id=lead-sop", match: ["引流转化"] },
+      { title: "评论触发模型", desc: "评论区反馈会影响冷启动内容方向。", url: "library.html?id=comment-sop", match: ["评论"] }
+    ] },
+    next: { label: "下一阶段", summary: "下一步把有效动作标准化，并持续用真实案例验证。", current: [
+      { title: "流程标准化", desc: "把有效动作变成稳定 SOP。", url: "library.html?id=operation-sop-library", match: ["流程标准化", "SOP"] },
+      { title: "案例库扩展", desc: "持续把成功、失败和异常情况录入案例库。", url: "library.html?id=operation-results", match: ["案例"] },
+      { title: "转化路径验证", desc: "用样本验证不同引流路径的有效性。", url: "library.html?id=lead-sop", match: ["转化路径"] }
+    ], previous: [
+      { title: "视频规律库", desc: "内容规律会反向影响引流和转化。", url: "library.html?id=video-rules-library", match: ["视频规律"] },
+      { title: "风险库", desc: "标准化之前先明确高风险动作。", url: "library.html?id=operation-risk-library", match: ["风险"] }
+    ] }
+  } },
+  "account-cold-start": { title: "账号冷启动与新人培训", projectId: "account-cold-start", currentStage: "流程建立阶段", progress: "20%", groups: {
+    done: { label: "已完成", summary: "已完成项目立项和最小阶段标记。", current: [
+      { title: "项目立项", desc: "冷启动与培训已作为独立项目进入阶段看板。", url: "projects/account-cold-start.html", match: ["账号冷启动", "项目立项"] },
+      { title: "基础方向", desc: "先做账号定位、资料搭建、互动和数据观察。", url: "library.html?id=account-cold-start", match: ["基础方向", "新人培训"] },
+      { title: "20% 阶段标记", desc: "当前项目处于流程建立早期，不用追求一次性完成。", url: "projects/account-cold-start.html", match: ["20%"] }
+    ], previous: [{ title: "医美新媒体成长", desc: "冷启动项目来自新媒体主线。", url: "projects/new-media-growth.html", match: ["医美新媒体"] }] },
+    doing: { label: "当前进行", summary: "正在把冷启动动作和新人训练拆成可执行清单。", current: [
+      { title: "冷启动 SOP", desc: "定位、资料、内容测试、评论互动和数据观察。", url: "library.html?id=account-cold-start", match: ["冷启动SOP"] },
+      { title: "新人培训清单", desc: "让新人知道每天做什么、怎么复盘、怎么避免风险。", url: "library.html?id=account-cold-start", match: ["新人培训"] }
+    ], previous: [{ title: "运营 SOP 库", desc: "培训清单要引用已有 SOP。", url: "library.html?id=operation-sop-library", match: ["运营SOP"] }] },
+    next: { label: "下一阶段", summary: "让新人按手册训练、执行、反馈和复盘。", current: [
+      { title: "新人执行手册", desc: "把培训内容变成可以直接执行的手册。", url: "library.html?id=account-cold-start", match: ["执行手册"] },
+      { title: "训练任务", desc: "按天拆任务，跟踪完成情况。", url: "library.html?id=account-cold-start", match: ["训练任务"] },
+      { title: "复盘模板", desc: "通过项目交接卡回收问题和下一步。", url: "handoffs.html", match: ["复盘", "项目交接卡"] }
+    ], previous: [{ title: "项目交接卡", desc: "每天的执行问题进入交接卡。", url: "handoffs.html", match: ["交接卡"] }] }
+  } },
+  "ai-workflow": { title: "AI 工作流", projectId: "ai-workflow", currentStage: "工作流验证阶段", progress: "50%", groups: {
+    done: { label: "已完成", summary: "已经验证过 AI 辅助识别、整理、生成和发布链路。", current: [
+      { title: "OCR", desc: "把图片、文档和截图转成可整理文本。", url: "library.html?id=ocr-workflow", match: ["OCR"] },
+      { title: "交接卡生成", desc: "把每日进度变成下一次对话起点。", url: "library.html?id=handoff-generator", match: ["交接卡生成"] },
+      { title: "白皮书生成", desc: "把阶段思考整理成成长白皮书。", url: "library.html?id=whitepaper-generator", match: ["白皮书生成"] },
+      { title: "网站更新链路", desc: "Codex 读取资料、更新页面并发布到 GitHub Pages。", url: "library.html?id=site-update-workflow", match: ["网站更新", "Codex"] }
+    ], previous: [{ title: "AI 知识工厂", desc: "AI 工作流的长期生产规则。", url: "library.html?id=ai-knowledge-factory", match: ["AI知识工厂"] }] },
+    doing: { label: "当前进行", summary: "当前重点是减少手动整理成本，让 AI 读取和归纳更稳定。", current: [
+      { title: "识别准确率", desc: "减少 OCR、文档读取和归纳时的遗漏。", url: "library.html?id=ocr-workflow", match: ["识别准确率", "OCR"] },
+      { title: "文件整理效率", desc: "批量读取文档，并按库归纳入站。", url: "library.html?id=ai-review-assets", match: ["文件整理", "AI复盘"] }
+    ], previous: [{ title: "去平台依赖", desc: "平台只是载体，数据结构才是资产。", url: "library.html?id=knowledge-system", match: ["去平台依赖"] }] },
+    next: { label: "下一阶段", summary: "把单次整理升级为可批量、可关联的半自动系统。", current: [
+      { title: "半自动入库", desc: "先人工确认，再批量写入内容数据。", url: "manager.html", match: ["半自动入库"] },
+      { title: "批量归纳", desc: "多文档读取后自动提炼 SOP、规律、案例。", url: "library.html?id=ai-knowledge-factory", match: ["批量归纳"] },
+      { title: "跨库关联", desc: "同一条内容可关联多个项目和子库。", url: "library.html?id=knowledge-system", match: ["跨库关联"] }
+    ], previous: [{ title: "系统思维", desc: "跨库关联的底层判断。", url: "library.html?id=system-thinking", match: ["系统思维"] }] }
+  } },
+  "video-benchmark": { title: "视频基准库", projectId: "video-benchmark", currentStage: "规律分析阶段", progress: "60%", groups: {
+    done: { label: "已完成", summary: "已有视频样本和第一批可复用规律。", current: [
+      { title: "70 条视频分析", desc: "视频数据库累计样本，用于观察内容表现。", url: "projects/video-benchmark.html", match: ["70", "视频分析"] },
+      { title: "前 10 条规律总结", desc: "初步提炼出标题、画面、评论和任务评价规律。", url: "library.html?id=video-rules-library", match: ["视频规律", "前10条"] },
+      { title: "样本结构沉淀", desc: "用统一字段记录样本，便于后续筛选。", url: "projects/video-benchmark.html", match: ["样本结构"] }
+    ], previous: [{ title: "医美新媒体成长", desc: "视频库服务于运营主线。", url: "projects/new-media-growth.html", match: ["医美新媒体"] }] },
+    doing: { label: "当前进行", summary: "继续补齐历史视频，并用后续样本验证已有判断。", current: [
+      { title: "历史视频", desc: "继续录入历史视频样本。", url: "projects/video-benchmark.html", match: ["历史视频"] },
+      { title: "规律验证", desc: "用新增样本验证已有视频规律。", url: "library.html?id=video-rules-library", match: ["规律验证"] }
+    ], previous: [{ title: "评论 SOP", desc: "视频评论反馈会反向修正评论 SOP。", url: "library.html?id=comment-sop", match: ["评论"] }] },
+    next: { label: "下一阶段", summary: "把视频样本转成可指导创作的模型。", current: [
+      { title: "选题模型", desc: "从样本中提炼可复用选题。", url: "library.html?id=video-rules-library", match: ["选题模型"] },
+      { title: "标题模型", desc: "总结能带来评论和停留的标题方式。", url: "library.html?id=video-rules-library", match: ["标题模型"] },
+      { title: "评论触发模型", desc: "找到更容易让用户表达需求的内容结构。", url: "library.html?id=comment-sop", match: ["评论触发"] }
+    ], previous: [{ title: "引流 SOP", desc: "视频模型最终要服务引流转化。", url: "library.html?id=lead-sop", match: ["引流"] }] }
+  } }
+};
+
+const stageUrl = (project, stage) => `${rootPrefix}stage.html?project=${encodeURIComponent(project)}&stage=${encodeURIComponent(stage)}`;
+const stageLabels = { done: "已完成", doing: "当前进行", next: "下一阶段" };
+const tagMatchesAsset = (asset, tag) => {
+  const text = `${asset.title || ""} ${asset.summary || ""} ${asset.content || ""} ${normalizeTags(asset.tags).join(" ")} ${(asset.projects || []).join(" ")}`;
+  return (tag.match || [tag.title]).some((keyword) => text.includes(keyword));
+};
+const stageTagCardHTML = (tag, kind) => {
+  const count = getAllAssets().filter((asset) => tagMatchesAsset(asset, tag)).length;
+  return `<a class="stage-tag-card ${kind}" href="${escapeHTML(tag.url)}" data-local-item data-tags="${escapeHTML([tag.title, ...(tag.match || [])].join(" "))}" data-summary="${escapeHTML(tag.desc)}"><span>${kind === "current" ? "当前标签" : "之前沉淀"}${count ? ` · ${count}条` : " · 待补充"}</span><strong>${escapeHTML(tag.title)}</strong><p>${escapeHTML(tag.desc)}</p><em>进入具体库 →</em></a>`;
+};
+const renderStagePage = () => {
+  const page = document.querySelector("[data-stage-page]");
+  const target = document.querySelector("[data-stage-detail]");
+  if (!page || !target) return;
+  const params = new URLSearchParams(location.search);
+  const projectKey = params.get("project") || "growth-os";
+  const stageKey = params.get("stage") || "doing";
+  const project = stageViews[projectKey] || stageViews["growth-os"];
+  const group = project.groups[stageKey] || project.groups.doing;
+  const title = document.querySelector("[data-stage-title]");
+  const lead = document.querySelector("[data-stage-lead]");
+  if (title) title.textContent = `${project.title} · ${group.label}`;
+  if (lead) lead.textContent = group.summary;
+  const allTags = [...(group.current || []), ...(group.previous || [])];
+  const relatedAssets = sortAssetsByDate(getAllAssets().filter((asset) => {
+    const projectMatch = [project.projectId, projectKey].some((id) => (asset.projects || []).includes(id));
+    return projectMatch || allTags.some((tag) => tagMatchesAsset(asset, tag));
+  })).slice(0, 6);
+  const stageLinks = Object.keys(project.groups).map((key) => `<a class="${key === stageKey ? "active" : ""}" href="${stageUrl(projectKey, key)}">${stageLabels[key] || project.groups[key].label}</a>`).join("");
+  target.innerHTML = `<section class="stage-meta-grid"><div><span>项目</span><strong>${escapeHTML(project.title)}</strong><p>长期项目入口</p></div><div><span>当前阶段</span><strong>${escapeHTML(project.currentStage)}</strong><p>阶段优先，不用一次性 100%</p></div><div><span>辅助进度</span><strong>${escapeHTML(project.progress)}</strong><p>只作为参考</p></div></section><nav class="stage-tab-row">${stageLinks}</nav><section class="workflow-section"><div class="section-heading"><div><p class="eyebrow">CURRENT TAGS</p><h2>当前阶段标签</h2></div><p>这些是这个阶段真正要看的标签，点击进入对应子库或详情页。</p></div><div class="stage-tag-grid">${(group.current || []).map((tag) => stageTagCardHTML(tag, "current")).join("")}</div></section><section class="workflow-section"><div class="section-heading"><div><p class="eyebrow">PAST / RELATED</p><h2>之前沉淀标签</h2></div><p>这里和当前阶段有关，但属于之前已经积累过的内容，方便区分新旧。</p></div><div class="stage-tag-grid">${(group.previous || []).map((tag) => stageTagCardHTML(tag, "previous")).join("") || `<p class="search-empty">暂无之前沉淀标签。</p>`}</div></section><section class="workflow-section"><div class="section-heading"><div><p class="eyebrow">CONNECTED ASSETS</p><h2>关联知识资产</h2></div><a href="knowledge.html">查看知识总库 →</a></div><div class="list stage-related-list">${relatedAssets.length ? relatedAssets.map(assetListItemHTML).join("") : `<p class="search-empty">暂时没有匹配到关联内容。</p>`}</div></section><section class="workflow-section stage-follow-links"><h2>继续查看</h2><div class="workflow-link-row"><a href="index.html#stage-overview">返回项目阶段总览</a><a href="projects.html">查看全部项目</a><a href="knowledge.html">查看知识资产</a></div></section>`;
+};
+
 const staticSearchItems = [
   { title: "医美新媒体成长", category: "项目", url: "projects/new-media-growth.html", desc: "视频数据库、引流SOP、评论SOP、风险库、新人培训、AI工作流和项目成果。" },
   { title: "AI工作流项目", category: "项目", url: "projects/ai-workflow.html", desc: "OCR工作流、视频数据库自动化、项目交接卡生成、白皮书生成和网站更新工作流。" },
@@ -636,6 +775,7 @@ renderAssetDetail();
 renderDocumentLists();
 renderWorkflowBadges();
 renderWorkflowPage();
+renderStagePage();
 setupManager();
 setupLibraryBadges();
 setupLocalSearch();
