@@ -1900,3 +1900,75 @@ body {
   .workflow-update-item { grid-template-columns: 1fr; }
   .workflow-mini-tags { justify-content: flex-start; }
 }
+
+/* Stage cards as connected project nodes */
+.stage-project-card .stage-title {
+  display: grid;
+  gap: 0.28rem;
+}
+.stage-groups {
+  display: grid;
+  gap: 0.65rem;
+}
+.stage-groups details {
+  border: 1px solid rgba(26, 116, 84, 0.1);
+  border-radius: 14px;
+  background: var(--surface-soft);
+  overflow: hidden;
+}
+.stage-groups summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding: 0.72rem 0.8rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 900;
+  list-style: none;
+}
+.stage-groups summary::-webkit-details-marker { display: none; }
+.stage-groups summary::after {
+  content: "+";
+  display: inline-grid;
+  place-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 999px;
+  background: rgba(47, 163, 107, 0.12);
+  color: var(--green);
+  font-weight: 900;
+}
+.stage-groups details[open] summary::after { content: "-"; }
+.stage-groups details p {
+  margin: 0;
+  padding: 0 0.8rem 0.65rem;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+.stage-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0 0.8rem 0.8rem;
+}
+.stage-tag-row a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.38rem 0.62rem;
+  border: 1px solid rgba(26, 116, 84, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+.stage-tag-row a:hover {
+  border-color: rgba(47, 163, 107, 0.46);
+  background: var(--green);
+  color: #fff;
+  transform: translateY(-1px);
+}
