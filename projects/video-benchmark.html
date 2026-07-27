@@ -1,9 +1,32 @@
-﻿<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>视频基准库 | 阿简成长实验室</title><link rel="stylesheet" href="../styles.css"/>    <script>
-      (function () {
-        var targetHost = "www.xn--tsta5434bba.top";
-        if (location.hostname !== targetHost || location.protocol !== "https:") {
-          location.replace("https://" + targetHost + location.pathname + location.search + location.hash);
-        }
-      })();
-    </script>
-  </head><body><header class="site-header"><a class="brand" href="../index.html"><span class="brand-mark">AJ</span>阿简成长实验室</a><nav class="nav"><a href="../index.html">首页</a><a href="../projects.html">我的项目</a><a href="../archive.html">成长档案</a><a href="../experiments.html">实验库</a><a href="../whitepapers.html">成长白皮书</a><a href="../handoffs.html">项目交接卡</a><a href="../contact.html">联系我</a></nav></header><main><article class="article"><div class="breadcrumb"><a href="../projects.html">返回我的项目</a></div><div class="article-shell"><p class="eyebrow">Project / Data Base</p><h1>视频基准库</h1><p>视频基准库用于收集和拆解视频样本，通过真实数据寻找内容表现规律。</p><h2>记录内容</h2><ul><li>视频样本数量、类型、发布时间和表现。</li><li>标题、封面、节奏、评论和转化线索。</li><li>可复用的内容结构和运营判断。</li></ul><h2>当前状态</h2><p>视频数据库已进入建立阶段，首页仪表盘暂记 20+ 样本。</p></div></article></main><footer class="footer"><p>© <span id="year"></span> 阿简成长实验室.</p><button class="top-button" type="button">↑</button></footer><script src="../script.js"></script></body></html>
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>视频基准库 | 阿简成长实验室</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <script>(function(){var targetHost="www.xn--tsta5434bba.top";if(location.hostname!==targetHost||location.protocol!=="https:"){location.replace("https://"+targetHost+location.pathname+location.search+location.hash);}})();</script>
+  </head>
+  <body>
+    <header class="site-header"><a class="brand" href="../index.html"><span class="brand-mark">AJ</span>阿简成长实验室</a><nav class="nav"><a href="../index.html">首页</a><a class="active" href="../projects.html">我的项目</a><a href="../archive.html">成长档案</a><a href="../experiments.html">实验库</a><a href="../whitepapers.html">成长白皮书</a><a href="../handoffs.html">项目交接卡</a><a href="../contact.html">联系我</a></nav></header>
+    <main>
+      <article class="article">
+        <div class="breadcrumb"><a href="../projects.html">返回我的项目</a></div>
+        <div class="article-shell">
+          <p class="eyebrow">Project / Data Base</p>
+          <h1>视频基准库</h1>
+          <p class="lead">视频基准库用于收集和拆解视频样本，通过真实数据寻找内容表现规律。当前已从邵红伟视频总表录入前 25 条样本。</p>
+          <h2>记录内容</h2>
+          <ul><li>视频样本数量、类型、发布时间和表现。</li><li>标题、封面、开头、评论、搜索词和转化线索。</li><li>可复用的内容结构和运营判断。</li><li>实验结果会同步进入视频规律库和知识总库。</li></ul>
+          <h2>查看方式</h2>
+          <p>公开视频卡片只显示主题、标签和简要表现；点击详情后，输入密码 520520 才显示播放、互动、流量来源、搜索词和需求明细。</p>
+          <h2>关联视频样本与规律</h2>
+          <div class="local-search" data-local-search data-scope="#videoAssets"><label>视频库搜索<input type="search" placeholder="搜索编号、部位、标签、搜索词或规律" /></label></div>
+          <div class="asset-list" id="videoAssets" data-project-assets="video-benchmark"></div>
+        </div>
+      </article>
+    </main>
+    <footer class="footer"><p>© <span id="year"></span> 阿简成长实验室.</p><button class="top-button" type="button">↑</button></footer>
+    <script src="../growth-data.js"></script><script src="../script.js"></script>
+  </body>
+</html>

@@ -166,6 +166,55 @@ const assetListItemHTML = (asset) => {
   </a>`;
 };
 
+const privateDetailsHTML = (asset) => {
+  if (!asset.privateDetails) return "";
+  const metrics = asset.privateDetails.metrics || {};
+  const traffic = asset.privateDetails.traffic || {};
+  const searchTerms = normalizeTags(asset.privateDetails.searchTerms || []);
+  const needs = normalizeTags(asset.privateDetails.needs || []);
+  const metricRows = Object.entries(metrics).map(([key, value]) => `<div><span>${escapeHTML(key)}</span><strong>${escapeHTML(value)}</strong></div>`).join("");
+  const trafficRows = Object.entries(traffic).map(([key, value]) => `<div><span>${escapeHTML(key)}</span><strong>${escapeHTML(value)}</strong></div>`).join("");
+  const searchList = searchTerms.map((item) => `<span>${escapeHTML(item)}</span>`).join("");
+  const needList = needs.map((item) => `<li>${escapeHTML(item)}</li>`).join("");
+  return `<section class="private-data" data-private-data>
+    <h2>隐藏数据</h2>
+    <p>这部分保存原始播放、互动、流量来源、搜索词和用户需求。输入密码后显示，方便公开页面保留判断，详细数据单独查看。</p>
+    <form class="password-panel" data-private-form>
+      <label>查看密码<input type="password" autocomplete="current-password" placeholder="输入密码" /></label>
+      <button type="submit">显示隐藏数据</button>
+      <small data-private-message></small>
+    </form>
+    <div class="private-data-body" data-private-body hidden>
+      <div class="private-grid">${metricRows}</div>
+      <h3>流量来源</h3>
+      <div class="private-grid compact">${trafficRows}</div>
+      <h3>搜索词</h3>
+      <div class="asset-tags">${searchList || "<span>暂无</span>"}</div>
+      <h3>用户需求</h3>
+      <ul>${needList || "<li>暂无</li>"}</ul>
+    </div>
+  </section>`;
+};
+
+const setupPrivateDataUnlock = (root = document) => {
+  root.querySelectorAll("[data-private-data]").forEach((section) => {
+    const form = section.querySelector("[data-private-form]");
+    const body = section.querySelector("[data-private-body]");
+    const message = section.querySelector("[data-private-message]");
+    if (!form || !body) return;
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const input = form.querySelector("input");
+      if (input?.value === "520520") {
+        body.hidden = false;
+        form.hidden = true;
+      } else if (message) {
+        message.textContent = "密码不对，隐藏数据暂不显示。";
+      }
+    });
+  });
+};
+
 const renderLibraryPage = () => {
   const target = document.querySelector("[data-library-list]");
   if (!target) return;
@@ -210,10 +259,12 @@ const renderAssetDetail = () => {
       <div class="asset-tags">${tags}</div>
       <h2>完整内容</h2>
       <p>${escapeHTML(asset.content || "").replace(/\n/g, "</p><p>")}</p>
+      ${privateDetailsHTML(asset)}
       <h2>来源与关联库</h2>
       <p class="source-links">${sourceLinks || "暂未关联"}</p>
       ${sourceFiles ? `<h2>原始文件</h2><ul class="source-file-list">${sourceFiles}</ul>` : ""}
     </div>`;
+  setupPrivateDataUnlock(target);
 };
 
 const renderDocumentLists = () => {
