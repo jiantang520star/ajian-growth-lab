@@ -437,7 +437,13 @@ const renderProjectAssets = () => {
 const renderLatestUpdates = () => {
   document.querySelectorAll("[data-latest-updates]").forEach((target) => {
     const limit = Number(target.dataset.latestUpdates || 8);
-    const assets = sortAssetsByUpdate(getAllAssets()).slice(0, limit);
+    const assets = sortAssetsByUpdate(getAllAssets()).sort((a, b) => {
+      const dateCompare = getAssetUpdateDate(b).localeCompare(getAssetUpdateDate(a));
+      if (dateCompare) return dateCompare;
+      if (a.type === "handoff" && b.type !== "handoff") return -1;
+      if (b.type === "handoff" && a.type !== "handoff") return 1;
+      return 0;
+    }).slice(0, limit);
     target.innerHTML = assets.length ? assets.map((asset) => {
       const sourceNames = (asset.projects || []).map(getProjectName).filter(Boolean).slice(0, 3).join(" / ");
       const scope = asset.sourceScope || (asset.id?.startsWith("video-data-shw-") ? "视频数据库主库" : "内容资产");
@@ -723,31 +729,35 @@ const stageViews = {
       { title: "系统思维", desc: "把网站从页面集合升级成可维护系统。", url: "library.html?id=system-thinking", match: ["系统思维"] }
     ] }
   } },
-  "new-media": { title: "医美新媒体成长", projectId: "new-media-growth", currentStage: "方法沉淀期", progress: "60%", groups: {
-    done: { label: "已完成", summary: "已经沉淀出视频样本、引流路径、评论动作和风控经验。", current: [
-      { title: "视频样本", desc: "视频数据库与样本拆解，用来寻找内容规律。", url: "projects/video-benchmark.html", match: ["视频", "视频样本", "视频数据库"] },
+  "new-media": { title: "医美新媒体成长", projectId: "new-media-growth", currentStage: "方法沉淀与子库扩展期", progress: "70%", groups: {
+    done: { label: "已完成", summary: "视频样本、引流路径、评论动作、风控经验和 AI 交接卡机制已经形成基础沉淀。", current: [
+      { title: "视频样本", desc: "视频数据库与样本拆解，用来寻找内容规律。", url: "projects/video-benchmark.html", match: ["视频", "视频样本", "视频数据库", "77"] },
       { title: "引流 SOP", desc: "从关注、评论、回关、私信到加 V 的转化路径。", url: "library.html?id=lead-sop", match: ["引流SOP", "引流"] },
       { title: "评论 SOP", desc: "评论引起注意、降低信任成本和等待回关。", url: "library.html?id=comment-sop", match: ["评论SOP", "评论"] },
-      { title: "风控经验", desc: "账号私信、关注频率、蓝 V 承接和异常账号隔离。", url: "library.html?id=operation-risk-library", match: ["风控", "风险"] }
+      { title: "风控经验", desc: "账号私信、关注频率、蓝 V 承接和异常账号隔离。", url: "library.html?id=operation-risk-library", match: ["风控", "风险"] },
+      { title: "AI交接卡机制", desc: "把每日复盘变成下一次 AI 协作的起点。", url: "library.html?id=handoff-generator", match: ["交接卡", "AI上下文接力"] }
     ], previous: [
       { title: "运营 SOP 库", desc: "已沉淀的运营动作会继续归入 SOP 库。", url: "library.html?id=operation-sop-library", match: ["运营SOP"] },
       { title: "项目成果", desc: "引流、转化和执行结果会沉淀为项目成果。", url: "library.html?id=operation-results", match: ["项目成果", "运营案例"] }
     ] },
-    doing: { label: "当前进行", summary: "当前重点是把账号从 0 到 1 和新人培训流程拆成可执行清单。", current: [
-      { title: "账号冷启动", desc: "账号定位、基础资料、互动测试和初始数据观察。", url: "projects/account-cold-start.html", match: ["账号冷启动"] },
-      { title: "新人培训", desc: "让新人按手册完成基础训练、执行和复盘。", url: "library.html?id=account-cold-start", match: ["新人培训"] },
-      { title: "运营案例归档", desc: "把引流和转化过程记录成可复盘案例。", url: "library.html?id=operation-results", match: ["运营案例", "项目成果"] }
+    doing: { label: "当前进行", summary: "当前重点是把飞书最终文档拆成运营子库，并让这些子库进入每日更新、Workflow 和阶段看板。", current: [
+      { title: "矩阵账号库", desc: "主账号、矩阵号、助理号和活跃账号的分工。", url: "library.html?id=matrix-account-library", match: ["矩阵账号", "矩阵号", "助理号"] },
+      { title: "账号规律库", desc: "发布时间、咨询高峰、限流判断和账号切换逻辑。", url: "library.html?id=account-rule-library", match: ["账号规律", "发布时间", "咨询高峰"] },
+      { title: "视频脚本拆解", desc: "开头钩子、一问一答、案例对比和用户顾虑模型。", url: "library.html?id=content-script-library", match: ["视频脚本", "一问一答", "开头钩子"] },
+      { title: "视频剪辑SOP", desc: "医生素材、画质、音频、字幕和剪辑参数。", url: "library.html?id=video-editing-sop", match: ["视频剪辑", "医生素材", "字幕", "音频"] },
+      { title: "人物参数库", desc: "医生画面、美颜美体、色彩和 HSL 参数沉淀。", url: "library.html?id=doctor-persona-params", match: ["人物参数", "HSL", "邵红伟"] }
     ], previous: [
-      { title: "引流转化流程", desc: "已有转化路径为冷启动提供基础动作。", url: "library.html?id=lead-sop", match: ["引流转化"] },
-      { title: "评论触发模型", desc: "评论区反馈会影响冷启动内容方向。", url: "library.html?id=comment-sop", match: ["评论"] }
+      { title: "飞书最终文档入库", desc: "这次批量录入的每日更新总记录。", url: "asset.html?id=handoff-2026-07-28-feishu-final-docs-import", match: ["飞书文档", "批量入库", "每日更新"] },
+      { title: "运营 SOP 库", desc: "子库内容会继续回流到运营 SOP。", url: "library.html?id=operation-sop-library", match: ["运营SOP"] }
     ] },
-    next: { label: "下一阶段", summary: "下一步把有效动作标准化，并持续用真实案例验证。", current: [
+    next: { label: "下一阶段", summary: "下一步把子库内容转成新人培训和执行检查表，并继续用案例验证。", current: [
+      { title: "新人培训手册", desc: "把已沉淀 SOP 转成新人可执行清单。", url: "library.html?id=account-cold-start", match: ["新人培训", "手册"] },
       { title: "流程标准化", desc: "把有效动作变成稳定 SOP。", url: "library.html?id=operation-sop-library", match: ["流程标准化", "SOP"] },
-      { title: "案例库扩展", desc: "持续把成功、失败和异常情况录入案例库。", url: "library.html?id=operation-results", match: ["案例"] },
-      { title: "转化路径验证", desc: "用样本验证不同引流路径的有效性。", url: "library.html?id=lead-sop", match: ["转化路径"] }
+      { title: "案例验证", desc: "用真实案例验证引流、评论和账号动作。", url: "library.html?id=operation-results", match: ["案例", "验证"] },
+      { title: "风险预警清单", desc: "标准化之前先明确高风险动作。", url: "library.html?id=operation-risk-library", match: ["风险", "预警"] }
     ], previous: [
       { title: "视频规律库", desc: "内容规律会反向影响引流和转化。", url: "library.html?id=video-rules-library", match: ["视频规律"] },
-      { title: "风险库", desc: "标准化之前先明确高风险动作。", url: "library.html?id=operation-risk-library", match: ["风险"] }
+      { title: "引流 SOP", desc: "视频模型最终要服务引流转化。", url: "library.html?id=lead-sop", match: ["引流"] }
     ] }
   } },
   "account-cold-start": { title: "账号冷启动与新人培训", projectId: "account-cold-start", currentStage: "流程建立阶段", progress: "20%", groups: {
@@ -783,9 +793,9 @@ const stageViews = {
       { title: "跨库关联", desc: "同一条内容可关联多个项目和子库。", url: "library.html?id=knowledge-system", match: ["跨库关联"] }
     ], previous: [{ title: "系统思维", desc: "跨库关联的底层判断。", url: "library.html?id=system-thinking", match: ["系统思维"] }] }
   } },
-  "video-benchmark": { title: "视频基准库", projectId: "video-benchmark", currentStage: "规律分析阶段", progress: "60%", groups: {
-    done: { label: "已完成", summary: "已有视频样本和第一批可复用规律。", current: [
-      { title: "70 条视频分析", desc: "视频数据库累计样本，用于观察内容表现。", url: "projects/video-benchmark.html", match: ["70", "视频分析"] },
+  "video-benchmark": { title: "视频基准库", projectId: "video-benchmark", currentStage: "完整样本入库与规律验证阶段", progress: "70%", groups: {
+    done: { label: "已完成", summary: "已有 77 条视频样本和第一批可复用规律。", current: [
+      { title: "77 条视频分析", desc: "视频数据库累计 77 条样本，用于观察内容表现。", url: "projects/video-benchmark.html", match: ["77", "视频分析", "完整表格"] },
       { title: "前 10 条规律总结", desc: "初步提炼出标题、画面、评论和任务评价规律。", url: "library.html?id=video-rules-library", match: ["视频规律", "前10条"] },
       { title: "样本结构沉淀", desc: "用统一字段记录样本，便于后续筛选。", url: "projects/video-benchmark.html", match: ["样本结构"] }
     ], previous: [{ title: "医美新媒体成长", desc: "视频库服务于运营主线。", url: "projects/new-media-growth.html", match: ["医美新媒体"] }] },
