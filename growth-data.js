@@ -46,12 +46,13 @@ window.GROWTH_OS_DATA = {
       "id": "new-media-growth",
       "title": "医美新媒体成长",
       "url": "projects/new-media-growth.html",
-      "status": "进行中",
+      "status": "方法沉淀与子库扩展期",
       "tags": [
         "主线项目",
         "运营",
         "转化"
-      ]
+      ],
+      "summary": "医美新媒体成长已经从单一运营经验，扩展为视频数据库、引流SOP、评论SOP、风险库、矩阵账号库、账号规律库、视频剪辑SOP、人物参数库、视频脚本拆解库和项目成果的运营知识系统。"
     },
     {
       "id": "ai-workflow",
@@ -101,12 +102,13 @@ window.GROWTH_OS_DATA = {
       "id": "video-benchmark",
       "title": "视频数据库",
       "url": "projects/video-benchmark.html",
-      "status": "进行中",
+      "status": "77条样本入库与规律验证阶段",
       "tags": [
         "子库",
         "医美新媒体成长",
         "数据"
-      ]
+      ],
+      "summary": "视频基准库已完成 77 条样本录入，后续重点是从样本中提炼选题、标题、评论触发和转化规律。"
     },
     {
       "id": "lead-sop",
@@ -244,7 +246,7 @@ window.GROWTH_OS_DATA = {
       "id": "knowledge-system",
       "title": "知识资产系统",
       "url": "library.html?id=knowledge-system",
-      "status": "已更新",
+      "status": "跨库关联更新",
       "tags": [
         "子库",
         "网站项目",
@@ -9676,6 +9678,54 @@ window.GROWTH_OS_DATA = {
         "C:\\Users\\tese\\Desktop\\飞书文档最后的版本\\问题总结..docx"
       ],
       "sourceScope": "飞书文档最后版本"
+    },
+    {
+      "id": "handoff-2026-07-28-feishu-final-docs-import",
+      "title": "项目交接卡_2026-07-28：飞书最终文档入库与关联更新",
+      "type": "handoff",
+      "date": "2026-07-28",
+      "summary": "完成 12 份飞书最终文档读取，拆分 13 条知识资产，新增 5 个新媒体运营子库，并同步更新每日动态、阶段看板、Workflow 动态和关联库入口。",
+      "content": "【今日完成】\n1. 读取“飞书文档最后的版本”文件夹内 12 份 Word 文档。\n2. 拆分并录入 13 条知识资产，不只是保存文件，而是提炼 SOP、风险、规律、案例和 AI 知识工厂方法。\n3. 新增矩阵账号库、账号规律库、视频剪辑SOP、人物参数库、视频脚本拆解库。\n4. 将内容同步关联到引流SOP、评论SOP、风险库、运营SOP库、项目成果、视频规律库、AI知识工厂、风险判断和失败复盘。\n5. 更新我的项目页、医美新媒体成长项目页、全站搜索、首页最新动态、Workflow 动态中心和项目阶段看板，避免数据只藏在知识总库。\n\n【今日关键结论】\nGrowth OS 的更新不能只做单点入库。每次录入都必须同时完成：每日更新记录、所属子库、项目阶段、Workflow 动态、知识资产总库和相关项目的互联。\n\n【本次新增子库】\n- 矩阵账号库：主账号、矩阵号、助理号、活跃账号分工。\n- 账号规律库：发布时间、咨询高峰、限流判断和账号转换逻辑。\n- 视频剪辑SOP：医生素材、画质、音频、字幕和剪辑参数。\n- 人物参数库：邵红伟医生画面、美颜美体、色彩和 HSL 参数。\n- 视频脚本拆解库：开头钩子、一问一答、案例对比和用户顾虑模型。\n\n【关联更新原则】\n新增内容先进入对应子库，再同步出现在知识资产总库、项目阶段看板、Workflow 六个动态页和首页最新动态。项目阶段只有在项目状态发生变化时更新，普通库数据更新只标记为库更新。\n\n【AI上下文接力】\n以后批量导入文档时，不能只新增资产，还要同步生成一条项目交接卡式总更新，并检查首页最新动态、Workflow 六个动态板块、项目阶段总览和子库入口是否一起更新。",
+      "projects": [
+        "new-media-growth",
+        "lead-sop",
+        "comment-sop",
+        "operation-risk-library",
+        "operation-sop-library",
+        "operation-results",
+        "matrix-account-library",
+        "account-rule-library",
+        "video-editing-sop",
+        "doctor-persona-params",
+        "content-script-library",
+        "video-benchmark",
+        "video-rules-library",
+        "ai-knowledge-factory",
+        "handoff-generator",
+        "knowledge-system",
+        "risk-judgement",
+        "failure-review",
+        "growth-lab",
+        "site-update-workflow"
+      ],
+      "tags": [
+        "项目交接卡",
+        "每日更新",
+        "飞书文档",
+        "批量入库",
+        "新媒体运营",
+        "阶段看板",
+        "跨库关联",
+        "Workflow动态",
+        "AI上下文接力"
+      ],
+      "status": "最新更新",
+      "createdAt": "2026-07-28",
+      "updatedAt": "2026-07-28",
+      "sourceFiles": [
+        "C:\\Users\\tese\\Desktop\\飞书文档最后的版本"
+      ],
+      "sourceScope": "飞书最终文档批量入库总更新"
     }
   ]
 };
