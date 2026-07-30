@@ -509,6 +509,32 @@ window.GROWTH_OS_DATA = {
         "系统优化"
       ],
       "summary": "链路库当前唯一子类，用来记录新媒体运营里从满足需求、产生价值、触发行为到获得推荐的完整链路。"
+    },
+    {
+      "id": "candidate-rules-library",
+      "title": "候选规律库",
+      "url": "library.html?id=candidate-rules-library",
+      "status": "内部验证",
+      "tags": [
+        "子库",
+        "规律",
+        "实验验证",
+        "链路验证"
+      ],
+      "summary": "保存从链路和实验中提炼出来、还没有长期验证的候选规律。"
+    },
+    {
+      "id": "verified-rules-library",
+      "title": "已验证规律库",
+      "url": "library.html?id=verified-rules-library",
+      "status": "长期沉淀",
+      "tags": [
+        "子库",
+        "规律",
+        "长期有效",
+        "方法沉淀"
+      ],
+      "summary": "保存经过多次实验和长期数据验证后仍然有效的规律。"
     }
   ],
   "assets": [
@@ -9891,7 +9917,10 @@ window.GROWTH_OS_DATA = {
         "系统优化",
         "满足需求",
         "触发行为",
-        "获得推荐"
+        "获得推荐",
+        "链路验证",
+        "实验验证",
+        "候选规律"
       ],
       "status": "已收录",
       "createdAt": "2026-07-30",
@@ -9900,14 +9929,57 @@ window.GROWTH_OS_DATA = {
         "用户补充：新媒体运营链路库完整结构"
       ],
       "sourceScope": "链路库 / 新媒体运营链路库",
-      "derived": true
+      "derived": true,
+      "relations": {
+        "role": "chain",
+        "nodes": [
+          {
+            "name": "用户需求",
+            "meaning": "用户想要结果、被封面激活、脑补未来自己，并且看懂后产生想要。",
+            "experiments": [
+              "experiment-cover-first-three-seconds-2026-07-30"
+            ],
+            "candidateRules": [
+              "candidate-rule-demand-first-three-seconds-2026-07-30"
+            ],
+            "verifiedRules": []
+          },
+          {
+            "name": "内容表达",
+            "meaning": "一眼理解、用户语言、具体表达和信息一致。",
+            "experiments": [],
+            "candidateRules": [],
+            "verifiedRules": []
+          },
+          {
+            "name": "平台推荐",
+            "meaning": "用户互动、推荐扩大和播放增加。",
+            "experiments": [
+              "experiment-cover-first-three-seconds-2026-07-30"
+            ],
+            "candidateRules": [
+              "candidate-rule-demand-first-three-seconds-2026-07-30"
+            ],
+            "verifiedRules": []
+          },
+          {
+            "name": "系统优化",
+            "meaning": "持续优化链路、优化系统并追求边际收益。",
+            "experiments": [],
+            "candidateRules": [],
+            "verifiedRules": []
+          }
+        ],
+        "evidenceLevel": "验证中",
+        "nextStep": "先围绕用户需求和平台推荐做实验，再判断哪些结论能进入规律库。"
+      }
     },
     {
       "id": "platform-recommendation-mechanism-2026-07-30",
       "title": "平台推荐机制",
       "type": "rule",
       "date": "2026-07-30",
-      "summary": "平台推荐不是凭空发生的，而是内容先满足需求、产生价值、触发用户行为，最后获得系统推荐。",
+      "summary": "平台推荐不是凭空发生的，而是内容先满足需求、产生价值、触发用户行为，最后获得系统推荐；当前已连接到封面与前三秒实验。",
       "content": "平台推荐机制\n\n满足需求\n↓\n产生价值\n↓\n触发行为\n↓\n获得推荐\n\n理解：平台推荐的前提不是单纯发布内容，而是内容先让用户感觉被满足、产生价值感，再触发点赞、评论、停留、转发、私信等行为。平台识别到这些行为后，才更有可能继续扩大推荐。",
       "projects": [
         "link-library",
@@ -9919,7 +9991,9 @@ window.GROWTH_OS_DATA = {
         "video-benchmark",
         "lead-sop",
         "comment-sop",
-        "operation-results"
+        "operation-results",
+        "candidate-rules-library",
+        "verified-rules-library"
       ],
       "tags": [
         "链路库",
@@ -9930,7 +10004,10 @@ window.GROWTH_OS_DATA = {
         "触发行为",
         "获得推荐",
         "内容价值",
-        "用户行为"
+        "用户行为",
+        "链路验证",
+        "实验验证",
+        "候选规律"
       ],
       "status": "已收录",
       "createdAt": "2026-07-30",
@@ -9939,6 +10016,197 @@ window.GROWTH_OS_DATA = {
         "用户补充：平台推荐机制"
       ],
       "sourceScope": "链路库 / 新媒体运营链路库",
+      "derived": true,
+      "relations": {
+        "role": "chain",
+        "nodes": [
+          {
+            "name": "满足需求",
+            "meaning": "让用户一眼看懂这条内容和自己有关，并看到结果感。",
+            "experiments": [
+              "experiment-cover-first-three-seconds-2026-07-30"
+            ],
+            "candidateRules": [
+              "candidate-rule-demand-first-three-seconds-2026-07-30"
+            ],
+            "verifiedRules": []
+          },
+          {
+            "name": "产生价值",
+            "meaning": "内容让用户觉得有用、有希望、有参考价值。",
+            "experiments": [],
+            "candidateRules": [],
+            "verifiedRules": []
+          },
+          {
+            "name": "触发行为",
+            "meaning": "用户产生停留、点赞、评论、收藏、私信等行为。",
+            "experiments": [
+              "experiment-cover-first-three-seconds-2026-07-30"
+            ],
+            "candidateRules": [
+              "candidate-rule-demand-first-three-seconds-2026-07-30"
+            ],
+            "verifiedRules": []
+          },
+          {
+            "name": "获得推荐",
+            "meaning": "平台识别互动和内容价值后，继续扩大推荐。",
+            "experiments": [
+              "experiment-cover-first-three-seconds-2026-07-30"
+            ],
+            "candidateRules": [
+              "candidate-rule-demand-first-three-seconds-2026-07-30"
+            ],
+            "verifiedRules": []
+          }
+        ],
+        "evidenceLevel": "验证中",
+        "nextStep": "先验证“满足需求”节点，再继续测试产生价值、触发行为和获得推荐之间的关系。"
+      }
+    },
+    {
+      "id": "experiment-cover-first-three-seconds-2026-07-30",
+      "title": "实验：封面与前三秒是否能激活需求",
+      "type": "experiment",
+      "date": "2026-07-30",
+      "summary": "验证“满足需求”这个链路节点：优化封面、标题和前三秒表达，看是否提升停留、互动和推荐。",
+      "content": "实验目标\n验证平台推荐机制里的“满足需求”节点。\n\n实验动作\n1. 优化封面，让用户一眼知道结果。\n2. 优化开头前三秒，直接呈现用户关心的变化。\n3. 优化标题表达，让用户能看懂并产生想要的感觉。\n\n观察指标\n停留、完播、评论、点赞、私信、播放扩大、推荐变化。\n\n当前状态\n验证中。先作为实验记录保存，后续根据多次数据判断是否进入候选规律或已验证规律。",
+      "projects": [
+        "experiment-library",
+        "new-media-operation-link-library",
+        "link-library",
+        "new-media-growth",
+        "video-benchmark",
+        "video-rules-library",
+        "comment-sop",
+        "lead-sop"
+      ],
+      "tags": [
+        "实验库",
+        "链路验证",
+        "满足需求",
+        "封面",
+        "前三秒",
+        "用户互动",
+        "平台推荐",
+        "推荐机制"
+      ],
+      "status": "验证中",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "sourceFiles": [
+        "用户补充：链路-实验-规律闭环"
+      ],
+      "sourceScope": "实验库 / 新媒体运营链路库",
+      "derived": true,
+      "relations": {
+        "role": "experiment",
+        "verifies": [
+          {
+            "assetId": "platform-recommendation-mechanism-2026-07-30",
+            "node": "满足需求"
+          },
+          {
+            "assetId": "new-media-operation-link-v01-2026-07-30",
+            "node": "用户需求 / 满足需求"
+          }
+        ],
+        "metrics": [
+          "停留",
+          "完播",
+          "评论",
+          "点赞",
+          "私信",
+          "播放扩大",
+          "推荐变化"
+        ],
+        "evidenceLevel": "验证中",
+        "nextStep": "持续记录不同封面、标题、前三秒表达的数据变化。"
+      }
+    },
+    {
+      "id": "candidate-rule-demand-first-three-seconds-2026-07-30",
+      "title": "候选规律：前三秒先满足需求，才更容易触发互动",
+      "type": "rule",
+      "date": "2026-07-30",
+      "summary": "如果前三秒能让用户快速看到结果和价值，更容易带来停留、评论、私信和后续推荐；当前先作为候选规律，等待更多实验验证。",
+      "content": "候选规律\n前三秒不是单纯吸引注意力，而是要让用户快速看懂：这条内容和自己有什么关系、能带来什么结果。\n\n对应链路\n满足需求 → 产生价值 → 触发行为 → 获得推荐\n\n当前判断\n如果封面和前三秒能够激活用户需求，用户更可能继续看、评论、点赞或私信。平台识别到这些行为后，推荐扩大概率会上升。\n\n状态\n候选规律。还需要用多次视频样本和运营实验继续验证，不能直接当成长期规律。",
+      "projects": [
+        "candidate-rules-library",
+        "new-media-operation-link-library",
+        "link-library",
+        "experiment-library",
+        "video-rules-library",
+        "new-media-growth",
+        "video-benchmark"
+      ],
+      "tags": [
+        "候选规律",
+        "前三秒",
+        "满足需求",
+        "用户互动",
+        "平台推荐",
+        "链路验证",
+        "视频规律"
+      ],
+      "status": "候选规律",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "sourceFiles": [
+        "用户补充：链路-实验-规律闭环"
+      ],
+      "sourceScope": "候选规律库 / 新媒体运营链路库",
+      "derived": true,
+      "relations": {
+        "role": "candidate-rule",
+        "derivedFrom": [
+          "experiment-cover-first-three-seconds-2026-07-30"
+        ],
+        "supports": [
+          "platform-recommendation-mechanism-2026-07-30"
+        ],
+        "linkedNodes": [
+          "满足需求",
+          "产生价值",
+          "触发行为",
+          "获得推荐"
+        ],
+        "evidenceLevel": "候选",
+        "nextStep": "继续用新视频样本和运营数据验证是否长期有效。"
+      }
+    },
+    {
+      "id": "handoff-2026-07-30-chain-experiment-rule-loop",
+      "title": "项目更新：链路-实验-规律闭环上线",
+      "type": "handoff",
+      "date": "2026-07-30",
+      "summary": "把链路库、实验库和规律库连接起来：链路提出假设，实验验证节点，长期有效后进入规律库。",
+      "content": "今日更新\n1. 链路库不再只是存一条机制，而是能连接实验和规律。\n2. 平台推荐机制新增关系：满足需求 → 关联封面与前三秒实验。\n3. 实验库新增“封面与前三秒是否能激活需求”实验。\n4. 候选规律库新增“前三秒先满足需求，才更容易触发互动”。\n\n当前规则\n链路库负责提出机制假设。\n实验库负责验证某一个链路节点。\n候选规律库保存还没长期验证的判断。\n已验证规律库只保存长期多次成立的结论。\n\n下一步\n继续测试“产生价值”“触发行为”“获得推荐”这些节点，逐步把有效结论沉淀到规律库。",
+      "projects": [
+        "growth-lab",
+        "link-library",
+        "new-media-operation-link-library",
+        "experiment-library",
+        "candidate-rules-library",
+        "verified-rules-library",
+        "new-media-growth"
+      ],
+      "tags": [
+        "项目更新",
+        "链路库",
+        "实验库",
+        "规律库",
+        "关系闭环",
+        "Growth OS"
+      ],
+      "status": "已完成",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "sourceFiles": [
+        "用户补充：链路-实验-规律闭环"
+      ],
+      "sourceScope": "项目交接卡 / 链路库 / 实验库 / 规律库",
       "derived": true
     }
   ]
