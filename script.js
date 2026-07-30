@@ -715,7 +715,7 @@ const stageViews = {
     ] },
     doing: { label: "当前进行", summary: "当前重点不是改首页框架，而是让链路库把数据、规律、实验和方法论串起来。", current: [
       { title: "Workflow 动态化", desc: "把六个 Workflow 页面改成最近动态中心。", url: "workflow/project-progress.html", match: ["Workflow", "动态"] },
-      { title: "链路库", desc: "解释事情为什么发生，连接数据、候选规律、实验验证和方法论。", url: "library.html?id=link-library", match: ["链路库", "机制", "候选规律"] },
+      { title: "链路库", desc: "解释事情为什么发生，连接数据、候选规律、实验验证和方法论。", url: "projects/link-library.html", match: ["链路库", "机制", "候选规律"] },
       { title: "项目阶段看板", desc: "把长期项目用阶段、标签和库关联展示，而不是只看百分比。", url: "index.html#stage-overview", match: ["项目阶段", "阶段看板"] }
     ], previous: [
       { title: "后台", desc: "内容录入和导入能力为动态页面提供数据来源。", url: "manager.html", match: ["后台", "内容管理"] },
@@ -855,7 +855,7 @@ const staticSearchItems = [
   { title: "人生规律库", category: "项目", url: "projects/life-rules.html", desc: "生命第一，有生命才有其他东西。健康和安全是成长前提。" },
   { title: "认知库", category: "项目", url: "projects/cognition-library.html", desc: "沉淀重复工作、系统思维、岗位价值和长期能力相关认知。" },
   { title: "视频数据库", category: "子库", url: "projects/video-benchmark.html", desc: "视频样本、内容数据和规律拆解。" },
-  { title: "链路库", category: "子库", url: "library.html?id=link-library", desc: "解释事情为什么发生，连接数据、机制、候选规律、实验验证和方法论。" },
+  { title: "链路库", category: "项目", url: "projects/link-library.html", desc: "和认知库同级的核心大库，拆解用户需求、内容表达、平台推荐和系统优化链路。" },
   { title: "候选规律库", category: "子库", url: "library.html?id=candidate-rules-library", desc: "从链路分析中提出可能成立的规律，等待实验验证。" },
   { title: "已验证规律库", category: "子库", url: "library.html?id=verified-rules-library", desc: "经过多轮实验验证后沉淀的稳定规律。" },
   { title: "方法论库", category: "子库", url: "library.html?id=methodology-library", desc: "把规律转化为可执行的创作、运营和成长方法。" },
