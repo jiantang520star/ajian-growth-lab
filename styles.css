@@ -2023,6 +2023,97 @@ body {
   font-weight: 800;
 }
 
+.relation-panel {
+  margin: 34px 0;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(234, 250, 241, 0.92), rgba(255, 255, 255, 0.96));
+}
+
+.relation-node-list {
+  display: grid;
+  gap: 16px;
+}
+
+.relation-node {
+  display: grid;
+  gap: 18px;
+  padding: 20px;
+  border: 1px solid rgba(23, 119, 78, 0.16);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.relation-node > div:first-child span,
+.relation-list h4,
+.relation-next strong {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.relation-node h3 {
+  margin: 6px 0 8px;
+  font-size: 1.55rem;
+}
+
+.relation-node p,
+.relation-next p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.relation-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.relation-list {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  min-width: 0;
+}
+
+.relation-list.wide {
+  margin-top: 16px;
+}
+
+.relation-list a {
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--ink);
+}
+
+.relation-list a:hover {
+  border-color: rgba(38, 166, 111, 0.4);
+  box-shadow: 0 12px 28px rgba(54, 93, 80, 0.12);
+  transform: translateY(-1px);
+}
+
+.relation-list small,
+.relation-empty {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.relation-tags {
+  margin-top: 8px;
+}
+
+.relation-next {
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.76);
+}
+
 @media (max-width: 820px) {
   .password-panel,
   .private-grid,
@@ -2042,6 +2133,19 @@ body {
   .project-line {
     border-radius: 18px;
     padding: 1.05rem;
+  }
+
+  .relation-panel {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .relation-node {
+    padding: 16px;
+  }
+
+  .relation-columns {
+    grid-template-columns: 1fr;
   }
 }
 
