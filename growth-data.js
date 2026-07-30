@@ -493,7 +493,7 @@ window.GROWTH_OS_DATA = {
         "平台推荐",
         "系统优化"
       ],
-      "summary": "和认知库同级的核心大库，目前先开一个子类：新媒体运营链路库，用来沉淀运营结果如何发生。"
+      "summary": "链路库只保存链路本身；实验进入链路实验库，阶段判断进入候选规律库，长期成立后进入已验证规律库。"
     },
     {
       "id": "new-media-operation-link-library",
@@ -508,20 +508,20 @@ window.GROWTH_OS_DATA = {
         "平台推荐",
         "系统优化"
       ],
-      "summary": "链路库当前唯一子类，用来记录新媒体运营里从满足需求、产生价值、触发行为到获得推荐的完整链路。"
+      "summary": "当前用于保存新媒体运营相关链路本身，不混放实验和候选规律。"
     },
     {
       "id": "candidate-rules-library",
       "title": "候选规律库",
       "url": "library.html?id=candidate-rules-library",
-      "status": "内部验证",
+      "status": "阶段判断",
       "tags": [
         "子库",
-        "规律",
-        "实验验证",
+        "规律库",
+        "候选规律",
         "链路验证"
       ],
-      "summary": "保存从链路和实验中提炼出来、还没有长期验证的候选规律。"
+      "summary": "保存从链路和实验中提炼出来、还没有长期验证的候选规律，方便统一查看。"
     },
     {
       "id": "verified-rules-library",
@@ -530,11 +530,24 @@ window.GROWTH_OS_DATA = {
       "status": "长期沉淀",
       "tags": [
         "子库",
-        "规律",
-        "长期有效",
-        "方法沉淀"
+        "规律库",
+        "已验证规律",
+        "长期有效"
       ],
       "summary": "保存经过多次实验和长期数据验证后仍然有效的规律。"
+    },
+    {
+      "id": "link-experiment-library",
+      "title": "链路实验库",
+      "url": "library.html?id=link-experiment-library",
+      "status": "验证中",
+      "tags": [
+        "子库",
+        "实验库",
+        "链路验证",
+        "新媒体运营"
+      ],
+      "summary": "专门保存用来验证链路节点的实验，例如封面、前三秒、标题、互动和推荐变化。"
     }
   ],
   "assets": [
@@ -9794,8 +9807,6 @@ window.GROWTH_OS_DATA = {
       "projects": [
         "growth-lab",
         "knowledge-system",
-        "link-library",
-        "new-media-operation-link-library",
         "new-media-growth",
         "experiment-library",
         "video-rules-library",
@@ -9920,7 +9931,8 @@ window.GROWTH_OS_DATA = {
         "获得推荐",
         "链路验证",
         "实验验证",
-        "候选规律"
+        "候选规律",
+        "链路"
       ],
       "status": "已收录",
       "createdAt": "2026-07-30",
@@ -9991,9 +10003,7 @@ window.GROWTH_OS_DATA = {
         "video-benchmark",
         "lead-sop",
         "comment-sop",
-        "operation-results",
-        "candidate-rules-library",
-        "verified-rules-library"
+        "operation-results"
       ],
       "tags": [
         "链路库",
@@ -10007,7 +10017,8 @@ window.GROWTH_OS_DATA = {
         "用户行为",
         "链路验证",
         "实验验证",
-        "候选规律"
+        "候选规律",
+        "链路"
       ],
       "status": "已收录",
       "createdAt": "2026-07-30",
@@ -10074,13 +10085,12 @@ window.GROWTH_OS_DATA = {
       "content": "实验目标\n验证平台推荐机制里的“满足需求”节点。\n\n实验动作\n1. 优化封面，让用户一眼知道结果。\n2. 优化开头前三秒，直接呈现用户关心的变化。\n3. 优化标题表达，让用户能看懂并产生想要的感觉。\n\n观察指标\n停留、完播、评论、点赞、私信、播放扩大、推荐变化。\n\n当前状态\n验证中。先作为实验记录保存，后续根据多次数据判断是否进入候选规律或已验证规律。",
       "projects": [
         "experiment-library",
-        "new-media-operation-link-library",
-        "link-library",
         "new-media-growth",
         "video-benchmark",
         "video-rules-library",
         "comment-sop",
-        "lead-sop"
+        "lead-sop",
+        "link-experiment-library"
       ],
       "tags": [
         "实验库",
@@ -10098,7 +10108,7 @@ window.GROWTH_OS_DATA = {
       "sourceFiles": [
         "用户补充：链路-实验-规律闭环"
       ],
-      "sourceScope": "实验库 / 新媒体运营链路库",
+      "sourceScope": "实验库 / 链路实验库",
       "derived": true,
       "relations": {
         "role": "experiment",
@@ -10134,8 +10144,6 @@ window.GROWTH_OS_DATA = {
       "content": "候选规律\n前三秒不是单纯吸引注意力，而是要让用户快速看懂：这条内容和自己有什么关系、能带来什么结果。\n\n对应链路\n满足需求 → 产生价值 → 触发行为 → 获得推荐\n\n当前判断\n如果封面和前三秒能够激活用户需求，用户更可能继续看、评论、点赞或私信。平台识别到这些行为后，推荐扩大概率会上升。\n\n状态\n候选规律。还需要用多次视频样本和运营实验继续验证，不能直接当成长期规律。",
       "projects": [
         "candidate-rules-library",
-        "new-media-operation-link-library",
-        "link-library",
         "experiment-library",
         "video-rules-library",
         "new-media-growth",
@@ -10156,7 +10164,7 @@ window.GROWTH_OS_DATA = {
       "sourceFiles": [
         "用户补充：链路-实验-规律闭环"
       ],
-      "sourceScope": "候选规律库 / 新媒体运营链路库",
+      "sourceScope": "候选规律库",
       "derived": true,
       "relations": {
         "role": "candidate-rule",
@@ -10185,11 +10193,7 @@ window.GROWTH_OS_DATA = {
       "content": "今日更新\n1. 链路库不再只是存一条机制，而是能连接实验和规律。\n2. 平台推荐机制新增关系：满足需求 → 关联封面与前三秒实验。\n3. 实验库新增“封面与前三秒是否能激活需求”实验。\n4. 候选规律库新增“前三秒先满足需求，才更容易触发互动”。\n\n当前规则\n链路库负责提出机制假设。\n实验库负责验证某一个链路节点。\n候选规律库保存还没长期验证的判断。\n已验证规律库只保存长期多次成立的结论。\n\n下一步\n继续测试“产生价值”“触发行为”“获得推荐”这些节点，逐步把有效结论沉淀到规律库。",
       "projects": [
         "growth-lab",
-        "link-library",
-        "new-media-operation-link-library",
         "experiment-library",
-        "candidate-rules-library",
-        "verified-rules-library",
         "new-media-growth"
       ],
       "tags": [
@@ -10206,7 +10210,7 @@ window.GROWTH_OS_DATA = {
       "sourceFiles": [
         "用户补充：链路-实验-规律闭环"
       ],
-      "sourceScope": "项目交接卡 / 链路库 / 实验库 / 规律库",
+      "sourceScope": "????? / ????",
       "derived": true
     }
   ]
