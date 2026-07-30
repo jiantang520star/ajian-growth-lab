@@ -720,7 +720,7 @@ const stageViews = {
     ], previous: [
       { title: "后台", desc: "内容录入和导入能力为动态页面提供数据来源。", url: "manager.html", match: ["后台", "内容管理"] },
       { title: "知识资产系统", desc: "动态页最终读取的是同一份知识资产数据。", url: "library.html?id=knowledge-system", match: ["知识资产系统", "数据结构"] },
-      { title: "链路文档 V0.1", desc: "本次新增的视频播放、内容设计、平台风控和运营分析链路。", url: "asset.html?id=link-model-video-playback-v01-2026-07-30", match: ["链路文档", "V0.1"] }
+      { title: "新媒体运营链路 V0.1", desc: "用户需求、内容表达、平台推荐和系统优化连成一整条运营链路。", url: "asset.html?id=new-media-operation-link-v01-2026-07-30", match: ["新媒体运营链路", "用户需求", "平台推荐"] }
     ] },
     next: { label: "下一阶段", summary: "下一步让知识之间产生关系，从单条记录走向知识图谱、推荐和关系网络。", current: [
       { title: "SQL 数据库", desc: "等数据量和收入达到阶段目标后，再把知识关系迁移到数据库。", url: "asset.html?id=handoff-2026-07-30-link-library", match: ["SQL数据库", "数据库"] },
@@ -855,10 +855,8 @@ const staticSearchItems = [
   { title: "人生规律库", category: "项目", url: "projects/life-rules.html", desc: "生命第一，有生命才有其他东西。健康和安全是成长前提。" },
   { title: "认知库", category: "项目", url: "projects/cognition-library.html", desc: "沉淀重复工作、系统思维、岗位价值和长期能力相关认知。" },
   { title: "视频数据库", category: "子库", url: "projects/video-benchmark.html", desc: "视频样本、内容数据和规律拆解。" },
-  { title: "链路库", category: "项目", url: "projects/link-library.html", desc: "和认知库同级的核心大库，拆解用户需求、内容表达、平台推荐和系统优化链路。" },
-  { title: "候选规律库", category: "子库", url: "library.html?id=candidate-rules-library", desc: "从链路分析中提出可能成立的规律，等待实验验证。" },
-  { title: "已验证规律库", category: "子库", url: "library.html?id=verified-rules-library", desc: "经过多轮实验验证后沉淀的稳定规律。" },
-  { title: "方法论库", category: "子库", url: "library.html?id=methodology-library", desc: "把规律转化为可执行的创作、运营和成长方法。" },
+  { title: "链路库", category: "项目", url: "projects/link-library.html", desc: "和认知库同级的核心大库，目前先沉淀新媒体运营链路。" },
+  { title: "新媒体运营链路库", category: "子库", url: "library.html?id=new-media-operation-link-library", desc: "用户需求、内容表达、平台推荐和系统优化的一整条运营链路。" },
   { title: "新人培训", category: "子库", url: "projects/account-cold-start.html", desc: "账号从 0 到 1、冷启动 SOP、新人培训和项目进度 20%。" },
   { title: "引流SOP", category: "子库", url: "library.html?id=lead-sop", desc: "私信频率、关注节奏、蓝V承接、评论动作和风控边界。" },
   { title: "评论SOP", category: "子库", url: "library.html?id=comment-sop", desc: "评论引起注意、降低信任成本、等待回关和话术迭代。" },
