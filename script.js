@@ -702,7 +702,7 @@ const searchableCards = document.querySelectorAll(".searchable-card");
 let activeFilter = "全部";
 
 const stageViews = {
-  "growth-os": { title: "Growth OS 网站", projectId: "growth-lab", currentStage: "内容迁移与动态页优化", progress: "70%", groups: {
+  "growth-os": { title: "Growth OS 网站", projectId: "growth-lab", currentStage: "链路库试运行", progress: "72%", groups: {
     done: { label: "已完成", summary: "已经搭好的基础模块和内容承载能力。这里先看完成过哪些模块，再进入对应库查看详情。", current: [
       { title: "后台", desc: "内容管理入口已经能新增、导入和导出知识资产。", url: "manager.html", match: ["内容管理", "后台"] },
       { title: "知识库", desc: "知识资产总库、子库和详情页已经形成基础结构。", url: "knowledge.html", match: ["知识资产", "知识库"] },
@@ -713,17 +713,19 @@ const stageViews = {
       { title: "阿简成长实验室网站", desc: "最初的网站项目，承载 Growth OS 的公开展示。", url: "projects/ajian-growth-lab.html", match: ["Growth OS", "网站"] },
       { title: "网站更新工作流", desc: "用 Codex 把交接卡、白皮书和知识资产发布到网站。", url: "library.html?id=site-update-workflow", match: ["网站更新", "Codex"] }
     ] },
-    doing: { label: "当前进行", summary: "当前重点不是继续堆页面，而是让页面能读取数据库、能点进去、能追溯来源。", current: [
+    doing: { label: "当前进行", summary: "当前重点不是改首页框架，而是让链路库把数据、规律、实验和方法论串起来。", current: [
       { title: "Workflow 动态化", desc: "把六个 Workflow 页面改成最近动态中心。", url: "workflow/project-progress.html", match: ["Workflow", "动态"] },
+      { title: "链路库", desc: "解释事情为什么发生，连接数据、候选规律、实验验证和方法论。", url: "library.html?id=link-library", match: ["链路库", "机制", "候选规律"] },
       { title: "项目阶段看板", desc: "把长期项目用阶段、标签和库关联展示，而不是只看百分比。", url: "index.html#stage-overview", match: ["项目阶段", "阶段看板"] }
     ], previous: [
       { title: "后台", desc: "内容录入和导入能力为动态页面提供数据来源。", url: "manager.html", match: ["后台", "内容管理"] },
-      { title: "知识资产系统", desc: "动态页最终读取的是同一份知识资产数据。", url: "library.html?id=knowledge-system", match: ["知识资产系统", "数据结构"] }
+      { title: "知识资产系统", desc: "动态页最终读取的是同一份知识资产数据。", url: "library.html?id=knowledge-system", match: ["知识资产系统", "数据结构"] },
+      { title: "链路文档 V0.1", desc: "本次新增的视频播放、内容设计、平台风控和运营分析链路。", url: "asset.html?id=link-model-video-playback-v01-2026-07-30", match: ["链路文档", "V0.1"] }
     ] },
     next: { label: "下一阶段", summary: "下一步让知识之间产生关系，从单条记录走向知识图谱、推荐和关系网络。", current: [
+      { title: "SQL 数据库", desc: "等数据量和收入达到阶段目标后，再把知识关系迁移到数据库。", url: "asset.html?id=handoff-2026-07-30-link-library", match: ["SQL数据库", "数据库"] },
       { title: "知识图谱", desc: "把项目、标签、来源和内容互相连接。", url: "knowledge.html", match: ["知识图谱", "关系"] },
-      { title: "AI 推荐", desc: "让 AI 根据阶段和标签提示下一步该看什么。", url: "library.html?id=ai-knowledge-factory", match: ["AI推荐", "AI知识工厂"] },
-      { title: "关系网络", desc: "把项目、SOP、规律、案例和风险做成可追踪网络。", url: "library.html?id=knowledge-system", match: ["关系网络", "跨库关联"] }
+      { title: "AI 推荐", desc: "让 AI 根据阶段和标签提示下一步该看什么。", url: "library.html?id=ai-knowledge-factory", match: ["AI推荐", "AI知识工厂"] }
     ], previous: [
       { title: "AI 知识工厂", desc: "未来推荐系统的知识生产基础。", url: "library.html?id=ai-knowledge-factory", match: ["AI知识工厂"] },
       { title: "系统思维", desc: "把网站从页面集合升级成可维护系统。", url: "library.html?id=system-thinking", match: ["系统思维"] }
@@ -853,6 +855,10 @@ const staticSearchItems = [
   { title: "人生规律库", category: "项目", url: "projects/life-rules.html", desc: "生命第一，有生命才有其他东西。健康和安全是成长前提。" },
   { title: "认知库", category: "项目", url: "projects/cognition-library.html", desc: "沉淀重复工作、系统思维、岗位价值和长期能力相关认知。" },
   { title: "视频数据库", category: "子库", url: "projects/video-benchmark.html", desc: "视频样本、内容数据和规律拆解。" },
+  { title: "链路库", category: "子库", url: "library.html?id=link-library", desc: "解释事情为什么发生，连接数据、机制、候选规律、实验验证和方法论。" },
+  { title: "候选规律库", category: "子库", url: "library.html?id=candidate-rules-library", desc: "从链路分析中提出可能成立的规律，等待实验验证。" },
+  { title: "已验证规律库", category: "子库", url: "library.html?id=verified-rules-library", desc: "经过多轮实验验证后沉淀的稳定规律。" },
+  { title: "方法论库", category: "子库", url: "library.html?id=methodology-library", desc: "把规律转化为可执行的创作、运营和成长方法。" },
   { title: "新人培训", category: "子库", url: "projects/account-cold-start.html", desc: "账号从 0 到 1、冷启动 SOP、新人培训和项目进度 20%。" },
   { title: "引流SOP", category: "子库", url: "library.html?id=lead-sop", desc: "私信频率、关注节奏、蓝V承接、评论动作和风控边界。" },
   { title: "评论SOP", category: "子库", url: "library.html?id=comment-sop", desc: "评论引起注意、降低信任成本、等待回关和话术迭代。" },
