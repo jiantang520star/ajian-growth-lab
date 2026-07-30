@@ -857,6 +857,7 @@ const staticSearchItems = [
   { title: "视频数据库", category: "子库", url: "projects/video-benchmark.html", desc: "视频样本、内容数据和规律拆解。" },
   { title: "链路库", category: "项目", url: "projects/link-library.html", desc: "和认知库同级的核心大库，目前先沉淀新媒体运营链路。" },
   { title: "新媒体运营链路库", category: "子库", url: "library.html?id=new-media-operation-link-library", desc: "用户需求、内容表达、平台推荐和系统优化的一整条运营链路。" },
+  { title: "平台推荐机制", category: "子库", url: "asset.html?id=platform-recommendation-mechanism-2026-07-30", desc: "满足需求、产生价值、触发行为，最后获得推荐。" },
   { title: "新人培训", category: "子库", url: "projects/account-cold-start.html", desc: "账号从 0 到 1、冷启动 SOP、新人培训和项目进度 20%。" },
   { title: "引流SOP", category: "子库", url: "library.html?id=lead-sop", desc: "私信频率、关注节奏、蓝V承接、评论动作和风控边界。" },
   { title: "评论SOP", category: "子库", url: "library.html?id=comment-sop", desc: "评论引起注意、降低信任成本、等待回关和话术迭代。" },
