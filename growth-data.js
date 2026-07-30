@@ -482,15 +482,17 @@ window.GROWTH_OS_DATA = {
     {
       "id": "link-library",
       "title": "链路库",
-      "url": "library.html?id=link-library",
-      "status": "V0.1候选模型",
+      "url": "projects/link-library.html",
+      "status": "核心大库",
       "tags": [
-        "知识系统",
-        "链路分析",
-        "规律验证",
-        "方法论"
+        "主线项目",
+        "链路库",
+        "机制",
+        "用户需求",
+        "平台推荐",
+        "系统优化"
       ],
-      "summary": "解释事情为什么发生，连接数据、机制、候选规律、实验验证、已验证规律和方法论。"
+      "summary": "和认知库同级的核心大库，用来拆解从用户需求到内容表达、平台推荐、系统优化的完整因果链路。"
     },
     {
       "id": "candidate-rules-library",
@@ -9935,6 +9937,138 @@ window.GROWTH_OS_DATA = {
       "createdAt": "2026-07-30",
       "updatedAt": "2026-07-30",
       "status": "最新更新"
+    },
+    {
+      "id": "link-user-demand-2026-07-30",
+      "title": "用户需求链路",
+      "summary": "用户真正想要的是结果；封面激活需求后，用户开始脑补未来自己，并在看懂和想要之间产生点击动力。",
+      "content": "用户需求\n├── 用户想要的是结果\n├── 封面激活需求\n├── 用户脑补未来自己\n└── 看懂+想要\n\n解释：链路库里最前面的不是内容技巧，而是用户需求。用户不是为了看项目介绍而点击，而是因为他看见了自己想要的结果，并开始想象自己也能得到类似变化。",
+      "tags": [
+        "链路库",
+        "用户需求",
+        "封面",
+        "结果",
+        "点击动机"
+      ],
+      "type": "rule",
+      "date": "2026-07-30",
+      "projects": [
+        "link-library",
+        "cognition-library",
+        "experiment-library",
+        "candidate-rules-library",
+        "verified-rules-library",
+        "methodology-library",
+        "video-rules-library",
+        "new-media-growth",
+        "video-benchmark"
+      ],
+      "status": "链路结构",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "sourceFiles": [
+        "用户补充：链路库四段结构"
+      ],
+      "sourceScope": "链路库 / 认知库 / 实验库 / 规律库"
+    },
+    {
+      "id": "link-content-expression-2026-07-30",
+      "title": "内容表达链路",
+      "summary": "内容要让用户一眼理解，用用户语言具体表达，并保持封面、标题、开头和正文的信息一致。",
+      "content": "内容表达\n├── 一眼理解\n├── 用户语言\n├── 具体表达\n└── 信息一致\n\n解释：内容表达不是堆信息，而是降低理解成本。封面、标题、开头和正文必须服务同一个预期，用户越快看懂，越容易继续观看和互动。",
+      "tags": [
+        "链路库",
+        "内容表达",
+        "用户语言",
+        "一眼理解",
+        "信息一致"
+      ],
+      "type": "rule",
+      "date": "2026-07-30",
+      "projects": [
+        "link-library",
+        "cognition-library",
+        "experiment-library",
+        "candidate-rules-library",
+        "verified-rules-library",
+        "methodology-library",
+        "video-rules-library",
+        "new-media-growth",
+        "video-benchmark"
+      ],
+      "status": "链路结构",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "sourceFiles": [
+        "用户补充：链路库四段结构"
+      ],
+      "sourceScope": "链路库 / 认知库 / 实验库 / 规律库"
+    },
+    {
+      "id": "link-platform-recommendation-2026-07-30",
+      "title": "平台推荐链路",
+      "summary": "用户互动形成正向反馈，平台扩大推荐，播放继续增加；播放不是单点原因，而是链路结果。",
+      "content": "平台推荐\n├── 用户互动\n├── 推荐扩大\n└── 播放增加\n\n解释：平台推荐不是玄学。用户停留、点赞、收藏、评论等互动给平台反馈，平台再扩大推荐。播放增加是链路结果，不应该只归因到某一个标题或封面。",
+      "tags": [
+        "链路库",
+        "平台推荐",
+        "用户互动",
+        "播放增长",
+        "推荐机制"
+      ],
+      "type": "rule",
+      "date": "2026-07-30",
+      "projects": [
+        "link-library",
+        "cognition-library",
+        "experiment-library",
+        "candidate-rules-library",
+        "verified-rules-library",
+        "methodology-library",
+        "video-rules-library",
+        "new-media-growth",
+        "video-benchmark"
+      ],
+      "status": "链路结构",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "sourceFiles": [
+        "用户补充：链路库四段结构"
+      ],
+      "sourceScope": "链路库 / 认知库 / 实验库 / 规律库"
+    },
+    {
+      "id": "link-system-optimization-2026-07-30",
+      "title": "系统优化链路",
+      "summary": "真正要优化的不是单个点，而是整条链路和系统；当链路稳定后，边际收益会逐步提高。",
+      "content": "系统优化\n├── 优化链路\n├── 优化系统\n└── 边际收益\n\n解释：系统优化关注的是整条链路是否顺畅，而不是只改一个封面、一个标题或一句话术。长期价值来自链路被持续优化后产生的复利和边际收益。",
+      "tags": [
+        "链路库",
+        "系统优化",
+        "边际收益",
+        "优化链路",
+        "优化系统"
+      ],
+      "type": "rule",
+      "date": "2026-07-30",
+      "projects": [
+        "link-library",
+        "cognition-library",
+        "experiment-library",
+        "candidate-rules-library",
+        "verified-rules-library",
+        "methodology-library",
+        "video-rules-library",
+        "new-media-growth",
+        "video-benchmark"
+      ],
+      "status": "链路结构",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "sourceFiles": [
+        "用户补充：链路库四段结构"
+      ],
+      "sourceScope": "链路库 / 认知库 / 实验库 / 规律库"
     }
   ]
 };
