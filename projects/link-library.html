@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>链路库 | 阿简成长实验室</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      (function () {
+        var targetHost = "www.xn--tsta5434bba.top";
+        if (location.hostname !== targetHost || location.protocol !== "https:") {
+          location.replace("https://" + targetHost + location.pathname + location.search + location.hash);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../index.html"><span class="brand-mark">AJ</span>阿简成长实验室</a>
+      <nav class="nav">
+        <a href="../index.html">首页</a>
+        <a class="active" href="../projects.html">我的项目</a>
+        <a href="../knowledge.html">知识资产</a>
+        <a href="../experiments.html">实验库</a>
+        <a href="../whitepapers.html">成长白皮书</a>
+        <a href="../handoffs.html">项目交接卡</a>
+      </nav>
+    </header>
+
+    <main>
+      <article class="article">
+        <div class="breadcrumb"><a href="../projects.html">返回我的项目</a></div>
+        <div class="article-shell">
+          <p class="eyebrow">Project / Link Library</p>
+          <h1>链路库</h1>
+          <p>
+            链路库是和认知库同级的核心大库。它不只是保存结论，而是记录一件事从用户需求、内容表达、平台推荐到系统优化是如何一步一步发生的。
+          </p>
+
+          <h2>核心链路结构</h2>
+          <div class="module-grid">
+            <a class="module-card green" href="../asset.html?id=link-user-demand-2026-07-30">
+              <span>01</span>
+              <h3>用户需求</h3>
+              <p>用户想要的是结果，封面激活需求，用户脑补未来自己，最终形成看懂+想要。</p>
+              <strong>查看链路 →</strong>
+            </a>
+            <a class="module-card blue" href="../asset.html?id=link-content-expression-2026-07-30">
+              <span>02</span>
+              <h3>内容表达</h3>
+              <p>一眼理解、用户语言、具体表达、信息一致，降低理解成本并兑现预期。</p>
+              <strong>查看链路 →</strong>
+            </a>
+            <a class="module-card amber" href="../asset.html?id=link-platform-recommendation-2026-07-30">
+              <span>03</span>
+              <h3>平台推荐</h3>
+              <p>用户互动带来正向反馈，平台扩大推荐，播放继续增加。</p>
+              <strong>查看链路 →</strong>
+            </a>
+            <a class="module-card violet" href="../asset.html?id=link-system-optimization-2026-07-30">
+              <span>04</span>
+              <h3>系统优化</h3>
+              <p>不只优化单点，而是优化链路、优化系统，并持续提升边际收益。</p>
+              <strong>查看链路 →</strong>
+            </a>
+          </div>
+
+          <h2>和其他库的关系</h2>
+          <p>
+            链路库负责解释“为什么发生”。候选规律来自链路分析，实验库负责验证，已验证规律再进入方法论库，最后指导下一轮实践。
+          </p>
+          <div class="sub-library">
+            <a href="../library.html?id=candidate-rules-library">候选规律库</a>
+            <a href="../experiments.html">实验库</a>
+            <a href="../library.html?id=verified-rules-library">已验证规律库</a>
+            <a href="../library.html?id=methodology-library">方法论库</a>
+            <a href="../library.html?id=video-rules-library">视频规律库</a>
+            <a href="../projects/cognition-library.html">认知库</a>
+          </div>
+
+          <h2>链路库内容</h2>
+          <div class="local-search" data-local-search data-scope="#linkAssets">
+            <label>链路库搜索<input type="search" placeholder="搜索日期、标签或概括，例如：用户需求、内容表达、平台推荐" /></label>
+          </div>
+          <div class="asset-list" id="linkAssets" data-project-assets="link-library"></div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="footer"><p>© <span id="year"></span> 阿简成长实验室</p><button class="top-button" type="button">↑</button></footer>
+    <script src="../growth-data.js"></script>
+    <script src="../script.js"></script>
+  </body>
+</html>
