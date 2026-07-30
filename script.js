@@ -324,6 +324,51 @@ const renderLibraryPage = () => {
   target.innerHTML = assets.length ? assets.map(assetListItemHTML).join("") : `<div class="empty-library" data-local-item><h2>暂未更新</h2><p>这个库已经建好，后续新增内容会按日期、标签、概括和详情的格式展示在这里。</p></div>`;
 };
 
+const getAssetById = (id) => getAllAssets().find((item) => item.id === id);
+const relationAssetLinkHTML = (id) => {
+  const linked = getAssetById(id);
+  if (!linked) return `<span class="relation-empty">${escapeHTML(id)}</span>`;
+  return `<a href="${assetUrl(linked.id)}"><strong>${escapeHTML(linked.title)}</strong><small>${escapeHTML(getTypeName(linked.type))} / ${escapeHTML(getAssetDate(linked))}</small></a>`;
+};
+const relationListHTML = (title, ids = []) => `<div class="relation-list"><h4>${escapeHTML(title)}</h4>${ids.length ? ids.map(relationAssetLinkHTML).join("") : `<p class="relation-empty">暂未连接</p>`}</div>`;
+const relationPanelHTML = (asset) => {
+  const relations = asset.relations;
+  if (!relations) return "";
+  const nodes = Array.isArray(relations.nodes) ? relations.nodes : [];
+  const verifies = Array.isArray(relations.verifies) ? relations.verifies : [];
+  const derivedFrom = Array.isArray(relations.derivedFrom) ? relations.derivedFrom : [];
+  const supports = Array.isArray(relations.supports) ? relations.supports : [];
+  const metrics = normalizeTags(relations.metrics || []);
+  const nodeHTML = nodes.map((node) => `<article class="relation-node">
+    <div><span>链路节点</span><h3>${escapeHTML(node.name)}</h3><p>${escapeHTML(node.meaning || "")}</p></div>
+    <div class="relation-columns">
+      ${relationListHTML("关联实验", node.experiments || [])}
+      ${relationListHTML("候选规律", node.candidateRules || [])}
+      ${relationListHTML("已验证规律", node.verifiedRules || [])}
+    </div>
+  </article>`).join("");
+  const verifiesHTML = verifies.length ? `<div class="relation-list wide"><h4>正在验证的链路节点</h4>${verifies.map((item) => {
+    const linked = getAssetById(item.assetId);
+    return `<a href="${assetUrl(item.assetId)}"><strong>${escapeHTML(item.node || "关联节点")}</strong><small>${escapeHTML(linked?.title || item.assetId)}</small></a>`;
+  }).join("")}</div>` : "";
+  const supportHTML = derivedFrom.length || supports.length ? `<div class="relation-columns">
+    ${relationListHTML("来自哪些实验", derivedFrom)}
+    ${relationListHTML("支撑哪些链路", supports)}
+  </div>` : "";
+  const metricsHTML = metrics.length ? `<div class="asset-tags relation-tags">${metrics.map((item) => `<span>${escapeHTML(item)}</span>`).join("")}</div>` : "";
+  return `<section class="relation-panel">
+    <div class="section-heading">
+      <div><p class="eyebrow">Relation Graph</p><h2>链路、实验与规律</h2></div>
+      <p>${escapeHTML(relations.evidenceLevel || "持续验证")}</p>
+    </div>
+    ${nodes.length ? `<div class="relation-node-list">${nodeHTML}</div>` : ""}
+    ${verifiesHTML}
+    ${supportHTML}
+    ${metricsHTML ? `<h3>观察指标</h3>${metricsHTML}` : ""}
+    ${relations.nextStep ? `<div class="relation-next"><strong>下一步</strong><p>${escapeHTML(relations.nextStep)}</p></div>` : ""}
+  </section>`;
+};
+
 const renderAssetDetail = () => {
   const target = document.querySelector("[data-asset-detail]");
   if (!target) return;
@@ -349,6 +394,7 @@ const renderAssetDetail = () => {
       <div class="asset-tags">${tags}</div>
       <h2>完整内容</h2>
       <p>${escapeHTML(asset.content || "").replace(/\n/g, "</p><p>")}</p>
+      ${relationPanelHTML(asset)}
       ${privateDetailsHTML(asset)}
       <h2>来源与关联库</h2>
       <p class="source-links">${sourceLinks || "暂未关联"}</p>
