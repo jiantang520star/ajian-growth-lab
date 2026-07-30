@@ -69,13 +69,13 @@ window.GROWTH_OS_DATA = {
       "id": "growth-lab",
       "title": "网站项目",
       "url": "projects/ajian-growth-lab.html",
-      "status": "Growth OS V2 链路库试运行",
+      "status": "Growth OS V2 ??????",
       "tags": [
         "主线项目",
         "Growth OS",
         "网站"
       ],
-      "summary": "首页框架保持不变，知识系统新增链路库、候选规律库、已验证规律库和方法论库，形成数据到实践的闭环。"
+      "summary": "????????????????????????????????????????????????????????????????"
     },
     {
       "id": "life-rules",
@@ -487,51 +487,28 @@ window.GROWTH_OS_DATA = {
       "tags": [
         "主线项目",
         "链路库",
+        "新媒体运营链路库",
         "机制",
         "用户需求",
         "平台推荐",
         "系统优化"
       ],
-      "summary": "和认知库同级的核心大库，用来拆解从用户需求到内容表达、平台推荐、系统优化的完整因果链路。"
+      "summary": "和认知库同级的核心大库，目前先开一个子类：新媒体运营链路库，用来沉淀运营结果如何发生。"
     },
     {
-      "id": "candidate-rules-library",
-      "title": "候选规律库",
-      "url": "library.html?id=candidate-rules-library",
-      "status": "待实验验证",
+      "id": "new-media-operation-link-library",
+      "title": "新媒体运营链路库",
+      "url": "library.html?id=new-media-operation-link-library",
+      "status": "V0.1",
       "tags": [
-        "知识系统",
-        "链路分析",
-        "规律验证",
-        "方法论"
+        "链路库",
+        "新媒体运营",
+        "用户需求",
+        "内容表达",
+        "平台推荐",
+        "系统优化"
       ],
-      "summary": "从链路分析中提出可能成立的规律，等待实验库用真实数据验证。"
-    },
-    {
-      "id": "verified-rules-library",
-      "title": "已验证规律库",
-      "url": "library.html?id=verified-rules-library",
-      "status": "持续沉淀",
-      "tags": [
-        "知识系统",
-        "链路分析",
-        "规律验证",
-        "方法论"
-      ],
-      "summary": "经过多轮实验验证后沉淀的稳定规律，用来反哺方法论和实践。"
-    },
-    {
-      "id": "methodology-library",
-      "title": "方法论库",
-      "url": "library.html?id=methodology-library",
-      "status": "持续沉淀",
-      "tags": [
-        "知识系统",
-        "链路分析",
-        "规律验证",
-        "方法论"
-      ],
-      "summary": "把规律转化为可执行的创作、运营和成长方法，再指导下一轮实践。"
+      "summary": "链路库当前唯一子类，用来记录新媒体运营里从满足需求、产生价值、触发行为到获得推荐的完整链路。"
     }
   ],
   "assets": [
@@ -9783,79 +9760,35 @@ window.GROWTH_OS_DATA = {
       "sourceScope": "飞书最终文档批量入库总更新"
     },
     {
-      "id": "link-model-video-playback-v01-2026-07-30",
-      "title": "视频播放链路 V0.1",
-      "type": "rule",
-      "summary": "用户潜在需求被封面激活，点击后前三秒兑现预期，互动形成正向反馈，平台继续扩大推荐。",
-      "content": "链路文档\n版本：V0.1（候选模型）说明：以下链路来源于本次讨论，用于后续持续验证和完善。\n一、视频播放链路\n用户存在潜在需求（如变美、变瘦、改善身材）\n封面激活需求，而不是单纯介绍项目\n用户一眼看懂内容，认知成本低\n用户开始想象自己获得同样的结果\n点击进入视频\n前三秒与封面、标题保持一致\n继续观看\n点赞 / 收藏 / 评论等互动增加\n平台获得正向反馈\n平台扩大推荐\n播放量持续增长\n二、内容设计链路\n用户需求\n封面\n标题\n开头\n正文内容\n整体表达一致\n兑现用户预期\n形成良好观看体验\n三、平台风控链路（候选模型）\n平台目标：提升长期用户体验\n减少骚扰、垃圾营销、诈骗等行为\n识别具有营销风险的操作模式\n评论折叠 / 评论被吞\n私信限制\n关注限制\n账号降权或限制推荐（具体机制需持续验证）\n四、运营分析链路\n观察现象\n提出问题（为什么）\n分析影响因素\n抽象候选规律\n设计实验\n验证规律\n沉淀方法论\n指导下一次内容创作与运营决策\n当前认识\n播放量、转化率、评论风控等结果，都更适合看作多因素共同作用的结果，而不是由单一原因决定。 后续应持续补充新的链路，并通过真实数据不断验证、修正。",
-      "projects": [
-        "growth-lab",
-        "knowledge-system",
-        "link-library",
-        "candidate-rules-library",
-        "experiment-library",
-        "verified-rules-library",
-        "methodology-library",
-        "video-rules-library",
-        "new-media-growth",
-        "video-benchmark",
-        "lead-sop",
-        "comment-sop",
-        "operation-results"
-      ],
-      "tags": [
-        "链路库",
-        "视频播放链路",
-        "候选模型",
-        "平台机制",
-        "用户行为",
-        "推荐机制",
-        "候选规律"
-      ],
-      "sourceFiles": [
-        "C:\\Users\\tese\\Desktop\\规律链路\\链路文档..docx"
-      ],
-      "sourceScope": "链路库 / 候选规律库 / 视频规律库",
-      "date": "2026-07-30",
-      "createdAt": "2026-07-30",
-      "updatedAt": "2026-07-30",
-      "status": "最新更新"
-    },
-    {
       "id": "growth-os-knowledge-system-v2-2026-07-30",
-      "title": "Growth OS 知识系统 V2 架构",
+      "title": "Growth OS V2???????",
       "type": "ai",
-      "summary": "知识形成流程升级为：数据 → 链路分析 → 候选规律 → 实验验证 → 已验证规律 → 方法论 → 指导实践 → 新数据。",
-      "content": "网站框架更新（Growth OS 知识系统 V2）\n一、系统定位\nGrowth OS 不再只是展示成长成果，而是一个持续学习、分析、验证和沉淀的方法论系统。\n二、知识形成流程（最新版）\n数据 → 链路分析 → 候选规律 → 实验验证 → 已验证规律 → 方法论 → 指导实践 → 产生新数据，形成持续迭代闭环。\n三、各模块职责\n成长数据库：记录事实，包括视频数据、运营数据、实验数据、项目数据等。\n链路库：解释事情为什么发生，分析平台机制、用户行为、播放机制、成交机制、风控机制等。\n候选规律库：根据链路分析提出可能成立的规律，等待后续验证。\n实验库：记录实验目标、设计、过程、结果以及验证结论。\n已验证规律库：经过多轮实验验证后沉淀的稳定规律。\n方法论库：把规律转化为可执行的创作、运营和成长方法。\n项目交接卡：记录每日推进情况。\n成长白皮书：记录阶段性思考与认知升级。\n四、模块之间的关系\n成长数据库 → 为链路分析提供证据。\n链路库 → 解释机制，并支撑候选规律形成。\n候选规律 → 来源于链路分析，而不是直接来源于数据。\n实验库 → 验证候选规律是否成立，并修正链路。\n已验证规律 → 反哺方法论。\n方法论 → 指导新的内容创作和运营实践。\n新的实践 → 产生新的数据，重新进入成长数据库。\n五、核心理念\n数据记录事实；链路解释机制；规律总结重复现象；实验验证规律；方法论指导实践。\n六、未来网站导航建议\n首页\nGrowth OS\n成长数据库\n链路库\n候选规律库\n实验库\n已验证规律库\n方法论库\n项目交接卡\n成长白皮书",
+      "summary": "?????????????????????????????????????????????????????",
+      "content": "???????Growth OS V2?\n\n??????\nGrowth OS ???????????????????????????????????\n\n????????\n?????????\n?????????????????????????\n???????????????????????\n\n???????\n????????????????????????\n???????????????????????????????????????????????????\n\n????????\n???????????????????????????????????????????\n\n?????????\n????????????\n??????????????\n??????????????????\n???????????????????\n?????????????????????????",
       "projects": [
         "growth-lab",
         "knowledge-system",
-        "link-library",
-        "candidate-rules-library",
         "experiment-library",
-        "verified-rules-library",
-        "methodology-library",
         "video-rules-library",
         "new-media-growth",
         "video-benchmark",
         "system-thinking",
         "experiment-thinking",
-        "site-update-workflow"
+        "site-update-workflow",
+        "link-library",
+        "new-media-operation-link-library"
       ],
       "tags": [
         "Growth OS",
-        "网站架构",
-        "链路库",
-        "候选规律库",
-        "实验库",
-        "已验证规律库",
-        "方法论库",
-        "闭环"
+        "???",
+        "????????",
+        "????",
+        "????"
       ],
       "sourceFiles": [
         "C:\\Users\\tese\\Desktop\\规律链路\\网站框架更新_GrowthOS_V2..docx"
       ],
-      "sourceScope": "网站项目 / 知识资产系统 / 链路库",
+      "sourceScope": "???? / ??? / ????????",
       "date": "2026-07-30",
       "createdAt": "2026-07-30",
       "updatedAt": "2026-07-30",
@@ -9870,11 +9803,7 @@ window.GROWTH_OS_DATA = {
       "projects": [
         "growth-lab",
         "knowledge-system",
-        "link-library",
-        "candidate-rules-library",
         "experiment-library",
-        "verified-rules-library",
-        "methodology-library",
         "video-rules-library",
         "new-media-growth",
         "video-benchmark",
@@ -9908,11 +9837,7 @@ window.GROWTH_OS_DATA = {
       "projects": [
         "growth-lab",
         "knowledge-system",
-        "link-library",
-        "candidate-rules-library",
         "experiment-library",
-        "verified-rules-library",
-        "methodology-library",
         "video-rules-library",
         "new-media-growth",
         "video-benchmark",
@@ -9932,143 +9857,49 @@ window.GROWTH_OS_DATA = {
       "sourceFiles": [
         "C:\\Users\\tese\\Desktop\\规律链路\\成长白皮书_2026-07-30..docx"
       ],
-      "sourceScope": "成长白皮书 / 链路库 / 方法论库",
+      "sourceScope": "成长白皮书 / 链路库",
       "date": "2026-07-30",
       "createdAt": "2026-07-30",
       "updatedAt": "2026-07-30",
       "status": "最新更新"
     },
     {
-      "id": "link-user-demand-2026-07-30",
-      "title": "用户需求链路",
-      "summary": "用户真正想要的是结果；封面激活需求后，用户开始脑补未来自己，并在看懂和想要之间产生点击动力。",
-      "content": "用户需求\n├── 用户想要的是结果\n├── 封面激活需求\n├── 用户脑补未来自己\n└── 看懂+想要\n\n解释：链路库里最前面的不是内容技巧，而是用户需求。用户不是为了看项目介绍而点击，而是因为他看见了自己想要的结果，并开始想象自己也能得到类似变化。",
+      "id": "new-media-operation-link-v01-2026-07-30",
+      "title": "新媒体运营链路 V0.1",
+      "type": "rule",
+      "date": "2026-07-30",
+      "summary": "从用户需求到内容表达、平台推荐和系统优化的一整条新媒体运营链路：满足需求 → 产生价值 → 触发行为 → 获得推荐。",
+      "content": "用户需求\n├── 用户想要的是结果\n├── 封面激活需求\n├── 用户脑补未来自己\n└── 看懂+想要\n\n内容表达\n├── 一眼理解\n├── 用户语言\n├── 具体表达\n└── 信息一致\n\n平台推荐\n├── 用户互动\n├── 推荐扩大\n└── 播放增加\n\n系统优化\n├── 优化链路\n├── 优化系统\n└── 边际收益\n\n满足需求\n↓\n产生价值\n↓\n触发行为\n↓\n获得推荐",
+      "projects": [
+        "link-library",
+        "new-media-operation-link-library",
+        "new-media-growth",
+        "cognition-library",
+        "experiment-library",
+        "video-rules-library",
+        "video-benchmark",
+        "lead-sop",
+        "comment-sop",
+        "operation-results"
+      ],
       "tags": [
         "链路库",
+        "新媒体运营链路库",
         "用户需求",
-        "封面",
-        "结果",
-        "点击动机"
-      ],
-      "type": "rule",
-      "date": "2026-07-30",
-      "projects": [
-        "link-library",
-        "cognition-library",
-        "experiment-library",
-        "candidate-rules-library",
-        "verified-rules-library",
-        "methodology-library",
-        "video-rules-library",
-        "new-media-growth",
-        "video-benchmark"
-      ],
-      "status": "链路结构",
-      "createdAt": "2026-07-30",
-      "updatedAt": "2026-07-30",
-      "sourceFiles": [
-        "用户补充：链路库四段结构"
-      ],
-      "sourceScope": "链路库 / 认知库 / 实验库 / 规律库"
-    },
-    {
-      "id": "link-content-expression-2026-07-30",
-      "title": "内容表达链路",
-      "summary": "内容要让用户一眼理解，用用户语言具体表达，并保持封面、标题、开头和正文的信息一致。",
-      "content": "内容表达\n├── 一眼理解\n├── 用户语言\n├── 具体表达\n└── 信息一致\n\n解释：内容表达不是堆信息，而是降低理解成本。封面、标题、开头和正文必须服务同一个预期，用户越快看懂，越容易继续观看和互动。",
-      "tags": [
-        "链路库",
         "内容表达",
-        "用户语言",
-        "一眼理解",
-        "信息一致"
-      ],
-      "type": "rule",
-      "date": "2026-07-30",
-      "projects": [
-        "link-library",
-        "cognition-library",
-        "experiment-library",
-        "candidate-rules-library",
-        "verified-rules-library",
-        "methodology-library",
-        "video-rules-library",
-        "new-media-growth",
-        "video-benchmark"
-      ],
-      "status": "链路结构",
-      "createdAt": "2026-07-30",
-      "updatedAt": "2026-07-30",
-      "sourceFiles": [
-        "用户补充：链路库四段结构"
-      ],
-      "sourceScope": "链路库 / 认知库 / 实验库 / 规律库"
-    },
-    {
-      "id": "link-platform-recommendation-2026-07-30",
-      "title": "平台推荐链路",
-      "summary": "用户互动形成正向反馈，平台扩大推荐，播放继续增加；播放不是单点原因，而是链路结果。",
-      "content": "平台推荐\n├── 用户互动\n├── 推荐扩大\n└── 播放增加\n\n解释：平台推荐不是玄学。用户停留、点赞、收藏、评论等互动给平台反馈，平台再扩大推荐。播放增加是链路结果，不应该只归因到某一个标题或封面。",
-      "tags": [
-        "链路库",
         "平台推荐",
-        "用户互动",
-        "播放增长",
-        "推荐机制"
-      ],
-      "type": "rule",
-      "date": "2026-07-30",
-      "projects": [
-        "link-library",
-        "cognition-library",
-        "experiment-library",
-        "candidate-rules-library",
-        "verified-rules-library",
-        "methodology-library",
-        "video-rules-library",
-        "new-media-growth",
-        "video-benchmark"
-      ],
-      "status": "链路结构",
-      "createdAt": "2026-07-30",
-      "updatedAt": "2026-07-30",
-      "sourceFiles": [
-        "用户补充：链路库四段结构"
-      ],
-      "sourceScope": "链路库 / 认知库 / 实验库 / 规律库"
-    },
-    {
-      "id": "link-system-optimization-2026-07-30",
-      "title": "系统优化链路",
-      "summary": "真正要优化的不是单个点，而是整条链路和系统；当链路稳定后，边际收益会逐步提高。",
-      "content": "系统优化\n├── 优化链路\n├── 优化系统\n└── 边际收益\n\n解释：系统优化关注的是整条链路是否顺畅，而不是只改一个封面、一个标题或一句话术。长期价值来自链路被持续优化后产生的复利和边际收益。",
-      "tags": [
-        "链路库",
         "系统优化",
-        "边际收益",
-        "优化链路",
-        "优化系统"
+        "满足需求",
+        "触发行为",
+        "获得推荐"
       ],
-      "type": "rule",
-      "date": "2026-07-30",
-      "projects": [
-        "link-library",
-        "cognition-library",
-        "experiment-library",
-        "candidate-rules-library",
-        "verified-rules-library",
-        "methodology-library",
-        "video-rules-library",
-        "new-media-growth",
-        "video-benchmark"
-      ],
-      "status": "链路结构",
+      "status": "V0.1",
       "createdAt": "2026-07-30",
       "updatedAt": "2026-07-30",
       "sourceFiles": [
-        "用户补充：链路库四段结构"
+        "用户补充：新媒体运营链路库完整结构"
       ],
-      "sourceScope": "链路库 / 认知库 / 实验库 / 规律库"
+      "sourceScope": "链路库 / 新媒体运营链路库"
     }
   ]
 };
