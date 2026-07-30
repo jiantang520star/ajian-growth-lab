@@ -69,12 +69,13 @@ window.GROWTH_OS_DATA = {
       "id": "growth-lab",
       "title": "网站项目",
       "url": "projects/ajian-growth-lab.html",
-      "status": "进行中",
+      "status": "Growth OS V2 链路库试运行",
       "tags": [
         "主线项目",
         "Growth OS",
         "网站"
-      ]
+      ],
+      "summary": "首页框架保持不变，知识系统新增链路库、候选规律库、已验证规律库和方法论库，形成数据到实践的闭环。"
     },
     {
       "id": "life-rules",
@@ -246,7 +247,7 @@ window.GROWTH_OS_DATA = {
       "id": "knowledge-system",
       "title": "知识资产系统",
       "url": "library.html?id=knowledge-system",
-      "status": "跨库关联更新",
+      "status": "链路库与规律验证升级",
       "tags": [
         "子库",
         "网站项目",
@@ -411,7 +412,7 @@ window.GROWTH_OS_DATA = {
       "id": "experiment-library",
       "title": "实验库",
       "url": "experiments.html",
-      "status": "持续更新",
+      "status": "验证候选规律",
       "tags": [
         "子库",
         "实验",
@@ -477,6 +478,58 @@ window.GROWTH_OS_DATA = {
         "脚本",
         "视频规律"
       ]
+    },
+    {
+      "id": "link-library",
+      "title": "链路库",
+      "url": "library.html?id=link-library",
+      "status": "V0.1候选模型",
+      "tags": [
+        "知识系统",
+        "链路分析",
+        "规律验证",
+        "方法论"
+      ],
+      "summary": "解释事情为什么发生，连接数据、机制、候选规律、实验验证、已验证规律和方法论。"
+    },
+    {
+      "id": "candidate-rules-library",
+      "title": "候选规律库",
+      "url": "library.html?id=candidate-rules-library",
+      "status": "待实验验证",
+      "tags": [
+        "知识系统",
+        "链路分析",
+        "规律验证",
+        "方法论"
+      ],
+      "summary": "从链路分析中提出可能成立的规律，等待实验库用真实数据验证。"
+    },
+    {
+      "id": "verified-rules-library",
+      "title": "已验证规律库",
+      "url": "library.html?id=verified-rules-library",
+      "status": "持续沉淀",
+      "tags": [
+        "知识系统",
+        "链路分析",
+        "规律验证",
+        "方法论"
+      ],
+      "summary": "经过多轮实验验证后沉淀的稳定规律，用来反哺方法论和实践。"
+    },
+    {
+      "id": "methodology-library",
+      "title": "方法论库",
+      "url": "library.html?id=methodology-library",
+      "status": "持续沉淀",
+      "tags": [
+        "知识系统",
+        "链路分析",
+        "规律验证",
+        "方法论"
+      ],
+      "summary": "把规律转化为可执行的创作、运营和成长方法，再指导下一轮实践。"
     }
   ],
   "assets": [
@@ -9726,6 +9779,162 @@ window.GROWTH_OS_DATA = {
         "C:\\Users\\tese\\Desktop\\飞书文档最后的版本"
       ],
       "sourceScope": "飞书最终文档批量入库总更新"
+    },
+    {
+      "id": "link-model-video-playback-v01-2026-07-30",
+      "title": "视频播放链路 V0.1",
+      "type": "rule",
+      "summary": "用户潜在需求被封面激活，点击后前三秒兑现预期，互动形成正向反馈，平台继续扩大推荐。",
+      "content": "链路文档\n版本：V0.1（候选模型）说明：以下链路来源于本次讨论，用于后续持续验证和完善。\n一、视频播放链路\n用户存在潜在需求（如变美、变瘦、改善身材）\n封面激活需求，而不是单纯介绍项目\n用户一眼看懂内容，认知成本低\n用户开始想象自己获得同样的结果\n点击进入视频\n前三秒与封面、标题保持一致\n继续观看\n点赞 / 收藏 / 评论等互动增加\n平台获得正向反馈\n平台扩大推荐\n播放量持续增长\n二、内容设计链路\n用户需求\n封面\n标题\n开头\n正文内容\n整体表达一致\n兑现用户预期\n形成良好观看体验\n三、平台风控链路（候选模型）\n平台目标：提升长期用户体验\n减少骚扰、垃圾营销、诈骗等行为\n识别具有营销风险的操作模式\n评论折叠 / 评论被吞\n私信限制\n关注限制\n账号降权或限制推荐（具体机制需持续验证）\n四、运营分析链路\n观察现象\n提出问题（为什么）\n分析影响因素\n抽象候选规律\n设计实验\n验证规律\n沉淀方法论\n指导下一次内容创作与运营决策\n当前认识\n播放量、转化率、评论风控等结果，都更适合看作多因素共同作用的结果，而不是由单一原因决定。 后续应持续补充新的链路，并通过真实数据不断验证、修正。",
+      "projects": [
+        "growth-lab",
+        "knowledge-system",
+        "link-library",
+        "candidate-rules-library",
+        "experiment-library",
+        "verified-rules-library",
+        "methodology-library",
+        "video-rules-library",
+        "new-media-growth",
+        "video-benchmark",
+        "lead-sop",
+        "comment-sop",
+        "operation-results"
+      ],
+      "tags": [
+        "链路库",
+        "视频播放链路",
+        "候选模型",
+        "平台机制",
+        "用户行为",
+        "推荐机制",
+        "候选规律"
+      ],
+      "sourceFiles": [
+        "C:\\Users\\tese\\Desktop\\规律链路\\链路文档..docx"
+      ],
+      "sourceScope": "链路库 / 候选规律库 / 视频规律库",
+      "date": "2026-07-30",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "status": "最新更新"
+    },
+    {
+      "id": "growth-os-knowledge-system-v2-2026-07-30",
+      "title": "Growth OS 知识系统 V2 架构",
+      "type": "ai",
+      "summary": "知识形成流程升级为：数据 → 链路分析 → 候选规律 → 实验验证 → 已验证规律 → 方法论 → 指导实践 → 新数据。",
+      "content": "网站框架更新（Growth OS 知识系统 V2）\n一、系统定位\nGrowth OS 不再只是展示成长成果，而是一个持续学习、分析、验证和沉淀的方法论系统。\n二、知识形成流程（最新版）\n数据 → 链路分析 → 候选规律 → 实验验证 → 已验证规律 → 方法论 → 指导实践 → 产生新数据，形成持续迭代闭环。\n三、各模块职责\n成长数据库：记录事实，包括视频数据、运营数据、实验数据、项目数据等。\n链路库：解释事情为什么发生，分析平台机制、用户行为、播放机制、成交机制、风控机制等。\n候选规律库：根据链路分析提出可能成立的规律，等待后续验证。\n实验库：记录实验目标、设计、过程、结果以及验证结论。\n已验证规律库：经过多轮实验验证后沉淀的稳定规律。\n方法论库：把规律转化为可执行的创作、运营和成长方法。\n项目交接卡：记录每日推进情况。\n成长白皮书：记录阶段性思考与认知升级。\n四、模块之间的关系\n成长数据库 → 为链路分析提供证据。\n链路库 → 解释机制，并支撑候选规律形成。\n候选规律 → 来源于链路分析，而不是直接来源于数据。\n实验库 → 验证候选规律是否成立，并修正链路。\n已验证规律 → 反哺方法论。\n方法论 → 指导新的内容创作和运营实践。\n新的实践 → 产生新的数据，重新进入成长数据库。\n五、核心理念\n数据记录事实；链路解释机制；规律总结重复现象；实验验证规律；方法论指导实践。\n六、未来网站导航建议\n首页\nGrowth OS\n成长数据库\n链路库\n候选规律库\n实验库\n已验证规律库\n方法论库\n项目交接卡\n成长白皮书",
+      "projects": [
+        "growth-lab",
+        "knowledge-system",
+        "link-library",
+        "candidate-rules-library",
+        "experiment-library",
+        "verified-rules-library",
+        "methodology-library",
+        "video-rules-library",
+        "new-media-growth",
+        "video-benchmark",
+        "system-thinking",
+        "experiment-thinking",
+        "site-update-workflow"
+      ],
+      "tags": [
+        "Growth OS",
+        "网站架构",
+        "链路库",
+        "候选规律库",
+        "实验库",
+        "已验证规律库",
+        "方法论库",
+        "闭环"
+      ],
+      "sourceFiles": [
+        "C:\\Users\\tese\\Desktop\\规律链路\\网站框架更新_GrowthOS_V2..docx"
+      ],
+      "sourceScope": "网站项目 / 知识资产系统 / 链路库",
+      "date": "2026-07-30",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "status": "最新更新"
+    },
+    {
+      "id": "handoff-2026-07-30-link-library",
+      "title": "项目交接卡_2026-07-30：链路库与知识形成流程升级",
+      "type": "handoff",
+      "summary": "明确区分机制、链路、规律和方法论；新增链路库方向，并确认未来先积累数据，后建设 SQL 数据库。",
+      "content": "项目交接卡_2026-07-30\n今日成果\n1. Growth OS 底层架构再次升级。2. 明确区分机制、链路、规律、方法论。3. 确认未来数据库规划：先积累数据，后建设 SQL 数据库。4. 明确个人竞争力来自分析过程、推导能力和可验证的方法。\n后续行动\n- 每条规律补充形成链路与机制。- 建立实验验证记录。- 持续积累案例，不为了增加模块而增加模块。- 等数据量和收入达到阶段目标后，再部署数据库。",
+      "projects": [
+        "growth-lab",
+        "knowledge-system",
+        "link-library",
+        "candidate-rules-library",
+        "experiment-library",
+        "verified-rules-library",
+        "methodology-library",
+        "video-rules-library",
+        "new-media-growth",
+        "video-benchmark",
+        "handoff-generator",
+        "ai-knowledge-factory"
+      ],
+      "tags": [
+        "项目交接卡",
+        "链路库",
+        "机制",
+        "规律",
+        "方法论",
+        "SQL数据库",
+        "每日更新"
+      ],
+      "sourceFiles": [
+        "C:\\Users\\tese\\Desktop\\规律链路\\项目交接卡_2026-07-30..docx"
+      ],
+      "sourceScope": "项目交接卡 / 网站项目 / 链路库",
+      "date": "2026-07-30",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "status": "最新更新"
+    },
+    {
+      "id": "whitepaper-2026-07-30-from-rules-to-mechanism",
+      "title": "成长白皮书_2026-07-30：从规律到机制",
+      "type": "whitepaper",
+      "summary": "真正长期可迁移的是研究方法，而不是单个行业经验；链路是解题过程，规律是当前阶段答案。",
+      "content": "成长白皮书_2026-07-30\n主题：从规律到机制——Growth OS 再次升级\n今天最大的突破不是新增模块，而是重新理解了知识形成过程：机制（为什么）→ 链路（如何发生）→ 规律（重复出现的现象）→ 方法论（可复用实践）。关键收获：- 规律会变化，但产生规律的方法更加重要。- 链路是解题过程，规律是当前阶段的答案。- 真正长期可迁移的是研究方法，而不是行业经验。- 短视频案例证明：用户需求→放大需求→点击→停留→互动→推荐→数据增长，这条推导过程比最终规律更有价值。Growth OS 后续方向：数据→机制→链路→候选规律→实验→已验证规律→方法论。未来随着数据规模扩大，再建设 SQL 数据库，实现知识关联。",
+      "projects": [
+        "growth-lab",
+        "knowledge-system",
+        "link-library",
+        "candidate-rules-library",
+        "experiment-library",
+        "verified-rules-library",
+        "methodology-library",
+        "video-rules-library",
+        "new-media-growth",
+        "video-benchmark",
+        "whitepaper-generator",
+        "cognition-library",
+        "system-thinking"
+      ],
+      "tags": [
+        "成长白皮书",
+        "机制",
+        "链路",
+        "规律",
+        "方法论",
+        "研究方法",
+        "认知升级"
+      ],
+      "sourceFiles": [
+        "C:\\Users\\tese\\Desktop\\规律链路\\成长白皮书_2026-07-30..docx"
+      ],
+      "sourceScope": "成长白皮书 / 链路库 / 方法论库",
+      "date": "2026-07-30",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "status": "最新更新"
     }
   ]
 };
