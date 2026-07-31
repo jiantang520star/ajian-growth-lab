@@ -1,7 +1,7 @@
 ﻿:root {
-  --bg: #f7f9f6;
+  --bg: #eaf6ff;
   --surface: #ffffff;
-  --surface-soft: #f1f6f3;
+  --surface-soft: #f2f8ff;
   --cream: #fbf7ef;
   --ink: #17211d;
   --text: #394640;
@@ -22,8 +22,8 @@ body {
   margin: 0;
   color: var(--ink);
   background:
-    radial-gradient(circle at top left, rgba(47, 163, 107, 0.12), transparent 360px),
-    radial-gradient(circle at top right, rgba(90, 155, 216, 0.16), transparent 420px),
+    radial-gradient(circle at top left, rgba(90, 155, 216, 0.18), transparent 360px),
+    radial-gradient(circle at top right, rgba(31, 154, 154, 0.12), transparent 420px),
     var(--bg);
   font-family: "Noto Sans SC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.68;
@@ -39,7 +39,7 @@ a { color: inherit; text-decoration: none; }
   justify-content: space-between;
   gap: 22px;
   padding: 16px clamp(18px, 4vw, 68px);
-  background: rgba(247, 249, 246, 0.82);
+  background: rgba(234, 246, 255, 0.84);
   border-bottom: 1px solid rgba(223, 232, 227, 0.82);
   backdrop-filter: blur(18px);
 }
@@ -362,8 +362,8 @@ time, .date { color: var(--green); font-weight: 900; }
 @media (max-width: 640px) { h1 { font-size: 42px; } .metric-grid, .grid.two, .grid.three, .grid.four, .module-grid, .workflow-steps, .stat-strip, .mini-metrics, .note-grid { grid-template-columns: 1fr; } .section-heading, .footer { align-items: flex-start; flex-direction: column; } .timeline-row, .progress-list a { grid-template-columns: 1fr; } .contact-hero { padding-bottom: 10px; } .contact-section { padding-top: 28px; } .contact-card { min-height: 220px; padding: 22px; } .contact-icon { margin-bottom: 25px; } }
 
 body.focus-mode {
-  --bg: #fbfaf6;
-  --surface-soft: #f6f2e9;
+  --bg: #f4faff;
+  --surface-soft: #edf6ff;
   --green-soft: #edf7e9;
   --blue-soft: #eef5f8;
 }
@@ -990,16 +990,16 @@ body {
   }
 }
 
-/* Final reset: restore the original warm green palette and keep search near the top. */
+/* Final reset: use a light blue page background and keep search near the top. */
 :root {
-  --bg: #f7f9f6;
+  --bg: #eaf6ff;
   --surface: #ffffff;
-  --surface-soft: #f1f6f3;
-  --cream: #fbf7ef;
+  --surface-soft: #f2f8ff;
+  --cream: #f6fbff;
   --ink: #17211d;
   --text: #394640;
   --muted: #6f7d76;
-  --line: #dfe8e3;
+  --line: #dbe8f4;
   --green: #2fa36b;
   --green-soft: #dff5e9;
   --teal: #1f9a9a;
@@ -1009,13 +1009,13 @@ body {
 }
 body {
   background:
-    radial-gradient(circle at top left, rgba(47, 163, 107, 0.12), transparent 360px),
-    radial-gradient(circle at top right, rgba(90, 155, 216, 0.16), transparent 420px),
+    radial-gradient(circle at top left, rgba(90, 155, 216, 0.18), transparent 360px),
+    radial-gradient(circle at top right, rgba(31, 154, 154, 0.12), transparent 420px),
     var(--bg);
 }
 .site-header {
-  background: rgba(247, 249, 246, 0.82);
-  border-bottom-color: rgba(223, 232, 227, 0.82);
+  background: rgba(234, 246, 255, 0.84);
+  border-bottom-color: rgba(219, 232, 244, 0.88);
 }
 .brand-mark {
   background: linear-gradient(135deg, var(--green-soft), var(--blue-soft));
@@ -1031,11 +1031,11 @@ body {
 }
 .os-hero {
   background:
-    linear-gradient(180deg, rgba(232, 243, 255, 0.9), rgba(247, 249, 246, 0.72)),
-    radial-gradient(circle at 70% 40%, rgba(47, 163, 107, 0.16), transparent 320px);
+    linear-gradient(180deg, rgba(232, 243, 255, 0.92), rgba(234, 246, 255, 0.72)),
+    radial-gradient(circle at 70% 40%, rgba(31, 154, 154, 0.12), transparent 320px);
 }
 .os-hero::after {
-  background: linear-gradient(180deg, rgba(90, 155, 216, 0.16), rgba(47, 163, 107, 0.12));
+  background: linear-gradient(180deg, rgba(90, 155, 216, 0.18), rgba(31, 154, 154, 0.1));
 }
 .button.primary {
   background: var(--green);
