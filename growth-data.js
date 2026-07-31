@@ -10269,6 +10269,33 @@ window.GROWTH_OS_DATA = {
       ],
       "sourceScope": "项目交接卡 / 网站项目",
       "derived": true
+    },
+    {
+      "id": "handoff-2026-07-31-music-player",
+      "title": "项目更新：网站新增音乐播放器",
+      "type": "handoff",
+      "date": "2026-07-31",
+      "summary": "把本地 music 文件夹里的音乐接入 Growth OS，新增全站悬浮小播放器入口，方便在浏览网站时播放音乐。",
+      "content": "今日更新\n1. 读取本地 music 文件夹中的 5 个音频文件，并加入网站资源。\n2. 新增全站悬浮音乐播放器图标，点击后可以展开播放器。\n3. 播放器支持选择曲目、上一首、下一首和浏览器原生播放控制。\n4. 音乐文件不加入离线核心缓存，避免网站首次打开时加载过大的音频资源。\n\n说明\n音乐文件上线后会随网站公开访问。如果后续要做私密播放、歌单管理或权限控制，需要升级为带后台的版本。",
+      "projects": [
+        "growth-lab",
+        "site-update-workflow"
+      ],
+      "tags": [
+        "项目更新",
+        "音乐播放器",
+        "网站项目",
+        "PWA",
+        "Growth OS"
+      ],
+      "status": "已完成",
+      "createdAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "sourceFiles": [
+        "本地文件夹：music"
+      ],
+      "sourceScope": "项目交接卡 / 网站项目",
+      "derived": true
     }
   ]
 };

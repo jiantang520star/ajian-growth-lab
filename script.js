@@ -1014,6 +1014,77 @@ const applySearch = () => {
     : `<p class="search-empty">没有找到匹配内容，换个关键词试试。</p>`;
 };
 
+const setupMusicPlayer = () => {
+  const tracks = [
+    { title: "AJR - Burn the House Down", src: "music/AJR%20-%20Burn%20the%20House%20Down.mp3" },
+    { title: "Cellars - 3 AM", src: "music/Cellars%20-%203%20AM.mp3" },
+    { title: "Charlie Puth - Look At Me Now", src: "music/Charlie%20Puth%20-%20Look%20At%20Me%20Now.mp3" },
+    { title: "陈奕迅 - 梦想天空分外蓝", src: "music/%E9%99%88%E5%A5%95%E8%BF%85%20-%20%E6%A2%A6%E6%83%B3%E5%A4%A9%E7%A9%BA%E5%88%86%E5%A4%96%E8%93%9D.mp3" },
+    { title: "音色 - 新鸳鸯蝴蝶梦（许嵩版）", src: "music/%E9%9F%B3%E8%89%B2%20-%20%E6%96%B0%E9%B8%B3%E9%B8%AF%E8%9D%B4%E8%9D%B6%E6%A2%A6%EF%BC%88%E8%AE%B8%E5%B5%A9%E7%89%88%EF%BC%89.flac" }
+  ];
+
+  if (!tracks.length || document.querySelector(".music-player")) return;
+
+  let currentIndex = 0;
+  const shell = document.createElement("section");
+  shell.className = "music-player";
+  shell.innerHTML = `
+    <button class="music-toggle" type="button" aria-label="打开音乐播放器" aria-expanded="false"><span>♪</span></button>
+    <div class="music-panel" aria-label="音乐播放器">
+      <div class="music-panel-head">
+        <div>
+          <small>Music</small>
+          <strong data-music-title>${escapeHTML(tracks[0].title)}</strong>
+        </div>
+        <button class="music-close" type="button" aria-label="收起音乐播放器">×</button>
+      </div>
+      <audio class="music-audio" preload="none" controls src="${rootPrefix}${tracks[0].src}"></audio>
+      <div class="music-actions">
+        <button type="button" data-music-prev>上一首</button>
+        <button type="button" data-music-next>下一首</button>
+      </div>
+      <select class="music-select" aria-label="选择音乐">
+        ${tracks.map((track, index) => `<option value="${index}">${escapeHTML(track.title)}</option>`).join("")}
+      </select>
+    </div>
+  `;
+  document.body.appendChild(shell);
+
+  const toggle = shell.querySelector(".music-toggle");
+  const panel = shell.querySelector(".music-panel");
+  const close = shell.querySelector(".music-close");
+  const audio = shell.querySelector(".music-audio");
+  const title = shell.querySelector("[data-music-title]");
+  const select = shell.querySelector(".music-select");
+
+  const setOpen = (open) => {
+    shell.classList.toggle("open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+  };
+
+  const loadTrack = (index, shouldPlay = false) => {
+    currentIndex = (index + tracks.length) % tracks.length;
+    const track = tracks[currentIndex];
+    title.textContent = track.title;
+    select.value = String(currentIndex);
+    audio.src = `${rootPrefix}${track.src}`;
+    if (shouldPlay) audio.play().catch(() => undefined);
+  };
+
+  toggle.addEventListener("click", () => setOpen(!shell.classList.contains("open")));
+  close.addEventListener("click", () => setOpen(false));
+  select.addEventListener("change", () => loadTrack(Number(select.value), !audio.paused));
+  shell.querySelector("[data-music-prev]").addEventListener("click", () => loadTrack(currentIndex - 1, !audio.paused));
+  shell.querySelector("[data-music-next]").addEventListener("click", () => loadTrack(currentIndex + 1, !audio.paused));
+  audio.addEventListener("play", () => shell.classList.add("playing"));
+  audio.addEventListener("pause", () => shell.classList.remove("playing"));
+  audio.addEventListener("ended", () => loadTrack(currentIndex + 1, true));
+
+  document.addEventListener("click", (event) => {
+    if (!panel.contains(event.target) && !toggle.contains(event.target)) setOpen(false);
+  });
+};
+
 if (searchInput) searchInput.addEventListener("input", applySearch);
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -1045,3 +1116,4 @@ renderStagePage();
 setupManager();
 setupLibraryBadges();
 setupLocalSearch();
+setupMusicPlayer();
