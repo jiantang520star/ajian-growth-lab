@@ -1,4 +1,4 @@
-const CACHE_NAME = "ajian-growth-os-pwa-v2";
+const CACHE_NAME = "ajian-growth-os-pwa-v3";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -6,10 +6,10 @@ const CORE_ASSETS = [
   "./script.js",
   "./growth-data.js",
   "./manifest.webmanifest",
-  "./icons/icon-192.png",
-  "./icons/icon-512.png",
-  "./icons/favicon-64.png",
-  "./icons/apple-touch-icon.png"
+  "./icons/app-icon-cat-192.png",
+  "./icons/app-icon-cat-512.png",
+  "./icons/app-icon-cat-64.png",
+  "./icons/app-icon-cat-180.png"
 ];
 
 self.addEventListener("install", (event) => {

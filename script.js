@@ -64,8 +64,8 @@ const setupPwaHead = () => {
   };
 
   ensureLink("manifest", "manifest.webmanifest");
-  ensureLink("icon", "icons/favicon-64.png");
-  ensureLink("apple-touch-icon", "icons/apple-touch-icon.png");
+  ensureLink("icon", "icons/app-icon-cat-64.png");
+  ensureLink("apple-touch-icon", "icons/app-icon-cat-180.png");
   ensureMeta("theme-color", "#2fa66f");
   ensureMeta("mobile-web-app-capable", "yes");
   ensureMeta("apple-mobile-web-app-capable", "yes");
