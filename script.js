@@ -46,6 +46,37 @@ const getAssetSummary = (asset) => asset.summary || asset.content || "";
 const rootPrefix = location.pathname.includes("/projects/") || location.pathname.includes("/experiments/") || location.pathname.includes("/archive/") || location.pathname.includes("/handoffs/") || location.pathname.includes("/whitepapers/") || location.pathname.includes("/workflow/") ? "../" : "";
 const assetUrl = (id) => `${rootPrefix}asset.html?id=${encodeURIComponent(id)}`;
 const libraryUrl = (id) => `${rootPrefix}library.html?id=${encodeURIComponent(id)}`;
+const setupPwaHead = () => {
+  const ensureMeta = (name, content) => {
+    if (document.querySelector(`meta[name="${name}"]`)) return;
+    const meta = document.createElement("meta");
+    meta.name = name;
+    meta.content = content;
+    document.head.appendChild(meta);
+  };
+
+  const ensureLink = (rel, href) => {
+    if (document.querySelector(`link[rel="${rel}"]`)) return;
+    const link = document.createElement("link");
+    link.rel = rel;
+    link.href = `${rootPrefix}${href}`;
+    document.head.appendChild(link);
+  };
+
+  ensureLink("manifest", "manifest.webmanifest");
+  ensureLink("icon", "favicon.svg");
+  ensureLink("apple-touch-icon", "icons/apple-touch-icon.png");
+  ensureMeta("theme-color", "#2fa66f");
+  ensureMeta("mobile-web-app-capable", "yes");
+  ensureMeta("apple-mobile-web-app-capable", "yes");
+  ensureMeta("apple-mobile-web-app-title", "阿简成长实验室");
+
+  if ("serviceWorker" in navigator && location.protocol === "https:") {
+    const swUrl = new URL(`${rootPrefix}sw.js`, location.href);
+    const scopeUrl = new URL(rootPrefix || "./", location.href);
+    navigator.serviceWorker.register(swUrl, { scope: scopeUrl.pathname }).catch(() => undefined);
+  }
+};
 const escapeHTML = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
   "&": "&amp;",
   "<": "&lt;",
@@ -53,6 +84,8 @@ const escapeHTML = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => 
   "\"": "&quot;",
   "'": "&#39;"
 }[char]));
+
+setupPwaHead();
 
 if (year) year.textContent = new Date().getFullYear();
 if (topButton) {

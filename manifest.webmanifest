@@ -1,0 +1,47 @@
+{
+  "name": "阿简成长实验室",
+  "short_name": "Growth OS",
+  "description": "记录成长、沉淀方法，建立可复用的个人成长系统。",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6fbf8",
+  "theme_color": "#2fa66f",
+  "orientation": "portrait-primary",
+  "lang": "zh-CN",
+  "categories": ["productivity", "education"],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "我的项目",
+      "short_name": "项目",
+      "url": "projects.html",
+      "description": "查看长期项目和关联资产"
+    },
+    {
+      "name": "知识资产",
+      "short_name": "知识",
+      "url": "knowledge.html",
+      "description": "查看沉淀下来的 SOP、规律、案例和链路"
+    },
+    {
+      "name": "实验库",
+      "short_name": "实验",
+      "url": "experiments.html",
+      "description": "查看正在验证的实验和链路实验"
+    }
+  ]
+}

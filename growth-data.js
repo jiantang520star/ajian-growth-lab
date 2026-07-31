@@ -10212,6 +10212,36 @@ window.GROWTH_OS_DATA = {
       ],
       "sourceScope": "项目交接卡 / 网站项目",
       "derived": true
+    },
+    {
+      "id": "handoff-2026-07-31-pwa-app-shell",
+      "title": "项目更新：Growth OS App 外壳上线",
+      "type": "handoff",
+      "date": "2026-07-31",
+      "summary": "在不改变网站访问方式的前提下，为阿简成长实验室新增 PWA 安装能力，手机和电脑可以添加到桌面，像 App 一样打开。",
+      "content": "今日更新\n1. 为网站新增 PWA 安装清单，让浏览器能够识别阿简成长实验室是一个可安装的 Growth OS 应用。\n2. 新增 AJ 图标资源，手机添加到主屏幕后会显示独立图标。\n3. 新增基础离线缓存：访问过首页后，核心页面资源会被缓存，弱网情况下也更容易打开。\n4. 保持原有 GitHub Pages 网站访问方式不变，网站仍然可以通过浏览器正常打开。\n\n使用方式\n安卓 Chrome / Edge：打开网站后，浏览器菜单里选择“添加到主屏幕”或“安装应用”。\niPhone Safari：打开网站后，点击分享按钮，选择“添加到主屏幕”。\n电脑 Chrome / Edge：地址栏右侧可能出现安装按钮，也可以从浏览器菜单安装。\n\n注意\n这个 App 外壳不是重新开发一个独立原生 App，而是让现有网站具备应用化入口。它更轻，维护成本更低，也不会破坏网站当前的数据和页面结构。",
+      "projects": [
+        "growth-lab",
+        "site-update-workflow",
+        "ai-workflow",
+        "knowledge-system"
+      ],
+      "tags": [
+        "项目更新",
+        "PWA",
+        "App外壳",
+        "网站项目",
+        "GitHub Pages",
+        "Growth OS"
+      ],
+      "status": "已完成",
+      "createdAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "sourceFiles": [
+        "用户请求：可以弄一个 App"
+      ],
+      "sourceScope": "项目交接卡 / 网站项目",
+      "derived": true
     }
   ]
 };
