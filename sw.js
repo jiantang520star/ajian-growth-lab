@@ -1,4 +1,4 @@
-const CACHE_NAME = "ajian-growth-os-pwa-v1";
+const CACHE_NAME = "ajian-growth-os-pwa-v2";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -8,6 +8,7 @@ const CORE_ASSETS = [
   "./manifest.webmanifest",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
+  "./icons/favicon-64.png",
   "./icons/apple-touch-icon.png"
 ];
 

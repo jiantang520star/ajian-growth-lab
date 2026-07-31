@@ -10242,6 +10242,33 @@ window.GROWTH_OS_DATA = {
       ],
       "sourceScope": "项目交接卡 / 网站项目",
       "derived": true
+    },
+    {
+      "id": "handoff-2026-07-31-app-icon-photo",
+      "title": "项目更新：App 图标替换为头像图片",
+      "type": "handoff",
+      "date": "2026-07-31",
+      "summary": "将 Growth OS 的桌面安装图标从 AJ 标识替换为用户提供的图片，让手机添加到主屏幕后更有个人识别度。",
+      "content": "今日更新\n1. 使用用户提供的图片生成 App 安装图标。\n2. 同步替换 512、192、Apple Touch 和网页小图标版本。\n3. 更新离线缓存版本，减少手机继续显示旧图标的概率。\n\n说明\n网站本身仍然正常通过浏览器访问；这次只调整安装到桌面后的图标和浏览器标签图标。",
+      "projects": [
+        "growth-lab",
+        "site-update-workflow"
+      ],
+      "tags": [
+        "项目更新",
+        "PWA",
+        "App图标",
+        "网站项目",
+        "Growth OS"
+      ],
+      "status": "已完成",
+      "createdAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "sourceFiles": [
+        "用户提供图片：OPLUSDRAG_com.xingin.xhs_NoteXYImageView_2026-07..png"
+      ],
+      "sourceScope": "项目交接卡 / 网站项目",
+      "derived": true
     }
   ]
 };
