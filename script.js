@@ -66,7 +66,7 @@ const setupPwaHead = () => {
   ensureLink("manifest", "manifest.webmanifest");
   ensureLink("icon", "icons/app-icon-cat-64.png");
   ensureLink("apple-touch-icon", "icons/app-icon-cat-180.png");
-  ensureMeta("theme-color", "#2fa66f");
+  ensureMeta("theme-color", "#2f7fd8");
   ensureMeta("mobile-web-app-capable", "yes");
   ensureMeta("apple-mobile-web-app-capable", "yes");
   ensureMeta("apple-mobile-web-app-title", "阿简成长实验室");
@@ -1033,7 +1033,7 @@ const setupMusicPlayer = () => {
   const shell = document.createElement("section");
   shell.className = "music-player";
   shell.innerHTML = `
-    <button class="music-toggle" type="button" aria-label="打开音乐播放器" aria-expanded="false"><span>♪</span></button>
+    <button class="music-toggle" type="button" aria-label="打开音乐播放器" aria-expanded="false"><img src="${rootPrefix}icons/music-headphone-cat.jpg" alt="" /></button>
     <div class="music-panel" aria-label="音乐播放器">
       <div class="music-panel-head">
         <div>
