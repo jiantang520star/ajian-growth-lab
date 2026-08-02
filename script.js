@@ -1062,10 +1062,40 @@ const setupMusicPlayer = () => {
   const title = shell.querySelector("[data-music-title]");
   const select = shell.querySelector(".music-select");
   const message = shell.querySelector("[data-music-message]");
+  const artworkUrl = new URL(`${rootPrefix}icons/music-headphone-cat.jpg`, location.href).href;
+  const trackUrl = (track) => new URL(`${rootPrefix}${track.src}`, location.href).href;
 
   const setOpen = (open) => {
     shell.classList.toggle("open", open);
     toggle.setAttribute("aria-expanded", String(open));
+  };
+
+  const updateMediaPosition = () => {
+    if (!("mediaSession" in navigator) || !navigator.mediaSession.setPositionState) return;
+    if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+    try {
+      navigator.mediaSession.setPositionState({
+        duration: audio.duration,
+        playbackRate: audio.playbackRate,
+        position: Math.min(audio.currentTime, audio.duration)
+      });
+    } catch (error) {
+      // Some mobile browsers reject position updates before metadata is ready.
+    }
+  };
+
+  const updateMediaSession = (track) => {
+    if (!("mediaSession" in navigator) || typeof MediaMetadata === "undefined") return;
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: track.title,
+      artist: "阿简成长实验室",
+      album: "Growth OS 音乐",
+      artwork: [
+        { src: artworkUrl, sizes: "96x96", type: "image/jpeg" },
+        { src: artworkUrl, sizes: "192x192", type: "image/jpeg" },
+        { src: artworkUrl, sizes: "512x512", type: "image/jpeg" }
+      ]
+    });
   };
 
   const loadTrack = (index, shouldPlay = false) => {
@@ -1074,21 +1104,66 @@ const setupMusicPlayer = () => {
     title.textContent = track.title;
     select.value = String(currentIndex);
     if (message) message.textContent = "";
-    audio.src = `${rootPrefix}${track.src}`;
+    audio.src = trackUrl(track);
+    updateMediaSession(track);
     if (shouldPlay) audio.play().catch(() => undefined);
   };
+
+  const setMediaAction = (action, handler) => {
+    if (!("mediaSession" in navigator)) return;
+    try {
+      navigator.mediaSession.setActionHandler(action, handler);
+    } catch (error) {
+      // Unsupported actions are ignored by older mobile browsers.
+    }
+  };
+
+  updateMediaSession(tracks[0]);
+  setMediaAction("play", () => audio.play().catch(() => undefined));
+  setMediaAction("pause", () => audio.pause());
+  setMediaAction("previoustrack", () => loadTrack(currentIndex - 1, true));
+  setMediaAction("nexttrack", () => loadTrack(currentIndex + 1, true));
+  setMediaAction("seekbackward", (details) => {
+    audio.currentTime = Math.max(audio.currentTime - (details.seekOffset || 10), 0);
+    updateMediaPosition();
+  });
+  setMediaAction("seekforward", (details) => {
+    if (!Number.isFinite(audio.duration)) return;
+    audio.currentTime = Math.min(audio.currentTime + (details.seekOffset || 10), audio.duration);
+    updateMediaPosition();
+  });
+  setMediaAction("seekto", (details) => {
+    if (details.fastSeek && "fastSeek" in audio) {
+      audio.fastSeek(details.seekTime);
+    } else {
+      audio.currentTime = details.seekTime;
+    }
+    updateMediaPosition();
+  });
 
   toggle.addEventListener("click", () => setOpen(!shell.classList.contains("open")));
   close.addEventListener("click", () => setOpen(false));
   select.addEventListener("change", () => loadTrack(Number(select.value), !audio.paused));
   shell.querySelector("[data-music-prev]").addEventListener("click", () => loadTrack(currentIndex - 1, !audio.paused));
   shell.querySelector("[data-music-next]").addEventListener("click", () => loadTrack(currentIndex + 1, !audio.paused));
-  audio.addEventListener("play", () => shell.classList.add("playing"));
-  audio.addEventListener("pause", () => shell.classList.remove("playing"));
+  audio.addEventListener("play", () => {
+    shell.classList.add("playing");
+    if ("mediaSession" in navigator) navigator.mediaSession.playbackState = "playing";
+    updateMediaPosition();
+  });
+  audio.addEventListener("pause", () => {
+    shell.classList.remove("playing");
+    if ("mediaSession" in navigator) navigator.mediaSession.playbackState = "paused";
+    updateMediaPosition();
+  });
+  audio.addEventListener("loadedmetadata", updateMediaPosition);
+  audio.addEventListener("durationchange", updateMediaPosition);
+  audio.addEventListener("timeupdate", updateMediaPosition);
   audio.addEventListener("ended", () => loadTrack(currentIndex + 1, true));
   audio.addEventListener("error", () => {
     if (message) message.textContent = "这首加载失败，先切换下一首试试。";
     shell.classList.remove("playing");
+    if ("mediaSession" in navigator) navigator.mediaSession.playbackState = "none";
   });
 
   document.addEventListener("click", (event) => {
