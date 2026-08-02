@@ -1033,7 +1033,7 @@ const setupMusicPlayer = () => {
   const shell = document.createElement("section");
   shell.className = "music-player";
   shell.innerHTML = `
-    <button class="music-toggle" type="button" aria-label="打开音乐播放器" aria-expanded="false"><img src="${rootPrefix}icons/music-headphone-cat.jpg" alt="" /></button>
+    <button class="music-toggle" type="button" aria-label="打开音乐播放器" aria-expanded="false"><img src="${rootPrefix}icons/music-headphone-cat.jpg" alt="" draggable="false" /></button>
     <div class="music-panel" aria-label="音乐播放器">
       <div class="music-panel-head">
         <div>
@@ -1064,11 +1064,80 @@ const setupMusicPlayer = () => {
   const message = shell.querySelector("[data-music-message]");
   const artworkUrl = new URL(`${rootPrefix}icons/music-headphone-cat.jpg`, location.href).href;
   const trackUrl = (track) => new URL(`${rootPrefix}${track.src}`, location.href).href;
+  const musicPositionKey = "ajian_music_player_position_v1";
+  let wasDragging = false;
 
   const setOpen = (open) => {
     shell.classList.toggle("open", open);
     toggle.setAttribute("aria-expanded", String(open));
   };
+
+  const keepPlayerInViewport = (left, top) => {
+    const rect = shell.getBoundingClientRect();
+    const margin = 10;
+    return {
+      left: Math.min(Math.max(left, margin), window.innerWidth - rect.width - margin),
+      top: Math.min(Math.max(top, margin), window.innerHeight - rect.height - margin)
+    };
+  };
+
+  const setPlayerPosition = (left, top, save = false) => {
+    const position = keepPlayerInViewport(left, top);
+    shell.style.left = `${position.left}px`;
+    shell.style.top = `${position.top}px`;
+    shell.style.right = "auto";
+    shell.style.bottom = "auto";
+    if (save) localStorage.setItem(musicPositionKey, JSON.stringify(position));
+  };
+
+  const restorePlayerPosition = () => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(musicPositionKey) || "null");
+      if (saved && Number.isFinite(saved.left) && Number.isFinite(saved.top)) {
+        setPlayerPosition(saved.left, saved.top);
+      }
+    } catch (error) {
+      localStorage.removeItem(musicPositionKey);
+    }
+  };
+
+  restorePlayerPosition();
+  window.addEventListener("resize", () => {
+    const rect = shell.getBoundingClientRect();
+    setPlayerPosition(rect.left, rect.top, true);
+  });
+
+  toggle.addEventListener("pointerdown", (event) => {
+    if (event.button && event.button !== 0) return;
+    const startX = event.clientX;
+    const startY = event.clientY;
+    const startRect = shell.getBoundingClientRect();
+    let dragging = false;
+
+    const onMove = (moveEvent) => {
+      const deltaX = moveEvent.clientX - startX;
+      const deltaY = moveEvent.clientY - startY;
+      if (!dragging && Math.hypot(deltaX, deltaY) < 6) return;
+      dragging = true;
+      wasDragging = true;
+      shell.classList.add("dragging");
+      setPlayerPosition(startRect.left + deltaX, startRect.top + deltaY);
+    };
+
+    const onUp = () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      shell.classList.remove("dragging");
+      if (dragging) {
+        const rect = shell.getBoundingClientRect();
+        setPlayerPosition(rect.left, rect.top, true);
+        window.setTimeout(() => { wasDragging = false; }, 0);
+      }
+    };
+
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+  });
 
   const updateMediaPosition = () => {
     if (!("mediaSession" in navigator) || !navigator.mediaSession.setPositionState) return;
@@ -1141,7 +1210,10 @@ const setupMusicPlayer = () => {
     updateMediaPosition();
   });
 
-  toggle.addEventListener("click", () => setOpen(!shell.classList.contains("open")));
+  toggle.addEventListener("click", () => {
+    if (wasDragging) return;
+    setOpen(!shell.classList.contains("open"));
+  });
   close.addEventListener("click", () => setOpen(false));
   select.addEventListener("change", () => loadTrack(Number(select.value), !audio.paused));
   shell.querySelector("[data-music-prev]").addEventListener("click", () => loadTrack(currentIndex - 1, !audio.paused));
