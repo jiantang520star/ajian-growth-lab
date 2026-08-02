@@ -1,4 +1,4 @@
-const CACHE_NAME = "ajian-growth-os-pwa-v3";
+const CACHE_NAME = "ajian-growth-os-pwa-v4";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -62,6 +62,14 @@ self.addEventListener("fetch", (event) => {
 
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
+
+  const isMediaRequest =
+    request.headers.has("range") ||
+    request.destination === "audio" ||
+    request.destination === "video" ||
+    /\.(mp3|m4a|aac|ogg|wav|flac)$/i.test(url.pathname);
+
+  if (isMediaRequest) return;
 
   const isDynamicContent = request.mode === "navigate" || url.pathname.endsWith(".html") || url.pathname.endsWith("/growth-data.js");
   event.respondWith(isDynamicContent ? networkFirst(request) : cacheFirst(request));

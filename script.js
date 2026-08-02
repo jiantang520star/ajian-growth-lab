@@ -1015,13 +1015,17 @@ const applySearch = () => {
 };
 
 const setupMusicPlayer = () => {
-  const tracks = [
+  let tracks = [
     { title: "AJR - Burn the House Down", src: "music/AJR%20-%20Burn%20the%20House%20Down.mp3" },
     { title: "Cellars - 3 AM", src: "music/Cellars%20-%203%20AM.mp3" },
     { title: "Charlie Puth - Look At Me Now", src: "music/Charlie%20Puth%20-%20Look%20At%20Me%20Now.mp3" },
     { title: "陈奕迅 - 梦想天空分外蓝", src: "music/%E9%99%88%E5%A5%95%E8%BF%85%20-%20%E6%A2%A6%E6%83%B3%E5%A4%A9%E7%A9%BA%E5%88%86%E5%A4%96%E8%93%9D.mp3" },
     { title: "音色 - 新鸳鸯蝴蝶梦（许嵩版）", src: "music/%E9%9F%B3%E8%89%B2%20-%20%E6%96%B0%E9%B8%B3%E9%B8%AF%E8%9D%B4%E8%9D%B6%E6%A2%A6%EF%BC%88%E8%AE%B8%E5%B5%A9%E7%89%88%EF%BC%89.flac" }
   ];
+
+  const audioProbe = document.createElement("audio");
+  const supportsFlac = Boolean(audioProbe.canPlayType("audio/flac") || audioProbe.canPlayType("audio/x-flac"));
+  tracks = tracks.filter((track) => !track.src.toLowerCase().endsWith(".flac") || supportsFlac);
 
   if (!tracks.length || document.querySelector(".music-player")) return;
 
@@ -1039,6 +1043,7 @@ const setupMusicPlayer = () => {
         <button class="music-close" type="button" aria-label="收起音乐播放器">×</button>
       </div>
       <audio class="music-audio" preload="none" controls src="${rootPrefix}${tracks[0].src}"></audio>
+      <small class="music-message" data-music-message></small>
       <div class="music-actions">
         <button type="button" data-music-prev>上一首</button>
         <button type="button" data-music-next>下一首</button>
@@ -1056,6 +1061,7 @@ const setupMusicPlayer = () => {
   const audio = shell.querySelector(".music-audio");
   const title = shell.querySelector("[data-music-title]");
   const select = shell.querySelector(".music-select");
+  const message = shell.querySelector("[data-music-message]");
 
   const setOpen = (open) => {
     shell.classList.toggle("open", open);
@@ -1067,6 +1073,7 @@ const setupMusicPlayer = () => {
     const track = tracks[currentIndex];
     title.textContent = track.title;
     select.value = String(currentIndex);
+    if (message) message.textContent = "";
     audio.src = `${rootPrefix}${track.src}`;
     if (shouldPlay) audio.play().catch(() => undefined);
   };
@@ -1079,6 +1086,10 @@ const setupMusicPlayer = () => {
   audio.addEventListener("play", () => shell.classList.add("playing"));
   audio.addEventListener("pause", () => shell.classList.remove("playing"));
   audio.addEventListener("ended", () => loadTrack(currentIndex + 1, true));
+  audio.addEventListener("error", () => {
+    if (message) message.textContent = "这首加载失败，先切换下一首试试。";
+    shell.classList.remove("playing");
+  });
 
   document.addEventListener("click", (event) => {
     if (!panel.contains(event.target) && !toggle.contains(event.target)) setOpen(false);
