@@ -10296,6 +10296,134 @@ window.GROWTH_OS_DATA = {
       ],
       "sourceScope": "项目交接卡 / 网站项目",
       "derived": true
+    },
+    {
+      "id": "notion-whitepaper-2026-07-31-ai-work-system",
+      "title": "成长白皮书_2026-07-31：从文件管理到个人AI工作系统",
+      "type": "whitepaper",
+      "date": "2026-07-31",
+      "summary": "从 Word 文件反复下载整理，升级为聊天输入、Notion 沉淀、Codex 执行、GitHub 更新和网站展示的个人 AI 工作系统。",
+      "content": "成长白皮书_2026-07-31\n\n今日阶段主题\n从文件管理到个人AI工作系统\n\n一、核心发现\n今天完成了新的工作流验证：\n\n过去：\n聊天记录 → 生成Word → 下载 → 保存 → 多版本整理 → 再交给Codex。\n\n现在尝试：\n聊天输入 → ChatGPT整理 → Notion沉淀 → Codex读取 → GitHub更新 → 网站展示。\n\n目标是降低维护成本，让成长记录自动形成长期资产。\n\n二、重要验证\nVPN稳定性验证\n\n之前的问题：\n- Notion经常无法更新；\n- ChatGPT出现连接异常；\n- 工具调用不稳定；\n- Google相关下载出现异常。\n\n新的测试环境下：\n- 连续多次Notion更新成功；\n- 修改和增加内容正常；\n- 暂未出现之前的连接问题。\n\n初步判断：VPN稳定性可能是影响AI工作流的重要因素。\n\n三、系统架构方向\n未来尝试建立：\n\nNotion（数据层）\n↓\nChatGPT（分析整理层）\n↓\nCodex（执行层）\n↓\nGitHub（代码管理）\n↓\n网站（展示层）\n\n四、迁移策略调整\n没有一次性迁移全部网站数据。\n\n原因：\n- 数据量过大；\n- 容易造成Notion结构混乱；\n- 需要先验证工作流稳定性。\n\n采用：\n小范围测试 → 稳定 → 逐步迁移。\n\n五、阶段目标\n如果验证成功：\n- 日常复盘可以直接进入Notion；\n- 不需要频繁下载白皮书和项目卡；\n- 网站可以更接近自动更新；\n- 个人成长系统进一步升级。\n\n六、补充验证：从一次授权折腾到长期通道打通\n关键事件\n今天在手机端尝试用 ChatGPT Work 更新 GitHub Pages 网站背景。最初 GitHub 插件显示已经连接且权限为全部允许，但实际提交 styles.css 时失败。继续排查后发现，ChatGPT 插件连接只是账号层连接，真正写入仓库还需要 GitHub 侧安装 ChatGPT Codex Connector 并授权仓库访问。\n\n重要结论\n- ChatGPT 连接 GitHub 账号，只代表可以建立账号级连接。\n- GitHub App 安装到仓库，才代表可以执行代码读取、修改、提交等动作。\n- 旧会话可能缓存旧权限，新会话更容易拿到最新授权状态。\n- 一旦 GitHub App 安装完成，后续网站更新可以从手机端直接完成，不必每次重新授权。\n\n方法论沉淀\n这次不是单纯解决一个网站背景色问题，而是把“手机端远程触发网站更新”的基础设施打通了。以后个人网站可以进入更稳定的流程：\n\n1. 用户上传更新包或提出修改要求。\n2. ChatGPT Work 读取文件并判断改动范围。\n3. GitHub App 负责提交到 main 主分支。\n4. GitHub Pages 自动刷新线上网站。\n\n对成长系统的意义\n这说明个人成长系统正在从“手动文件管理”升级为“Notion 数据沉淀 + ChatGPT 分析 + Codex/GitHub 执行 + 网站展示”的闭环。今天最累的地方，是权限链路第一次打通；后续同类任务的边际成本会明显下降。",
+      "projects": [
+        "growth-lab",
+        "ai-workflow",
+        "site-update-workflow",
+        "whitepaper-generator",
+        "knowledge-system"
+      ],
+      "tags": [
+        "成长白皮书",
+        "Notion数据层",
+        "AI工作流",
+        "GitHub授权",
+        "网站更新",
+        "Growth OS"
+      ],
+      "status": "已发布",
+      "createdAt": "2026-07-31",
+      "updatedAt": "2026-08-02",
+      "sourceFiles": [
+        "Notion：成长白皮书_2026-07-31",
+        "https://app.notion.com/p/3ae899d90b7f815d817cf186ca9f9821"
+      ],
+      "sourceScope": "Notion / 成长白皮书",
+      "derived": false
+    },
+    {
+      "id": "notion-handoff-2026-07-31-ai-work-system",
+      "title": "项目交接卡_2026-07-31：Notion 数据层与网站更新通道验证",
+      "type": "handoff",
+      "date": "2026-07-31",
+      "summary": "完成从聊天、Notion、Codex、GitHub 到网站的工作流测试，并确认 VPN 稳定性、GitHub App 授权和 PWA 入口是后续自动更新的关键基础。",
+      "content": "项目交接卡_2026-07-31\n\n今日核心进展\n\n1. AI工作流重构测试\n- 开始测试从“聊天 → Notion → Codex → GitHub → 网站”的新工作流。\n- 当前目标：减少 Word 文件反复下载、保存、整理的流程。\n- 验证成功后，日常记录可以直接进入 Notion，再作为网站数据来源。\n\n2. VPN稳定性实验\n- 怀疑之前 AI 工作流异常主要受到 VPN 稳定性影响。\n- 更换新的 VPN 后测试：\n  - Notion连续更新成功；\n  - 修改内容正常；\n  - 工具调用未出现之前的异常。\n\n3. Notion架构调整\n- 没有直接把整个网站数据全部搬入 Notion。\n- 原因：数据量过大，容易造成数据库混乱。\n- 采用逐步迁移策略：先验证流程，再逐步导入重要数据。\n\n4. 网站系统进展\n- 网站已完成 PWA 应用入口测试。\n- 手机端可添加网站应用图标。\n- 后续方向：Notion作为数据层，网站作为展示层。\n\n下一步\n- 持续测试每日记录是否可以直接进入 Notion。\n- 验证 Codex读取Notion数据并更新网站。\n- 稳定后逐步替代文件式管理。\n\n追加进展：GitHub长期授权与浅蓝背景上线\n\n1. 网站浅蓝背景更新完成\n- 已通过新的 Work 对话把 jiantang520star/ajian-growth-lab 的 styles.css 更新到 main 主分支。\n- 提交记录：0d831e3。\n- 提交信息：改成浅蓝色背景。\n- 更新范围：全站背景、顶部导航、Growth OS 区域浅蓝化；不改页面内容、不改数据、不改结构。\n\n2. GitHub权限问题定位\n- 问题不是压缩包错误，也不是仓库不能改。\n- 原因是 ChatGPT 里 GitHub 插件“已连接”不等于 GitHub 仓库级 App 已安装。\n- 真正能写仓库，需要在 GitHub 安装 ChatGPT Codex Connector 并授权到仓库。\n\n3. 最终解决方式\n- 已在 GitHub 安装 ChatGPT Codex Connector。\n- 当前授权范围为所有仓库，因此后续手机端 Work 对话也可以直接触发网站更新。\n- 旧对话可能因为连接器状态没有刷新而继续报错；新 Work 对话能正常读取新权限并提交。\n\n4. 后续交接说明\n- 以后更新网站时，直接发送更新包并说明“更新网站”即可。\n- 如果某个旧对话 GitHub 工具报内部错误，优先新开 Work 对话继续。\n- GitHub Pages 一般等待几分钟刷新，不需要手动重复提交。",
+      "projects": [
+        "growth-lab",
+        "ai-workflow",
+        "site-update-workflow",
+        "handoff-generator",
+        "experiment-library"
+      ],
+      "tags": [
+        "项目交接卡",
+        "Notion工作流",
+        "VPN稳定性",
+        "GitHub授权",
+        "PWA",
+        "网站更新"
+      ],
+      "status": "已发布",
+      "createdAt": "2026-07-31",
+      "updatedAt": "2026-08-02",
+      "sourceFiles": [
+        "Notion：项目交接卡_2026-07-31",
+        "https://app.notion.com/p/3ae899d90b7f8141975bd8c0948a8f42"
+      ],
+      "sourceScope": "Notion / 项目交接卡",
+      "derived": false
+    },
+    {
+      "id": "notion-experiment-vpn-workflow-stability-2026-07-31",
+      "title": "Notion 工作流稳定性验证（VPN替换测试）",
+      "type": "experiment",
+      "date": "2026-07-31",
+      "summary": "测试新的 VPN 工作链路下，Notion 创建、修改、更新能力是否稳定，并判断 VPN 稳定性是否影响 AI 工作流。",
+      "content": "Notion 工作流稳定性验证（VPN替换测试）\n\n日期\n2026-07-31\n\n状态\n进行中\n\n实验内容\n测试新的 VPN 工作链路下，Notion 的创建、修改、更新能力是否稳定。\n\n背景：\n之前 44FCC 使用过程中出现 ChatGPT、Notion、Google Play 等连接异常，怀疑 VPN 稳定性影响 AI 工作流。\n\n当前测试：\n- 清空 Notion 复杂目录，仅保留测试环境。\n- 持续修改、增加、更新 Notion 内容。\n- 对比普通模式和工作模式能力差异。\n\n已观察：\n- 普通模式下创建、修改、更新正常。\n- 删除页面能力受权限限制，需要进一步测试工作模式。\n\n结论\n初步验证新的工作链路稳定性明显提升。继续测试连续操作、修改、删除和长期运行。",
+      "projects": [
+        "experiment-library",
+        "ai-workflow",
+        "site-update-workflow",
+        "growth-lab"
+      ],
+      "tags": [
+        "实验",
+        "Notion",
+        "VPN稳定性",
+        "AI工作流",
+        "工具链风险",
+        "进行中"
+      ],
+      "status": "进行中",
+      "createdAt": "2026-07-31",
+      "updatedAt": "2026-08-02",
+      "sourceFiles": [
+        "Notion：新的工作流实验库",
+        "Notion：实验库 / Notion 工作流稳定性验证（VPN替换测试）",
+        "https://app.notion.com/p/3ae899d90b7f81a0b88bdbf69a925e27"
+      ],
+      "sourceScope": "Notion / 实验库",
+      "derived": false
+    },
+    {
+      "id": "handoff-2026-08-02-notion-sync",
+      "title": "项目更新：Notion 最近白皮书与项目交接卡同步到网站",
+      "type": "handoff",
+      "date": "2026-08-02",
+      "summary": "首次按 Notion 数据层读取最近白皮书、项目交接卡和实验记录，并同步到 Growth OS 网站对应库中。",
+      "content": "今日更新\n1. 从 Notion 读取最近的成长白皮书_2026-07-31。\n2. 从 Notion 读取最近的项目交接卡_2026-07-31。\n3. 从 Notion 读取“新的工作流实验库”中的 Notion 工作流稳定性验证实验。\n4. 在 Notion 中新建“实验库”文件夹页，并把原实验内容整理成一个文件放入其中。\n5. 网站数据同步到白皮书库、项目交接卡库、实验库、AI工作流项目、网站项目和 Workflow 最近动态。\n\n当前结论\nNotion 已经可以作为 Growth OS 的数据录入层；网站仍然作为展示层和公开资产库。后续可以逐步减少 Word 文件导入，改为 Notion → Codex → 网站的更新流程。",
+      "projects": [
+        "growth-lab",
+        "site-update-workflow",
+        "knowledge-system",
+        "experiment-library"
+      ],
+      "tags": [
+        "项目更新",
+        "Notion同步",
+        "白皮书",
+        "项目交接卡",
+        "实验库",
+        "Growth OS"
+      ],
+      "status": "已完成",
+      "createdAt": "2026-08-02",
+      "updatedAt": "2026-08-02",
+      "sourceFiles": [
+        "Notion：成长白皮书_2026-07-31",
+        "Notion：项目交接卡_2026-07-31",
+        "Notion：新的工作流实验库"
+      ],
+      "sourceScope": "项目交接卡 / 网站项目",
+      "derived": true
     }
   ]
 };
