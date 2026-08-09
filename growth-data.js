@@ -39,6 +39,10 @@ window.GROWTH_OS_DATA = {
     {
       "id": "experiment",
       "name": "实验"
+    },
+    {
+      "id": "guess",
+      "name": "猜测"
     }
   ],
   "projects": [
@@ -548,6 +552,19 @@ window.GROWTH_OS_DATA = {
         "新媒体运营"
       ],
       "summary": "专门保存用来验证链路节点的实验，例如封面、前三秒、标题、互动和推荐变化。"
+    },
+    {
+      "id": "guess-library",
+      "title": "猜测库",
+      "url": "library.html?id=guess-library",
+      "status": "验证进行中",
+      "tags": [
+        "子库",
+        "AI工作流项目",
+        "Notion",
+        "猜测验证"
+      ],
+      "summary": "猜测库用于保存还没有完全验证的判断。它不是结论库，而是把观察现象、当前猜测、支持证据和下一步实验分开记录，后续验证稳定后再进入规律库。"
     }
   ],
   "assets": [
@@ -10366,8 +10383,8 @@ window.GROWTH_OS_DATA = {
       "title": "Notion 工作流稳定性验证（VPN替换测试）",
       "type": "experiment",
       "date": "2026-07-31",
-      "summary": "测试新的 VPN 工作链路下，Notion 创建、修改、更新能力是否稳定，并判断 VPN 稳定性是否影响 AI 工作流。",
-      "content": "Notion 工作流稳定性验证（VPN替换测试）\n\n日期\n2026-07-31\n\n状态\n进行中\n\n实验内容\n测试新的 VPN 工作链路下，Notion 的创建、修改、更新能力是否稳定。\n\n背景：\n之前 44FCC 使用过程中出现 ChatGPT、Notion、Google Play 等连接异常，怀疑 VPN 稳定性影响 AI 工作流。\n\n当前测试：\n- 清空 Notion 复杂目录，仅保留测试环境。\n- 持续修改、增加、更新 Notion 内容。\n- 对比普通模式和工作模式能力差异。\n\n已观察：\n- 普通模式下创建、修改、更新正常。\n- 删除页面能力受权限限制，需要进一步测试工作模式。\n\n结论\n初步验证新的工作链路稳定性明显提升。继续测试连续操作、修改、删除和长期运行。",
+      "summary": "持续验证 VPN、Notion 与 ChatGPT 工具链稳定性。8 月 2 日新增猜测库记录，把稳定性、配置组合和 44FCC 长期挂机问题拆开观察。",
+      "content": "Notion 工作流稳定性验证（VPN替换测试）\n\n日期\n2026-07-31\n\n状态\n进行中\n\n实验内容\n测试新的 VPN 工作链路下，Notion 的创建、修改、更新能力是否稳定。\n\n背景：\n之前 44FCC 使用过程中出现 ChatGPT、Notion、Google Play 等连接异常，怀疑 VPN 稳定性影响 AI 工作流。\n\n当前测试：\n- 清空 Notion 复杂目录，仅保留测试环境。\n- 持续修改、增加、更新 Notion 内容。\n- 对比普通模式和工作模式能力差异。\n\n已观察：\n- 普通模式下创建、修改、更新正常。\n- 删除页面能力受权限限制，需要进一步测试工作模式。\n\n结论\n初步验证新的工作链路稳定性明显提升。继续测试连续操作、修改、删除和长期运行。\n\n2026-08-02 追加观察\n1. 44FCC 曾出现一次实际未启用代理节点的情况，因此不能把该次异常直接归因于 VPN 品牌。\n2. 新配置下 ChatGPT 与 Notion 连续读写明显改善，但 VPN 重连仍然较慢。\n3. 当前将稳定性问题拆成三类猜测：VPN 稳定性是否影响工具调用、节点/协议/DNS/分流组合是否更关键、44FCC 是否不适合长期挂机。\n4. 后续继续用同一设备、不同节点、不同协议和不同代理模式对比，而不是凭单次体验下结论。",
       "projects": [
         "experiment-library",
         "ai-workflow",
@@ -10391,7 +10408,22 @@ window.GROWTH_OS_DATA = {
         "https://app.notion.com/p/3ae899d90b7f81a0b88bdbf69a925e27"
       ],
       "sourceScope": "Notion / 实验库",
-      "derived": false
+      "derived": false,
+      "relations": {
+        "supports": [
+          "guess-vpn-stability-affects-ai-tools-2026-08-02",
+          "guess-vpn-config-node-protocol-2026-08-02",
+          "guess-44fcc-too-slow-long-session-2026-08-02"
+        ],
+        "metrics": [
+          "Notion连续读写",
+          "ChatGPT工具调用",
+          "重连耗时",
+          "节点与协议",
+          "手机端权限"
+        ],
+        "nextStep": "继续积累可比较样本，稳定成立后再把猜测升级为规律。"
+      }
     },
     {
       "id": "handoff-2026-08-02-notion-sync",
@@ -10424,6 +10456,249 @@ window.GROWTH_OS_DATA = {
       ],
       "sourceScope": "项目交接卡 / 网站项目",
       "derived": true
+    },
+    {
+      "id": "notion-whitepaper-2026-08-02-vpn-notion-stability",
+      "title": "成长白皮书_2026-08-02：VPN 与 Notion 工作流稳定性实验",
+      "type": "whitepaper",
+      "date": "2026-08-02",
+      "summary": "围绕 VPN 与 Notion 的稳定性进行连续实验，用观察事实、提出猜测、更换变量、再次验证和修正猜测的方法，让成长系统继续运转。",
+      "content": "成长白皮书_2026-08-02\n\n今日核心收获\n今天围绕 VPN 与 Notion 的稳定性进行了连续实验。通过更换配置、观察现象、修正猜测，逐步排除了部分错误假设，例如 44FCC 曾有一次实际上未启用代理节点。\n\n实验思路\n本次没有急于下结论，而是采用“观察事实 → 提出猜测 → 更换变量 → 再次验证 → 修正猜测”的方法，继续收集证据，而不是把猜测当成结论。\n\n当前阶段判断\n新的 VPN 配置下，ChatGPT 与 Notion 的连续读写明显改善，但 VPN 重连仍然较慢。当前更倾向于认为问题可能与节点、出口 IP、DNS、协议、分流规则或网络链路有关，仍需继续长期观察。\n\n后续计划\n1. 持续验证 VPN 稳定性。\n2. 完善链路库。\n3. 持续沉淀新媒体运营与生活链路。\n4. 有新证据时继续更新猜测库，而不是推翻已有实验。",
+      "projects": [
+        "growth-lab",
+        "ai-workflow",
+        "site-update-workflow",
+        "whitepaper-generator",
+        "knowledge-system",
+        "guess-library",
+        "experiment-library"
+      ],
+      "tags": [
+        "成长白皮书",
+        "VPN稳定性",
+        "Notion",
+        "AI工作流",
+        "猜测库",
+        "实验方法",
+        "工具链稳定性"
+      ],
+      "status": "已发布",
+      "createdAt": "2026-08-02",
+      "updatedAt": "2026-08-02",
+      "sourceFiles": [
+        "Notion：成长白皮书_2026-08-02"
+      ],
+      "sourceScope": "Notion / 成长白皮书",
+      "derived": false
+    },
+    {
+      "id": "notion-handoff-2026-08-02-vpn-notion-music-app",
+      "title": "项目交接卡_2026-08-02：VPN、Notion 与音乐 App 迭代",
+      "type": "handoff",
+      "date": "2026-08-02",
+      "summary": "排查 VPN 网络问题，验证 Notion 连续读写，推进链路库规划，并迭代 Growth OS 音乐 App 原型。",
+      "content": "项目交接卡_2026-08-02\n\n今日完成\n1. 排查 VPN 网络问题，对比不同 VPN 配置表现。\n2. 确认 44FCC 曾有一次未实际使用代理节点，导致网络配置异常。\n3. 更换新配置后，ChatGPT 与 Notion 连续读取表现恢复稳定。\n4. 创建并规划 Notion“链路库”，包含“新媒体运营”“生活”两个分类。\n5. 记录 VPN 恢复可用但重新连接速度仍较慢的现象。\n6. 迭代 Growth OS 音乐 App 原型：完成网页 / 音乐双模式、本地音乐导入、旋转头像上传、后台媒体控制和悬浮播放器逻辑测试。\n7. 明确音乐 App 的悬浮窗逻辑：App 内不需要重复显示悬浮窗；离开 App、音乐仍在播放且开启悬浮窗时，才显示可操作的小头像控制器。\n\n新发现\n1. 不同配置或节点可能导致稳定性差异。\n2. 代理是否真正接管网络是关键变量。\n3. 连接速度与使用稳定性需要分开评估。\n4. 音乐 App 的悬浮窗不是装饰，而应该是离开 App 后的轻量控制入口，可以完成暂停、上一首、下一首和播放模式切换。\n\n待验证\n1. 节点、DNS、协议、分流规则对稳定性的影响。\n2. 长时间使用后的稳定性。\n3. VPN 重连缓慢是否属于服务商特性。\n4. Android 后台播放、系统媒体控制、悬浮窗权限和旋转头像状态是否能长期稳定。\n\n下一步\n1. 持续记录 VPN 稳定性。\n2. 完善链路库。\n3. 沉淀新媒体运营链路与生活链路。\n4. 继续轻量化音乐 App，让播放器界面、悬浮窗和系统媒体栏各自承担不同功能。",
+      "projects": [
+        "growth-lab",
+        "ai-workflow",
+        "site-update-workflow",
+        "handoff-generator",
+        "experiment-library",
+        "guess-library",
+        "knowledge-system"
+      ],
+      "tags": [
+        "项目交接卡",
+        "VPN稳定性",
+        "Notion工作流",
+        "链路库",
+        "音乐App",
+        "Android",
+        "悬浮窗",
+        "媒体控制"
+      ],
+      "status": "已发布",
+      "createdAt": "2026-08-02",
+      "updatedAt": "2026-08-02",
+      "sourceFiles": [
+        "Notion：项目交接卡_2026-08-02",
+        "本地 Android App 迭代记录"
+      ],
+      "sourceScope": "Notion / 项目交接卡",
+      "derived": false
+    },
+    {
+      "id": "guess-notion-core-database-2026-08-02",
+      "title": "猜测：Notion 可成为个人成长系统的核心数据库",
+      "summary": "如果新的工作流持续验证成功，Notion 可以作为记录入口，Codex 读取后同步到 GitHub 和网站展示层。",
+      "content": "猜测\n如果新的工作流持续验证成功，Notion 可以成为个人成长系统的核心数据库。\n\n目标链路\n输入想法与记录内容\n↓\nChatGPT 整理分析\n↓\nNotion 沉淀数据\n↓\nCodex 读取 Notion 数据\n↓\nGitHub 更新网站\n↓\n个人网站展示最新成长数据\n\n潜在结果\n1. 飞书逐渐退出主要记录流程。\n2. 不需要每天下载白皮书和项目交接卡文件。\n3. 日常记录可以直接进入 Notion。\n4. 降低整理与归档成本。\n5. 网站通过 Notion 数据同步，接近自动更新。\n\n当前状态\n验证进行中。\n\n下一步\n继续测试多次 Notion 更新、长时间连续对话，以及 Codex 读取 Notion 后的同步能力。",
+      "tags": [
+        "猜测库",
+        "Notion",
+        "核心数据库",
+        "Growth OS",
+        "网站更新",
+        "自动同步"
+      ],
+      "projects": [
+        "guess-library",
+        "knowledge-system",
+        "ai-workflow",
+        "site-update-workflow",
+        "growth-lab"
+      ],
+      "sourceFiles": [
+        "Notion：猜测一：Notion可成为个人成长系统的核心数据库"
+      ],
+      "type": "guess",
+      "date": "2026-08-02",
+      "status": "验证中",
+      "createdAt": "2026-08-02",
+      "updatedAt": "2026-08-02",
+      "sourceScope": "Notion / 猜测库",
+      "derived": false
+    },
+    {
+      "id": "guess-vpn-stability-affects-ai-tools-2026-08-02",
+      "title": "猜测：VPN 稳定性会影响 Notion 与 ChatGPT 工具调用",
+      "summary": "VPN 稳定性可能是 Notion、ChatGPT 和 AI 工作流异常的重要变量，但还不能单独归因于某个 VPN 品牌。",
+      "content": "猜测\nVPN 稳定性可能是导致 Notion、ChatGPT 和 AI 工作流异常的主要因素之一。\n\n支持现象\n1. Notion 更新曾经经常失败，需要反复授权或重新连接。\n2. ChatGPT 曾出现网络配置问题、重新连接和工具调用失败。\n3. 桌面版曾长期卡在重新连接状态。\n4. 手机端和电脑端均出现过连接异常。\n5. 更换新的 VPN 工作链路后，Notion 连续更新成功，工具调用响应明显改善。\n\n当前状态\n继续验证中，不能单独归因于某个 VPN 品牌。",
+      "tags": [
+        "猜测库",
+        "VPN稳定性",
+        "Notion",
+        "ChatGPT",
+        "工具调用",
+        "AI工作流",
+        "网络链路"
+      ],
+      "projects": [
+        "guess-library",
+        "ai-workflow",
+        "experiment-library",
+        "site-update-workflow",
+        "growth-lab"
+      ],
+      "sourceFiles": [
+        "Notion：猜测一：VPN稳定性会影响Notion与ChatGPT工具调用"
+      ],
+      "relations": {
+        "derivedFrom": [
+          "notion-experiment-vpn-workflow-stability-2026-07-31"
+        ],
+        "supports": [
+          "guess-notion-core-database-2026-08-02"
+        ],
+        "metrics": [
+          "Notion连续读写成功率",
+          "ChatGPT工具调用成功率",
+          "桌面端重连耗时",
+          "手机端授权成功率"
+        ],
+        "nextStep": "继续记录不同网络、节点、协议和设备下的失败现象，不把单次顺畅误判成长期稳定。"
+      },
+      "type": "guess",
+      "date": "2026-08-02",
+      "status": "验证中",
+      "createdAt": "2026-08-02",
+      "updatedAt": "2026-08-02",
+      "sourceScope": "Notion / 猜测库",
+      "derived": false
+    },
+    {
+      "id": "guess-vpn-config-node-protocol-2026-08-02",
+      "title": "猜测：具体配置、节点与协议组合比 VPN 品牌更关键",
+      "summary": "网络异常更可能来自节点、协议、DNS、分流规则、TUN 模式、IPv6、设备环境和本地网络之间的组合。",
+      "content": "猜测\n网络异常更可能由 VPN 节点、协议、DNS、分流规则、TUN 模式、IPv6、设备环境或本地网络之间的组合引起，而不是单纯由某一个 VPN 品牌决定。\n\n当前证据\n1. 同一用户、同一套 AI 工作流下，不同个人配置表现明显不同。\n2. 一套个人配置目前稳定，另一套配置频繁出现网络配置问题。\n3. 其中一次异常实际是没有选中代理节点，并非配置文件本身失效。\n4. 同一配置在不同时间又可以恢复正常。\n\n下一步验证\n1. 同一设备切换不同节点。\n2. 同一节点切换不同协议或代理模式。\n3. 对比 DNS、TUN、全局 / 规则模式和 IPv6 设置。\n4. 记录异常发生时间、设备、网络、节点、协议与具体报错。",
+      "tags": [
+        "猜测库",
+        "VPN配置",
+        "节点",
+        "协议",
+        "DNS",
+        "分流规则",
+        "TUN",
+        "IPv6"
+      ],
+      "projects": [
+        "guess-library",
+        "ai-workflow",
+        "experiment-library",
+        "site-update-workflow"
+      ],
+      "sourceFiles": [
+        "Notion：猜测二：具体配置、节点与协议组合比VPN品牌更关键"
+      ],
+      "relations": {
+        "derivedFrom": [
+          "notion-experiment-vpn-workflow-stability-2026-07-31"
+        ],
+        "supports": [
+          "guess-vpn-stability-affects-ai-tools-2026-08-02"
+        ],
+        "metrics": [
+          "节点切换结果",
+          "协议切换结果",
+          "DNS配置",
+          "分流模式",
+          "异常发生时间"
+        ],
+        "nextStep": "把每次异常记录成可对比样本，避免只凭感觉判断哪个 VPN 好用。"
+      },
+      "type": "guess",
+      "date": "2026-08-02",
+      "status": "验证中",
+      "createdAt": "2026-08-02",
+      "updatedAt": "2026-08-02",
+      "sourceScope": "Notion / 猜测库",
+      "derived": false
+    },
+    {
+      "id": "guess-44fcc-too-slow-long-session-2026-08-02",
+      "title": "猜测：44FCC 速度过慢且不适合长期挂机",
+      "summary": "44FCC 实际使用速度偏慢，可能会持续影响 ChatGPT、Notion、下载和长期挂机工作流。",
+      "content": "观察事实\n1. 44FCC VPN 实际使用速度明显偏慢。\n2. 日常通常会长期挂着 VPN，因此速度问题会持续影响工作效率。\n3. 使用 44FCC 时，ChatGPT 桌面版经常长时间转圈。\n4. 手机端有时无法获取 Notion 工具权限。\n5. 之前使用的另一套 VPN 配置没有出现上述现象。\n\n当前猜测\n1. 44FCC 的节点、出口线路、DNS、协议或网络质量可能存在问题。\n2. “连接稳定性”和“连接速度”需要分开评估。\n\n后续实验\n持续对比不同 VPN 配置的桌面版启动速度、Notion 工具可用率、长时间挂机稳定性、VPN 重连耗时及手机端工具获取成功率。",
+      "tags": [
+        "猜测库",
+        "44FCC",
+        "VPN速度",
+        "长期挂机",
+        "ChatGPT桌面版",
+        "Notion权限",
+        "工具链风险"
+      ],
+      "projects": [
+        "guess-library",
+        "ai-workflow",
+        "experiment-library",
+        "site-update-workflow"
+      ],
+      "sourceFiles": [
+        "Notion：猜测三：44FCC速度过慢且不适合长期挂机"
+      ],
+      "relations": {
+        "derivedFrom": [
+          "notion-experiment-vpn-workflow-stability-2026-07-31"
+        ],
+        "supports": [
+          "guess-vpn-config-node-protocol-2026-08-02"
+        ],
+        "metrics": [
+          "重连耗时",
+          "桌面端启动速度",
+          "Notion权限获取",
+          "下载成功率",
+          "长时间挂机稳定性"
+        ],
+        "nextStep": "把 44FCC 作为对照组继续观察，不急着完全否定，也不把它当主工作线路。"
+      },
+      "type": "guess",
+      "date": "2026-08-02",
+      "status": "验证中",
+      "createdAt": "2026-08-02",
+      "updatedAt": "2026-08-02",
+      "sourceScope": "Notion / 猜测库",
+      "derived": false
     }
   ]
 };
