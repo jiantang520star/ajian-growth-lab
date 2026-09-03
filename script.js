@@ -810,18 +810,19 @@ const stageViews = {
       { title: "系统思维", desc: "把网站从页面集合升级成可维护系统。", url: "library.html?id=system-thinking", match: ["系统思维"] }
     ] }
   } },
-  "new-media": { title: "医美新媒体成长", projectId: "new-media-growth", currentStage: "方法沉淀与子库扩展期", progress: "70%", groups: {
+  "new-media": { title: "医美新媒体成长", projectId: "new-media-growth", currentStage: "原岗位完整交接完成", progress: "100%", groups: {
     done: { label: "已完成", summary: "视频样本、引流路径、评论动作、风控经验和 AI 交接卡机制已经形成基础沉淀。", current: [
       { title: "视频样本", desc: "视频数据库与样本拆解，用来寻找内容规律。", url: "projects/video-benchmark.html", match: ["视频", "视频样本", "视频数据库", "77"] },
       { title: "引流 SOP", desc: "从关注、评论、回关、私信到加 V 的转化路径。", url: "library.html?id=lead-sop", match: ["引流SOP", "引流"] },
       { title: "评论 SOP", desc: "评论引起注意、降低信任成本和等待回关。", url: "library.html?id=comment-sop", match: ["评论SOP", "评论"] },
       { title: "风控经验", desc: "账号私信、关注频率、蓝 V 承接和异常账号隔离。", url: "library.html?id=operation-risk-library", match: ["风控", "风险"] },
-      { title: "AI交接卡机制", desc: "把每日复盘变成下一次 AI 协作的起点。", url: "library.html?id=handoff-generator", match: ["交接卡", "AI上下文接力"] }
+      { title: "AI交接卡机制", desc: "把每日复盘变成下一次 AI 协作的起点。", url: "library.html?id=handoff-generator", match: ["交接卡", "AI上下文接力"] },
+      { title: "原岗位完整交接", desc: "工作、SOP、全部设备和经验文档均已完成交接。", url: "handoffs/2026-09-03.html", match: ["交接完成", "设备交接", "经验文档"] }
     ], previous: [
       { title: "运营 SOP 库", desc: "已沉淀的运营动作会继续归入 SOP 库。", url: "library.html?id=operation-sop-library", match: ["运营SOP"] },
       { title: "项目成果", desc: "引流、转化和执行结果会沉淀为项目成果。", url: "library.html?id=operation-results", match: ["项目成果", "运营案例"] }
     ] },
-    doing: { label: "当前进行", summary: "当前重点是把飞书最终文档拆成运营子库，并让这些子库进入每日更新、Workflow 和阶段看板。", current: [
+    doing: { label: "当前进行", summary: "原岗位交接已经完成，当前重点转为成果整理、作品集表达和正式面试准备。", current: [
       { title: "矩阵账号库", desc: "主账号、矩阵号、助理号和活跃账号的分工。", url: "library.html?id=matrix-account-library", match: ["矩阵账号", "矩阵号", "助理号"] },
       { title: "账号规律库", desc: "发布时间、咨询高峰、限流判断和账号切换逻辑。", url: "library.html?id=account-rule-library", match: ["账号规律", "发布时间", "咨询高峰"] },
       { title: "视频脚本拆解", desc: "开头钩子、一问一答、案例对比和用户顾虑模型。", url: "library.html?id=content-script-library", match: ["视频脚本", "一问一答", "开头钩子"] },
