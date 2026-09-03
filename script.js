@@ -842,8 +842,8 @@ const stageViews = {
       { title: "引流 SOP", desc: "视频模型最终要服务引流转化。", url: "library.html?id=lead-sop", match: ["引流"] }
     ] }
   } },
-  "account-cold-start": { title: "账号冷启动与新人培训", projectId: "account-cold-start", currentStage: "流程建立阶段", progress: "20%", groups: {
-    done: { label: "已完成", summary: "已完成项目立项和最小阶段标记。", current: [
+  "account-cold-start": { title: "账号冷启动与新人培训", projectId: "account-cold-start", currentStage: "原岗位培训交接完成", progress: "100%", groups: {
+    done: { label: "已完成", summary: "新人带教及相关 SOP、设备、经验文档已完成交接。", current: [
       { title: "项目立项", desc: "冷启动与培训已作为独立项目进入阶段看板。", url: "projects/account-cold-start.html", match: ["账号冷启动", "项目立项"] },
       { title: "基础方向", desc: "先做账号定位、资料搭建、互动和数据观察。", url: "library.html?id=account-cold-start", match: ["基础方向", "新人培训"] },
       { title: "20% 阶段标记", desc: "当前项目处于流程建立早期，不用追求一次性完成。", url: "projects/account-cold-start.html", match: ["20%"] }
