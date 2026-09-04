@@ -823,42 +823,45 @@ const stageViews = {
       { title: "项目成果", desc: "引流、转化和执行结果会沉淀为项目成果。", url: "library.html?id=operation-results", match: ["项目成果", "运营案例"] }
     ] },
     doing: { label: "当前进行", summary: "原岗位交接已经完成，当前重点转为成果整理、作品集表达和正式面试准备。", current: [
-      { title: "矩阵账号库", desc: "主账号、矩阵号、助理号和活跃账号的分工。", url: "library.html?id=matrix-account-library", match: ["矩阵账号", "矩阵号", "助理号"] },
-      { title: "账号规律库", desc: "发布时间、咨询高峰、限流判断和账号切换逻辑。", url: "library.html?id=account-rule-library", match: ["账号规律", "发布时间", "咨询高峰"] },
-      { title: "视频脚本拆解", desc: "开头钩子、一问一答、案例对比和用户顾虑模型。", url: "library.html?id=content-script-library", match: ["视频脚本", "一问一答", "开头钩子"] },
-      { title: "视频剪辑SOP", desc: "医生素材、画质、音频、字幕和剪辑参数。", url: "library.html?id=video-editing-sop", match: ["视频剪辑", "医生素材", "字幕", "音频"] },
-      { title: "人物参数库", desc: "医生画面、美颜美体、色彩和 HSL 参数沉淀。", url: "library.html?id=doctor-persona-params", match: ["人物参数", "HSL", "邵红伟"] }
+      { title: "成果整理", desc: "把 SOP、数据、案例和岗位经验整理为可展示材料。", url: "projects/new-media-growth.html", match: ["成果整理", "能力资产"] },
+      { title: "作品集表达", desc: "围绕项目背景、职责、方法、结果和证据形成完整案例。", url: "projects/new-media-growth.html", match: ["作品集", "案例"] },
+      { title: "面试准备", desc: "复盘引流链路、转化数据、风控、新人带教和 AI 工作流。", url: "handoffs/2026-09-03.html", match: ["面试", "引流链路", "新人带教"] }
     ], previous: [
-      { title: "飞书最终文档入库", desc: "这次批量录入的每日更新总记录。", url: "asset.html?id=handoff-2026-07-28-feishu-final-docs-import", match: ["飞书文档", "批量入库", "每日更新"] },
-      { title: "运营 SOP 库", desc: "子库内容会继续回流到运营 SOP。", url: "library.html?id=operation-sop-library", match: ["运营SOP"] }
+      { title: "矩阵账号库", desc: "主账号、矩阵号、助理号和活跃账号的分工已沉淀为历史资产。", url: "library.html?id=matrix-account-library", match: ["矩阵账号", "矩阵号"] },
+      { title: "运营子库", desc: "账号规律、脚本拆解、剪辑参数和人物参数已进入知识资产。", url: "library.html?id=operation-sop-library", match: ["账号规律", "视频脚本", "剪辑参数"] }
     ] },
-    next: { label: "下一阶段", summary: "下一步把子库内容转成新人培训和执行检查表，并继续用案例验证。", current: [
-      { title: "新人培训手册", desc: "把已沉淀 SOP 转成新人可执行清单。", url: "library.html?id=account-cold-start", match: ["新人培训", "手册"] },
-      { title: "流程标准化", desc: "把有效动作变成稳定 SOP。", url: "library.html?id=operation-sop-library", match: ["流程标准化", "SOP"] },
-      { title: "案例验证", desc: "用真实案例验证引流、评论和账号动作。", url: "library.html?id=operation-results", match: ["案例", "验证"] },
-      { title: "风险预警清单", desc: "标准化之前先明确高风险动作。", url: "library.html?id=operation-risk-library", match: ["风险", "预警"] }
+    next: { label: "下一阶段", summary: "通过正式投递和面试反馈验证能力、岗位定位与市场价值。", current: [
+      { title: "正式投递", desc: "测试 6k–8k 岗位，并选择性冲刺更高质量岗位。", url: "handoffs/2026-09-03.html", match: ["投递", "6k", "8k"] },
+      { title: "面试验证", desc: "用真实面试检验项目表达、能力证据和岗位匹配度。", url: "projects/new-media-growth.html", match: ["面试验证", "市场价值"] },
+      { title: "反馈复盘", desc: "记录回复率、薪资区间、面试反馈和主要卡点。", url: "handoffs.html", match: ["反馈", "复盘"] }
     ], previous: [
-      { title: "视频规律库", desc: "内容规律会反向影响引流和转化。", url: "library.html?id=video-rules-library", match: ["视频规律"] },
-      { title: "引流 SOP", desc: "视频模型最终要服务引流转化。", url: "library.html?id=lead-sop", match: ["引流"] }
+      { title: "最终版本引流 SOP", desc: "作为岗位能力和流程标准化的核心证据。", url: "downloads/最终版本引流SOP.docx", match: ["最终版本", "引流SOP"] }
     ] }
   } },
   "account-cold-start": { title: "账号冷启动与新人培训", projectId: "account-cold-start", currentStage: "原岗位培训交接完成", progress: "100%", groups: {
     done: { label: "已完成", summary: "新人带教及相关 SOP、设备、经验文档已完成交接。", current: [
       { title: "项目立项", desc: "冷启动与培训已作为独立项目进入阶段看板。", url: "projects/account-cold-start.html", match: ["账号冷启动", "项目立项"] },
-      { title: "基础方向", desc: "先做账号定位、资料搭建、互动和数据观察。", url: "library.html?id=account-cold-start", match: ["基础方向", "新人培训"] },
-      { title: "20% 阶段标记", desc: "当前项目处于流程建立早期，不用追求一次性完成。", url: "projects/account-cold-start.html", match: ["20%"] }
-    ], previous: [{ title: "医美新媒体成长", desc: "冷启动项目来自新媒体主线。", url: "projects/new-media-growth.html", match: ["医美新媒体"] }] },
-    doing: { label: "当前进行", summary: "正在把冷启动动作和新人训练拆成可执行清单。", current: [
-      { title: "冷启动 SOP", desc: "定位、资料、内容测试、评论互动和数据观察。", url: "library.html?id=account-cold-start", match: ["冷启动SOP"] },
-      { title: "新人培训清单", desc: "让新人知道每天做什么、怎么复盘、怎么避免风险。", url: "library.html?id=account-cold-start", match: ["新人培训"] }
-    ], previous: [{ title: "运营 SOP 库", desc: "培训清单要引用已有 SOP。", url: "library.html?id=operation-sop-library", match: ["运营SOP"] }] },
-    next: { label: "下一阶段", summary: "让新人按手册训练、执行、反馈和复盘。", current: [
-      { title: "新人执行手册", desc: "把培训内容变成可以直接执行的手册。", url: "library.html?id=account-cold-start", match: ["执行手册"] },
-      { title: "训练任务", desc: "按天拆任务，跟踪完成情况。", url: "library.html?id=account-cold-start", match: ["训练任务"] },
-      { title: "复盘模板", desc: "通过项目交接卡回收问题和下一步。", url: "handoffs.html", match: ["复盘", "项目交接卡"] }
-    ], previous: [{ title: "项目交接卡", desc: "每天的执行问题进入交接卡。", url: "handoffs.html", match: ["交接卡"] }] }
+      { title: "基础流程沉淀", desc: "账号定位、资料搭建、互动、数据观察与新人带教已经完成沉淀。", url: "library.html?id=account-cold-start", match: ["冷启动", "新人培训"] },
+      { title: "原岗位培训交接", desc: "相关 SOP、工作方法、设备和经验文档已完整移交。", url: "handoffs/2026-09-03.html", match: ["培训交接", "100%"] }
+    ], previous: [
+      { title: "历史阶段：流程建立期", desc: "项目曾处于 20% 的早期流程建立阶段，现已完成原岗位交接。", url: "projects/account-cold-start.html", match: ["历史阶段", "流程建立"] }
+    ] },
+    doing: { label: "当前进行", summary: "当前不再执行原岗位培训任务，重点是把培训成果转成求职证明。", current: [
+      { title: "培训案例包装", desc: "把新人带教过程整理为背景、动作、结果和复盘。", url: "projects/account-cold-start.html", match: ["培训案例", "新人带教"] },
+      { title: "作品集呈现", desc: "展示 SOP、执行清单和风险控制能力。", url: "projects/new-media-growth.html", match: ["作品集", "SOP"] },
+      { title: "面试证明", desc: "用于验证流程标准化和带教能力。", url: "handoffs/2026-09-03.html", match: ["面试证明", "带教能力"] }
+    ], previous: [
+      { title: "冷启动 SOP 与培训清单", desc: "已完成的岗位资产继续作为案例素材复用。", url: "library.html?id=account-cold-start", match: ["冷启动SOP", "培训清单"] }
+    ] },
+    next: { label: "下一阶段", summary: "用岗位反馈检验培训成果的表达效果和可迁移价值。", current: [
+      { title: "案例验证", desc: "在正式面试中验证新人带教案例是否清晰、有说服力。", url: "projects/account-cold-start.html", match: ["案例验证"] },
+      { title: "证据补强", desc: "根据面试追问补充流程、结果和复盘证据。", url: "handoffs.html", match: ["证据", "面试反馈"] },
+      { title: "能力复用", desc: "在下一份工作中继续复用冷启动和新人培训方法。", url: "library.html?id=account-cold-start", match: ["能力复用"] }
+    ], previous: [
+      { title: "最终版本引流 SOP", desc: "交接完成的流程资产可继续作为培训和面试证据。", url: "downloads/最终版本引流SOP.docx", match: ["最终版本", "引流SOP"] }
+    ] }
   } },
-  "ai-workflow": { title: "AI 工作流", projectId: "ai-workflow", currentStage: "工作流验证阶段", progress: "50%", groups: {
+  "ai-workflow":"ai-workflow": { title: "AI 工作流", projectId: "ai-workflow", currentStage: "工作流验证阶段", progress: "50%", groups: {
     done: { label: "已完成", summary: "已经验证过 AI 辅助识别、整理、生成和发布链路。", current: [
       { title: "OCR", desc: "把图片、文档和截图转成可整理文本。", url: "library.html?id=ocr-workflow", match: ["OCR"] },
       { title: "交接卡生成", desc: "把每日进度变成下一次对话起点。", url: "library.html?id=handoff-generator", match: ["交接卡生成"] },
