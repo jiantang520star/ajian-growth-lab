@@ -1,4 +1,4 @@
-const CACHE_NAME = "ajian-growth-os-pwa-v8";
+const CACHE_NAME = "ajian-growth-os-pwa-v9";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -75,3 +75,4 @@ self.addEventListener("fetch", (event) => {
   const isDynamicContent = request.mode === "navigate" || url.pathname.endsWith(".html") || url.pathname.endsWith("/growth-data.js");
   event.respondWith(isDynamicContent ? networkFirst(request) : cacheFirst(request));
 });
+

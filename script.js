@@ -1,4 +1,4 @@
-﻿const year = document.querySelector("#year");
+const year = document.querySelector("#year");
 const topButton = document.querySelector(".top-button");
 const defaultData = window.GROWTH_OS_DATA || { assetTypes: [], projects: [], assets: [] };
 const STORAGE_KEY = "ajian_growth_os_assets_v1";
@@ -536,6 +536,15 @@ const renderLatestUpdates = () => {
   });
 };
 
+const renderAssetCounts = () => {
+  const assets = getAllAssets();
+  document.querySelectorAll("[data-asset-count]").forEach((target) => {
+    const type = target.dataset.assetCount;
+    const count = assets.filter((asset) => asset.type === type).length;
+    target.textContent = (target.dataset.countTemplate || "{count}").replace("{count}", String(count));
+  });
+};
+
 const setupLibraryBadges = () => {
   document.querySelectorAll(".sub-library a[href*='library.html?id=']").forEach((link) => {
     const href = link.getAttribute("href") || "";
@@ -810,28 +819,31 @@ const stageViews = {
       { title: "系统思维", desc: "把网站从页面集合升级成可维护系统。", url: "library.html?id=system-thinking", match: ["系统思维"] }
     ] }
   } },
-  "new-media": { title: "医美新媒体成长", projectId: "new-media-growth", currentStage: "方法沉淀与子库扩展期", progress: "70%", groups: {
-    done: { label: "已完成", summary: "视频样本、引流路径、评论动作、风控经验和 AI 交接卡机制已经形成基础沉淀。", current: [
+  "new-media": { title: "新媒体运营成长", projectId: "new-media-growth", currentStage: "跨行业内容与全链路验证期", progress: "78%", groups: {
+    done: { label: "已完成", summary: "医美承接经验、视频样本、引流路径、评论动作和风控经验已形成基础；珠宝小红书内容端也获得重复的万级结果验证。", current: [
       { title: "视频样本", desc: "视频数据库与样本拆解，用来寻找内容规律。", url: "projects/video-benchmark.html", match: ["视频", "视频样本", "视频数据库", "77"] },
       { title: "引流 SOP", desc: "从关注、评论、回关、私信到加 V 的转化路径。", url: "library.html?id=lead-sop", match: ["引流SOP", "引流"] },
       { title: "评论 SOP", desc: "评论引起注意、降低信任成本和等待回关。", url: "library.html?id=comment-sop", match: ["评论SOP", "评论"] },
       { title: "风控经验", desc: "账号私信、关注频率、蓝 V 承接和异常账号隔离。", url: "library.html?id=operation-risk-library", match: ["风控", "风险"] },
       { title: "AI交接卡机制", desc: "把每日复盘变成下一次 AI 协作的起点。", url: "library.html?id=handoff-generator", match: ["交接卡", "AI上下文接力"] }
+      ,{ title: "珠宝内容矩阵案例", desc: "多次万级内容，最高单篇约15万浏览。", url: "asset.html?id=case-jewelry-content-matrix-150k-2026-10-02", match: ["珠宝", "15万浏览", "内容矩阵"] }
     ], previous: [
       { title: "运营 SOP 库", desc: "已沉淀的运营动作会继续归入 SOP 库。", url: "library.html?id=operation-sop-library", match: ["运营SOP"] },
       { title: "项目成果", desc: "引流、转化和执行结果会沉淀为项目成果。", url: "library.html?id=operation-results", match: ["项目成果", "运营案例"] }
     ] },
-    doing: { label: "当前进行", summary: "当前重点是把飞书最终文档拆成运营子库，并让这些子库进入每日更新、Workflow 和阶段看板。", current: [
+    doing: { label: "当前进行", summary: "当前重点是把跨行业内容能力继续推进到有效咨询与转化，并用分环节归因SOP定位真实瓶颈。", current: [
       { title: "矩阵账号库", desc: "主账号、矩阵号、助理号和活跃账号的分工。", url: "library.html?id=matrix-account-library", match: ["矩阵账号", "矩阵号", "助理号"] },
       { title: "账号规律库", desc: "发布时间、咨询高峰、限流判断和账号切换逻辑。", url: "library.html?id=account-rule-library", match: ["账号规律", "发布时间", "咨询高峰"] },
       { title: "视频脚本拆解", desc: "开头钩子、一问一答、案例对比和用户顾虑模型。", url: "library.html?id=content-script-library", match: ["视频脚本", "一问一答", "开头钩子"] },
       { title: "视频剪辑SOP", desc: "医生素材、画质、音频、字幕和剪辑参数。", url: "library.html?id=video-editing-sop", match: ["视频剪辑", "医生素材", "字幕", "音频"] },
       { title: "人物参数库", desc: "医生画面、美颜美体、色彩和 HSL 参数沉淀。", url: "library.html?id=doctor-persona-params", match: ["人物参数", "HSL", "邵红伟"] }
+      ,{ title: "内容到转化归因SOP", desc: "按曝光、互动、咨询、加微与成交逐环节记录和验证。", url: "asset.html?id=sop-content-to-conversion-attribution-2026-10-02", match: ["转化漏斗", "数据归因", "控制变量"] }
+      ,{ title: "可执行SOP决策地图", desc: "为案例库增加场景判断、调用条件和异常处理。", url: "asset.html?id=rule-executable-sop-needs-decision-map-2026-10-06", match: ["决策地图", "异常处理", "可执行SOP"] }
     ], previous: [
       { title: "飞书最终文档入库", desc: "这次批量录入的每日更新总记录。", url: "asset.html?id=handoff-2026-07-28-feishu-final-docs-import", match: ["飞书文档", "批量入库", "每日更新"] },
       { title: "运营 SOP 库", desc: "子库内容会继续回流到运营 SOP。", url: "library.html?id=operation-sop-library", match: ["运营SOP"] }
     ] },
-    next: { label: "下一阶段", summary: "下一步把子库内容转成新人培训和执行检查表，并继续用案例验证。", current: [
+    next: { label: "下一阶段", summary: "下一步继续验证内容到有效客资的稳定链路，并把成熟方法转成培训与执行检查表。", current: [
       { title: "新人培训手册", desc: "把已沉淀 SOP 转成新人可执行清单。", url: "library.html?id=account-cold-start", match: ["新人培训", "手册"] },
       { title: "流程标准化", desc: "把有效动作变成稳定 SOP。", url: "library.html?id=operation-sop-library", match: ["流程标准化", "SOP"] },
       { title: "案例验证", desc: "用真实案例验证引流、评论和账号动作。", url: "library.html?id=operation-results", match: ["案例", "验证"] },
@@ -1264,6 +1276,7 @@ document.querySelector("[data-close-docs]")?.addEventListener("click", () => doc
 renderKnowledgeList();
 renderProjectAssets();
 renderLatestUpdates();
+renderAssetCounts();
 renderVideoDatabasePage();
 renderLibraryPage();
 renderAssetDetail();
@@ -1275,3 +1288,4 @@ setupManager();
 setupLibraryBadges();
 setupLocalSearch();
 setupMusicPlayer();
+
